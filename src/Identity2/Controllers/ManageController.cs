@@ -1,7 +1,7 @@
-﻿using Identity2;
-using Identity2.Controllers;
-using Identity2.Models;
-using Identity2.ViewModels.Identity;
+﻿using ConnectedCamerasWeb;
+using ConnectedCamerasWeb.Controllers;
+using ConnectedCamerasWeb.Models;
+using ConnectedCamerasWeb.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Identity2.Controllers
+namespace ConnectedCamerasWeb.Controllers
 {
     [Authorize]
     public class ManageController : Controller

@@ -1,6 +1,6 @@
-﻿using Identity2.Models;
-using Identity2.ViewModels.Admin;
-using Identity2.ViewModels.Identity;
+﻿using ConnectedCamerasWeb.Models;
+using ConnectedCamerasWeb.ViewModels.Admin;
+using ConnectedCamerasWeb.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -11,7 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Collections.Generic;
 
-namespace Identity2.Controllers
+namespace ConnectedCamerasWeb.Controllers
 {
     //[Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller
@@ -21,7 +21,7 @@ namespace Identity2.Controllers
         }
 
         public RolesAdminController(ApplicationUserManager userManager,
-            Identity2.ApplicationSignInManager.ApplicationRoleManager roleManager)
+            ConnectedCamerasWeb.ApplicationSignInManager.ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             RoleManager = roleManager;
@@ -40,12 +40,12 @@ namespace Identity2.Controllers
             }
         }
 
-        private Identity2.ApplicationSignInManager.ApplicationRoleManager _roleManager;
-        public Identity2.ApplicationSignInManager.ApplicationRoleManager RoleManager
+        private ConnectedCamerasWeb.ApplicationSignInManager.ApplicationRoleManager _roleManager;
+        public ConnectedCamerasWeb.ApplicationSignInManager.ApplicationRoleManager RoleManager
         {
             get
             {
-                return _roleManager ?? HttpContext.GetOwinContext().Get<Identity2.ApplicationSignInManager.ApplicationRoleManager>();
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ConnectedCamerasWeb.ApplicationSignInManager.ApplicationRoleManager>();
             }
             private set
             {

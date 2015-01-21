@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Identity2.Core.Model
+namespace ConnectedCamerasWeb.Core.Model
 {
     public class User
     {

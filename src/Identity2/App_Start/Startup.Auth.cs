@@ -1,15 +1,15 @@
 ﻿using System;
-using Identity2.Infrastructure.Data;
-using Identity2.ViewModels.Identity;
+using ConnectedCamerasWeb.Infrastructure.Data;
+using ConnectedCamerasWeb.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using Identity2.Models;
+using ConnectedCamerasWeb.Models;
 
-namespace Identity2
+namespace ConnectedCamerasWeb
 {
     public partial class Startup
     {
@@ -19,7 +19,7 @@ namespace Identity2
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            app.CreatePerOwinContext<Identity2.ApplicationSignInManager.ApplicationRoleManager>(Identity2.ApplicationSignInManager.ApplicationRoleManager.Create);
+            app.CreatePerOwinContext<ConnectedCamerasWeb.ApplicationSignInManager.ApplicationRoleManager>(ConnectedCamerasWeb.ApplicationSignInManager.ApplicationRoleManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user

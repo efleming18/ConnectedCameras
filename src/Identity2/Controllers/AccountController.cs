@@ -2,13 +2,13 @@
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Identity2.ViewModels.Account;
-using Identity2.ViewModels.Identity;
+using ConnectedCamerasWeb.ViewModels.Account;
+using ConnectedCamerasWeb.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 
-namespace Identity2.Controllers
+namespace ConnectedCamerasWeb.Controllers
 {
     [Authorize]
     public class AccountController : Controller
@@ -75,7 +75,7 @@ namespace Identity2.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("CameraPicker", "CameraPicker");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -393,7 +393,7 @@ namespace Identity2.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
 
         //

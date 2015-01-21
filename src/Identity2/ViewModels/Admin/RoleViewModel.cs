@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Identity2.ViewModels.Admin
+namespace ConnectedCamerasWeb.ViewModels.Admin
 {
     public class RoleViewModel
     {

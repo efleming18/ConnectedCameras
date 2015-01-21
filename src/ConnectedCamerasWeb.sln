@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 11
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity2", "Identity2\Identity2.csproj", "{C5D47DBF-0A22-488C-B0FB-582B9403860E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectedCamerasWeb", "Identity2\ConnectedCamerasWeb.csproj", "{C5D47DBF-0A22-488C-B0FB-582B9403860E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DAF56381-D268-40CD-A5BF-B0F83F9DCB12}"
 	ProjectSection(SolutionItems) = preProject

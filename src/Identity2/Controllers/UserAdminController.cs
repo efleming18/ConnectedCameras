@@ -1,7 +1,7 @@
-﻿using Identity2.Infrastructure.Data;
-using Identity2.ViewModels.Account;
-using Identity2.ViewModels.Admin;
-using Identity2.ViewModels.Identity;
+﻿using ConnectedCamerasWeb.Infrastructure.Data;
+using ConnectedCamerasWeb.ViewModels.Account;
+using ConnectedCamerasWeb.ViewModels.Admin;
+using ConnectedCamerasWeb.ViewModels.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebGrease;
 
-namespace Identity2.Controllers
+namespace ConnectedCamerasWeb.Controllers
 {
     //[Authorize(Roles = "Admin")]
     public class UsersAdminController : Controller
@@ -44,7 +44,7 @@ namespace Identity2.Controllers
         {
             get
             {
-                return _roleManager ?? HttpContext.GetOwinContext().Get<Identity2.ApplicationSignInManager.ApplicationRoleManager>();
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ConnectedCamerasWeb.ApplicationSignInManager.ApplicationRoleManager>();
             }
             private set
             {

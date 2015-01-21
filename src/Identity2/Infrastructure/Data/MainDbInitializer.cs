@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using Identity2.Core.Model;
+using ConnectedCamerasWeb.Core.Model;
 
-namespace Identity2.Infrastructure.Data
+namespace ConnectedCamerasWeb.Infrastructure.Data
 {
     public class MainDbInitializer : DropCreateDatabaseIfModelChanges<MainDbContext>
     {

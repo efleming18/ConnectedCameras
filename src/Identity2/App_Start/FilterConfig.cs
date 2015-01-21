@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Identity2
+namespace ConnectedCamerasWeb
 {
     public class FilterConfig
     {

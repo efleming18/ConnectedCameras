@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Identity2.Startup))]
-namespace Identity2
+[assembly: OwinStartupAttribute(typeof(ConnectedCamerasWeb.Startup))]
+namespace ConnectedCamerasWeb
 {
     public partial class Startup
     {

@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Identity2.Controllers
+namespace ConnectedCamerasWeb.Controllers
 {
     [RequireHttps]
     public class HomeController : Controller
@@ -12,14 +12,14 @@ namespace Identity2.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "What is Connected Cameras About?";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "You can contact us at..";
 
             return View();
         }

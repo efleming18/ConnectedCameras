@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Identity2.App_Start
+namespace ConnectedCamerasWeb.App_Start
 {
     class AccountsManager<T>
     {

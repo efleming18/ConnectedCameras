@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Identity2.Core.Interfaces;
-using Identity2.Core.Model;
-using Identity2.Infrastructure.Data;
+using ConnectedCamerasWeb.Core.Interfaces;
+using ConnectedCamerasWeb.Core.Model;
+using ConnectedCamerasWeb.Infrastructure.Data;
 
-namespace Identity2.Controllers
+namespace ConnectedCamerasWeb.Controllers
 {
     public class AccountsController : Controller
     {
         private readonly MainDbContext db = new MainDbContext();
         private readonly IAccountsRepository _accountsRepository;
 
-        //Poor-mans DI - waiting for Steve for DI implementation
+        //Poor-mans DI
         public AccountsController()
             : this(new AccountsRepository())
         {

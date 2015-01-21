@@ -1,8 +1,8 @@
-﻿using Identity2.Models;
-using Identity2.ViewModels.Identity;
+﻿using ConnectedCamerasWeb.Models;
+using ConnectedCamerasWeb.ViewModels.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Identity2.Infrastructure.Data
+namespace ConnectedCamerasWeb.Infrastructure.Data
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
 

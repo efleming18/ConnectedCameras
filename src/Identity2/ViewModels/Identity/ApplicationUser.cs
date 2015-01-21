@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Identity2.ViewModels.Identity
+namespace ConnectedCamerasWeb.ViewModels.Identity
 {
     public class ApplicationUser : IdentityUser
     {

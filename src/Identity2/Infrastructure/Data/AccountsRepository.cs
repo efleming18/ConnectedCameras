@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Identity2.Core.Interfaces;
-using Identity2.Core.Model;
+using ConnectedCamerasWeb.Core.Interfaces;
+using ConnectedCamerasWeb.Core.Model;
 
-namespace Identity2.Infrastructure.Data
+namespace ConnectedCamerasWeb.Infrastructure.Data
 {
     public class AccountsRepository : IAccountsRepository
     {

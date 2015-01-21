@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Identity2.Infrastructure.Data;
-using Identity2.ViewModels.Identity;
+using ConnectedCamerasWeb.Infrastructure.Data;
+using ConnectedCamerasWeb.ViewModels.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using Identity2.Models;
+using ConnectedCamerasWeb.Models;
 using System.Diagnostics;
 
-namespace Identity2
+namespace ConnectedCamerasWeb
 {
     public class EmailService : IIdentityMessageService
     {

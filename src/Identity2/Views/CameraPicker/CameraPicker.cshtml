@@ -1,0 +1,25 @@
+﻿@using MvcCheckBoxList.Model
+@model ConnectedCamerasWeb.ViewModels.CameraPicker.CameraPickerModel
+
+@{
+    ViewBag.Title = "CameraPicker";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Camera Picker</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.CheckBoxListFor(model => model.PostedCameras.CameraIDs,
+                              model => model.AvailableCameras,
+                              camera => camera.Id,
+                              camera => camera.Name,
+                              model => model.SelectedCameras,
+                              Position.Vertical)
+    </div>
+    <input type="submit" value="Continue" class="btn btn-default" />
+}
+
+
+

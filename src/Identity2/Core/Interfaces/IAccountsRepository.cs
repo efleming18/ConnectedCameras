@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Identity2.Core.Model;
+using ConnectedCamerasWeb.Core.Model;
 
-namespace Identity2.Core.Interfaces
+namespace ConnectedCamerasWeb.Core.Interfaces
 {
     public interface IAccountsRepository
     {

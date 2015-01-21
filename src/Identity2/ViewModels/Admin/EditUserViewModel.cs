@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
-namespace Identity2.ViewModels.Admin
+namespace ConnectedCamerasWeb.ViewModels.Admin
 {
     public class EditUserViewModel
     {

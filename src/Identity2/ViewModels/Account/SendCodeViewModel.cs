@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Identity2.ViewModels.Account
+namespace ConnectedCamerasWeb.ViewModels.Account
 {
     public class SendCodeViewModel
     {
