@@ -12,43 +12,39 @@ namespace ConnectedCamerasWeb.Controllers
 {
     public class CameraPickerController : Controller
     {
-        // GET: CameraPicker
         [Authorize]
         public ActionResult CameraPicker()
         {
-            return View(GetAvailableCameras());
+            //TODO: Check for the user's authorization level so this method will only return the cameras in their assigned group.
+            var model = new CameraPickerViewModel();
+            model.SelectedCameras = new List<Cameras>();
+            using (var db = new MainDbContext())
+            {
+                model.AvailableCameras = db.Cameras.ToList();
+            }
+            return View(model);
         }
 
         [HttpPost]
         public ActionResult CameraPicker(PostedCameras postedCameras)
         {
-            var selectedCameras = _cameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id));
+            List<Cameras> selectedCameras;
+            using (var db = new MainDbContext()) 
+            {
+                //TODO: Need to do something with the selected cameras so we can get the feed.
+                var availableCameras = db.Cameras.ToList();
+                selectedCameras = availableCameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id)).ToList();
+            }
             return RedirectToAction("Cameras");
         }
+
+        [Authorize]
         public ActionResult Cameras()
         {
-            //TODO: Make the magic happen where we get the live video stream.
             return View();
         }
 
-        //TODO: Check for the user's authorization level so this method will only return the cameras in their assigned group.
-        private CameraPickerModel GetAvailableCameras()
-        {
-            var db = new MainDbContext();
-            var model = new CameraPickerModel();
-            model.SelectedCameras = new List<Cameras>();
-            model.AvailableCameras = db.Cameras.ToList(); //Fetch from database.
-            return model;
-        }
-
-        //TODO: Delete this and fetch this data from the database
-        private static List<Camera> _cameras = new List<Camera>
-        {
-            new Camera { Name = "Family Room", Id = 1 },
-            new Camera { Name = "Kitchen", Id = 2 },
-            new Camera { Name = "Basement", Id = 3 },
-            new Camera { Name = "Foyer", Id = 4 },
-        };
+        
 
     }
 }

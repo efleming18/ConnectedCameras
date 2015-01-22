@@ -7,7 +7,7 @@ using ConnectedCamerasWeb.Models;
 
 namespace ConnectedCamerasWeb.ViewModels.CameraPicker
 {
-    public class CameraPickerModel
+    public class CameraPickerViewModel
     {
         public List<Cameras> AvailableCameras { get; set; }
         public List<Cameras> SelectedCameras { get; set; }

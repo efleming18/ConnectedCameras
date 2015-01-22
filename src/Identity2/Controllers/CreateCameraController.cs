@@ -11,11 +11,11 @@ namespace ConnectedCamerasWeb.Controllers
 {
     public class CreateCameraController : Controller
     {
-        // GET: CreateCamera
         public ActionResult CreateCamera()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<ActionResult> CreateCamera(Cameras camera)
         {
