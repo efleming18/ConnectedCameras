@@ -14,7 +14,7 @@
         @Html.CheckBoxListFor(model => model.PostedCameras.CameraIDs,
                               model => model.AvailableCameras,
                               camera => camera.Id,
-                              camera => camera.Name,
+                              camera => camera.CameraName,
                               model => model.SelectedCameras,
                               Position.Vertical)
     </div>

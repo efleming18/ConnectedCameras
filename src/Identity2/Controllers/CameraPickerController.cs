@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using ConnectedCamerasWeb.ViewModels.CameraPicker;
 using ConnectedCamerasWeb.Models;
+using ConnectedCamerasWeb.Infrastructure.Data;
 
 namespace ConnectedCamerasWeb.Controllers
 {
@@ -22,7 +23,7 @@ namespace ConnectedCamerasWeb.Controllers
         public ActionResult CameraPicker(PostedCameras postedCameras)
         {
             var selectedCameras = _cameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id));
-            return RedirectToAction("Cameras"); //pass selectedCameras into this?
+            return RedirectToAction("Cameras");
         }
         public ActionResult Cameras()
         {
@@ -33,9 +34,10 @@ namespace ConnectedCamerasWeb.Controllers
         //TODO: Check for the user's authorization level so this method will only return the cameras in their assigned group.
         private CameraPickerModel GetAvailableCameras()
         {
+            var db = new MainDbContext();
             var model = new CameraPickerModel();
-            model.SelectedCameras = new List<Camera>();
-            model.AvailableCameras = _cameras; //Fetch from database.
+            model.SelectedCameras = new List<Cameras>();
+            model.AvailableCameras = db.Cameras.ToList(); //Fetch from database.
             return model;
         }
 

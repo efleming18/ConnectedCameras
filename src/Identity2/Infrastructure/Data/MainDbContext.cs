@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using ConnectedCamerasWeb.Core.Model;
+using ConnectedCamerasWeb.Models;
 
 namespace ConnectedCamerasWeb.Infrastructure.Data
 {
@@ -11,5 +12,7 @@ namespace ConnectedCamerasWeb.Infrastructure.Data
         public MainDbContext() : base("MainConnection")
         {
         }
+
+        public DbSet<Cameras> Cameras { get; set; }
     }
 }
