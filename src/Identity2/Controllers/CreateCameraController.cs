@@ -5,8 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using ConnectedCamerasWeb.Models;
 using ConnectedCamerasWeb.Infrastructure.Data;
+using System.Threading.Tasks;
 
-namespace Identity2.Controllers
+namespace ConnectedCamerasWeb.Controllers
 {
     public class CreateCameraController : Controller
     {
@@ -16,11 +17,13 @@ namespace Identity2.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateCamera(Cameras camera)
+        public async Task<ActionResult> CreateCamera(Cameras camera)
         {
-            var db = new MainDbContext();
-            db.Cameras.Add(camera);
-            
+            using (var db = new MainDbContext())
+            {
+                db.Cameras.Add(camera);
+                await db.SaveChangesAsync();
+            }
             return View();
         }
     }
