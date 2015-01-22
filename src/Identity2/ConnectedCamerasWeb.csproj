@@ -214,7 +214,6 @@
       <DependentUpon>201501201905284_CreateCameraTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Camera.cs" />
     <Compile Include="Models\Cameras.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
