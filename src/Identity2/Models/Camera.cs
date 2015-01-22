@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ConnectedCamerasWeb.Models
 {
-    public class Cameras
+    public class Camera
     {
         public int Id { get; set; }
         public string CameraName { get; set; }

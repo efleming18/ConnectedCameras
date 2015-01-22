@@ -17,7 +17,7 @@ namespace ConnectedCamerasWeb.Controllers
         {
             //TODO: Check for the user's authorization level so this method will only return the cameras in their assigned group.
             var model = new CameraPickerViewModel();
-            model.SelectedCameras = new List<Cameras>();
+            model.SelectedCameras = new List<Camera>();
             using (var db = new MainDbContext())
             {
                 model.AvailableCameras = db.Cameras.ToList();
@@ -28,7 +28,7 @@ namespace ConnectedCamerasWeb.Controllers
         [HttpPost]
         public ActionResult CameraPicker(PostedCameras postedCameras)
         {
-            List<Cameras> selectedCameras;
+            List<Camera> selectedCameras;
             using (var db = new MainDbContext()) 
             {
                 //TODO: Need to do something with the selected cameras so we can get the feed.

@@ -11,13 +11,14 @@ namespace ConnectedCamerasWeb.Controllers
 {
     public class CreateCameraController : Controller
     {
+        [Authorize]
         public ActionResult CreateCamera()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateCamera(Cameras camera)
+        public async Task<ActionResult> CreateCamera(Camera camera)
         {
             using (var db = new MainDbContext())
             {

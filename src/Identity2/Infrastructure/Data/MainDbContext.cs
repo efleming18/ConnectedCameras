@@ -13,6 +13,6 @@ namespace ConnectedCamerasWeb.Infrastructure.Data
         {
         }
 
-        public DbSet<Cameras> Cameras { get; set; }
+        public DbSet<Camera> Cameras { get; set; }
     }
 }

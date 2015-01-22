@@ -9,8 +9,8 @@ namespace ConnectedCamerasWeb.ViewModels.CameraPicker
 {
     public class CameraPickerViewModel
     {
-        public List<Cameras> AvailableCameras { get; set; }
-        public List<Cameras> SelectedCameras { get; set; }
+        public List<Camera> AvailableCameras { get; set; }
+        public List<Camera> SelectedCameras { get; set; }
         public PostedCameras PostedCameras { get; set; }
     }
     public class PostedCameras 
