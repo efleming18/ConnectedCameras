@@ -75,7 +75,7 @@ namespace ConnectedCamerasWeb.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("CameraPicker", "CameraPicker");
+                    return RedirectToAction("Pick", "Cameras");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

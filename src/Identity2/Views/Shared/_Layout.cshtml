@@ -25,8 +25,8 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if (Context.User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Camera Picker", "CameraPicker", "CameraPicker")</li>
-                        <li>@Html.ActionLink("Create Camera", "CreateCamera", "CreateCamera")</li>
+                        <li>@Html.ActionLink("Camera Picker", "Pick", "Cameras")</li>
+                        <li>@Html.ActionLink("Add Camera", "Create", "Cameras")</li>
                     }
                         
                 </ul>

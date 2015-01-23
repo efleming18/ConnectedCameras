@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CameraFeedController.cs" />
     <Compile Include="Controllers\CameraPickerController.cs" />
+    <Compile Include="Controllers\CamerasController.cs" />
     <Compile Include="Controllers\CreateCameraController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -308,13 +309,16 @@
     <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
-    <Content Include="Views\CameraPicker\CameraPicker.cshtml" />
-    <Content Include="Views\CreateCamera\CreateCamera.cshtml" />
-    <Content Include="Views\CameraFeed\CameraFeed.cshtml" />
+    <Content Include="Views\Cameras\Pick.cshtml" />
+    <Content Include="Views\Cameras\Create.cshtml" />
+    <Content Include="Views\Cameras\LiveFeed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Tests\" />
+    <Folder Include="Views\CameraFeed\" />
+    <Folder Include="Views\CameraPicker\" />
+    <Folder Include="Views\CreateCamera\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
