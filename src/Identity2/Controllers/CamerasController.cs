@@ -28,7 +28,7 @@ namespace ConnectedCamerasWeb.Controllers
             List<Camera> selectedCameras;
             var availableCameras = _db.Cameras.ToList();
             selectedCameras = availableCameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id)).ToList();
-            return RedirectToAction("LiveFeed");
+            return RedirectToAction("LiveFeed", new { Cameras = selectedCameras });
         }
 
         [Authorize]
@@ -41,11 +41,11 @@ namespace ConnectedCamerasWeb.Controllers
         {
             _db.Cameras.Add(camera);
             await _db.SaveChangesAsync();
-            return View();
+            return RedirectToAction("Pick");
         }
 
         [Authorize]
-        public ActionResult LiveFeed()
+        public ActionResult LiveFeed(object Cameras)
         {
             return View();
         }
