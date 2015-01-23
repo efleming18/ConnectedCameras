@@ -4,6 +4,7 @@ using ConnectedCamerasWeb.ViewModels.CameraPicker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,7 +22,6 @@ namespace ConnectedCamerasWeb.Controllers
             model.AvailableCameras = _db.Cameras.ToList();
             return View(model);
         }
-
         [HttpPost]
         public ActionResult Pick(PostedCameras postedCameras)
         {
@@ -32,15 +32,15 @@ namespace ConnectedCamerasWeb.Controllers
         }
 
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Add()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Create(Camera camera)
+        public async Task<ActionResult> Add(Camera camera)
         {
             _db.Cameras.Add(camera);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             return View();
         }
 
