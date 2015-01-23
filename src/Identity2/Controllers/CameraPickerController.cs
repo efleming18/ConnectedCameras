@@ -35,17 +35,7 @@ namespace ConnectedCamerasWeb.Controllers
                 var availableCameras = db.Cameras.ToList();
                 selectedCameras = availableCameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id)).ToList();
             }
-            //return RedirectToAction("Cameras");
             return RedirectToAction("CameraFeed", "CameraFeed");
         }
-
-        [Authorize]
-        public ActionResult Cameras()
-        {
-            return View();
-        }
-
-        
-
     }
 }

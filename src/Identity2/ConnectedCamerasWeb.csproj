@@ -309,7 +309,6 @@
     <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
     <Content Include="Views\CameraPicker\CameraPicker.cshtml" />
-    <Content Include="Views\CameraPicker\Cameras.cshtml" />
     <Content Include="Views\CreateCamera\CreateCamera.cshtml" />
     <Content Include="Views\CameraFeed\CameraFeed.cshtml" />
   </ItemGroup>
