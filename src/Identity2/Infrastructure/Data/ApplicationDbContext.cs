@@ -1,6 +1,7 @@
 ﻿using ConnectedCamerasWeb.Models;
 using ConnectedCamerasWeb.ViewModels.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace ConnectedCamerasWeb.Infrastructure.Data
 {
@@ -8,9 +9,9 @@ namespace ConnectedCamerasWeb.Infrastructure.Data
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()
