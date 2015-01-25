@@ -27,7 +27,7 @@ namespace ConnectedCamerasWeb.Controllers
         {
             List<Camera> selectedCameras;
             var availableCameras = _db.Cameras.ToList();
-            selectedCameras = availableCameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id)).ToList();
+            //selectedCameras = availableCameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id)).ToList();
             return RedirectToAction("LiveFeed");
         }
 
