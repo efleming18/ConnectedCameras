@@ -3,9 +3,9 @@ using ConnectedCamerasWeb.Core.Model;
 
 namespace ConnectedCamerasWeb.Infrastructure.Data
 {
-    public class MainDbInitializer : DropCreateDatabaseIfModelChanges<MainDbContext>
+    public class MainDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
-        protected override void Seed(MainDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             CreateInitialAccounts();
             base.Seed(context);
@@ -13,9 +13,9 @@ namespace ConnectedCamerasWeb.Infrastructure.Data
 
         private void CreateInitialAccounts()
         {
-            var db = new MainDbContext();
-            db.Accounts.Add(new Account() {Name = "Acme"});
-            db.SaveChanges();
+            //var db = new ApplicationDbContext();
+            //db.Accounts.Add(new Account() {Name = "Acme"});
+            //db.SaveChanges();
         }
     }
 }

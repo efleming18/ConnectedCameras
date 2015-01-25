@@ -10,7 +10,7 @@ namespace Identity2.Migrations
             CreateTable("dbo.Cameras",
                 c => new
                 {
-                    Id = c.String(nullable: false, maxLength: 128),
+                    Id = c.Int(nullable: false, identity: true),
                     CameraName = c.String(nullable: false, maxLength: 50),
                     CameraGroup = c.Int(nullable: false),
                     CameraUrl = c.String(nullable: false)

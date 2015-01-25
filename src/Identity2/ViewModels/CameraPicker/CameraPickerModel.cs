@@ -15,6 +15,6 @@ namespace ConnectedCamerasWeb.ViewModels.CameraPicker
     }
     public class PostedCameras 
     {
-        public string[] CameraIDs { get; set; }
+        public int[] CameraIDs { get; set; }
     }
 }

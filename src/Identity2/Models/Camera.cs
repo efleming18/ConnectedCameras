@@ -9,7 +9,7 @@ namespace ConnectedCamerasWeb.Models
     {
         public int Id { get; set; }
         public string CameraName { get; set; }
-        public string CameraGroup { get; set; }
+        public int CameraGroup { get; set; }
         public string CameraUrl { get; set; }
     }
 }
