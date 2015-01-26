@@ -25,9 +25,13 @@ namespace ConnectedCamerasWeb.Controllers
         [HttpPost]
         public ActionResult Pick(PostedCameras postedCameras)
         {
+            //Maybe change this to client side validation???
+            if (postedCameras.CameraIDs == null)
+                return RedirectToAction("Pick");
+
             List<Camera> selectedCameras;
             var availableCameras = _db.Cameras.ToList();
-            //selectedCameras = availableCameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id)).ToList();
+            selectedCameras = availableCameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id)).ToList();
             return RedirectToAction("LiveFeed");
         }
 
