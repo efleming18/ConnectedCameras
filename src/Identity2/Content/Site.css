@@ -24,11 +24,10 @@ textarea {
 }
 
 div.cameraframe {
-    display: inline-block;
     width: 560px;
     height: 315px;
     background-color: black;
-    border: solid 1px red;
+    border: solid 3px black;
 }
 div.camerablock {
     display: inline-block;
