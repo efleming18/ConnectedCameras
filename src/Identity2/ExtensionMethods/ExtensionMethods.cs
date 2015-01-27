@@ -35,7 +35,7 @@ namespace ConnectedCamerasWeb.ExtensionMethods
         /// <returns></returns>
         public static int[] UnStringify(this string numbersString)
         {
-            return new int[1];
+            return Array.ConvertAll(numbersString.Split(new char[] { ',' }), int.Parse);
         }
     }
 }

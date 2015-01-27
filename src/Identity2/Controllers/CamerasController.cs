@@ -26,7 +26,6 @@ namespace ConnectedCamerasWeb.Controllers
         [HttpPost]
         public ActionResult Pick(PostedCameras postedCameras)
         {
-            //Maybe change this to client side validation???
             if (postedCameras.CameraIDs == null)
                 return RedirectToAction("Pick");
             
@@ -49,8 +48,10 @@ namespace ConnectedCamerasWeb.Controllers
         [Authorize]
         public ActionResult LiveFeed(string id)
         {
-            int[] numbers = id.UnStringify(); //TODO: Implement this.
-            return View();
+            int[] cameraIds = id.UnStringify();
+            var selectedCameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
+            //TODO: Make camera stream
+            return View(selectedCameras);
         }
 
         protected override void Dispose(bool disposing)

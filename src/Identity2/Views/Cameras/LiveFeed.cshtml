@@ -4,5 +4,10 @@
 }
 
 <h2>Live Feed</h2>
+<div>You selected:</div>
+@foreach (var camera in Model)
+{
+    <div>@camera.CameraName</div>
+}
 
 
