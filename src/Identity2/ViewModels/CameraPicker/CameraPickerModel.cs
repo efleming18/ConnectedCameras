@@ -14,14 +14,8 @@ namespace ConnectedCamerasWeb.ViewModels.CameraPicker
         public List<Camera> SelectedCameras { get; set; }
         public PostedCameras PostedCameras { get; set; }
     }
-    public class PostedCameras : IValidatableObject
+    public class PostedCameras
     {
         public int[] CameraIDs { get; set; }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (CameraIDs == null)
-                yield return new ValidationResult("You must select a camera to continue.");
-        }
     }
 }

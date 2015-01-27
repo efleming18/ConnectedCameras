@@ -18,6 +18,10 @@ namespace ConnectedCamerasWeb
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Camera",
+                url: "{controller}/{action}/{cameraList}",
+                defaults: new { controller = "Cameras", action = "LiveFeed", cameraList = UrlParameter.Optional });
         }
     }
 }

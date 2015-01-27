@@ -1,6 +1,7 @@
 ﻿using ConnectedCamerasWeb.Infrastructure.Data;
 using ConnectedCamerasWeb.Models;
 using ConnectedCamerasWeb.ViewModels.CameraPicker;
+using ConnectedCamerasWeb.ExtensionMethods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,11 +29,8 @@ namespace ConnectedCamerasWeb.Controllers
             //Maybe change this to client side validation???
             if (postedCameras.CameraIDs == null)
                 return RedirectToAction("Pick");
-
-            List<Camera> selectedCameras;
-            var availableCameras = _db.Cameras.ToList();
-            selectedCameras = availableCameras.Where(c => postedCameras.CameraIDs.Any(pcId => Convert.ToInt32(pcId) == c.Id)).ToList();
-            return RedirectToAction("LiveFeed");
+            
+            return RedirectToAction("LiveFeed", "Cameras", new { id = postedCameras.CameraIDs.Stringify() });
         }
 
         [Authorize]
@@ -49,8 +47,9 @@ namespace ConnectedCamerasWeb.Controllers
         }
 
         [Authorize]
-        public ActionResult LiveFeed()
+        public ActionResult LiveFeed(string id)
         {
+            int[] numbers = id.UnStringify(); //TODO: Implement this.
             return View();
         }
 
