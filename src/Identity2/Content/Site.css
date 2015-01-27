@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+div.cameraframe {
+    display: inline-block;
+    width: 560px;
+    height: 315px;
+    background-color: black;
+    border: solid 1px red;
+}
+div.camerablock {
+    display: inline-block;
+}
