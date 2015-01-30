@@ -32,3 +32,11 @@ div.cameraframe {
 div.camerablock {
     display: inline-block;
 }
+div.camerainput {
+    right: 0px;
+    top: 50px;
+    width: 250px;
+    height: 65px;
+    background-color: #222;
+    position: fixed;
+}
