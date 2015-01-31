@@ -1,6 +1,6 @@
 ﻿using ConnectedCamerasWeb.Infrastructure.Data;
 using ConnectedCamerasWeb.Models;
-using ConnectedCamerasWeb.ViewModels.CameraPicker;
+using ConnectedCamerasWeb.ViewModels.Cameras;
 using ConnectedCamerasWeb.ExtensionMethods;
 using System;
 using System.Collections.Generic;
@@ -49,9 +49,9 @@ namespace ConnectedCamerasWeb.Controllers
         public ActionResult LiveFeed(string id = "1")
         {
             int[] cameraIds = id.UnStringify();
-            var selectedCameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
-            //TODO: Make camera stream
-            return View(selectedCameras);
+            var liveFeedViewModel = new LiveFeedViewModel();
+            liveFeedViewModel.Cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
+            return View(liveFeedViewModel);
         }
 
         protected override void Dispose(bool disposing)

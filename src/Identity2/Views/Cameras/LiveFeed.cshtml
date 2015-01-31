@@ -1,16 +1,18 @@
-﻿@model IEnumerable<ConnectedCamerasWeb.Models.Camera>
+﻿@model ConnectedCamerasWeb.ViewModels.Cameras.LiveFeedViewModel
 @{
     ViewBag.Title = "CameraFeed";
 }
 
 <h2>Live Feed</h2>
 <div class="clearfix">
-    @foreach (var camera in Model)
+    @foreach (var camera in Model.Cameras)
     {
         <div class="camera-block">
             <div>@camera.CameraName</div>
-            <div class="medium-feed">
-                <div class="feed-content">Live Feed</div>
+            <div class=@Model.DecideFeedSize()>
+                <div class="feed-content">
+                Live Feed
+                </div>
             </div>
         </div>
     }

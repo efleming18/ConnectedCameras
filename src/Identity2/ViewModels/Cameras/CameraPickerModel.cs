@@ -6,7 +6,7 @@ using System.Web.UI.WebControls;
 using ConnectedCamerasWeb.Models;
 using System.ComponentModel.DataAnnotations;
 
-namespace ConnectedCamerasWeb.ViewModels.CameraPicker
+namespace ConnectedCamerasWeb.ViewModels.Cameras
 {
     public class CameraPickerViewModel
     {
