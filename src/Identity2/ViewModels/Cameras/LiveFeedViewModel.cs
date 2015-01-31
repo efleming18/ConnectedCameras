@@ -12,13 +12,11 @@ namespace ConnectedCamerasWeb.ViewModels.Cameras
 
         public string DecideFeedSize() 
         {
-            if (Cameras.Count == 1)
+            if (Cameras.Count < 2)
                 return "large-feed";
-            if (Cameras.Count >= 2 && Cameras.Count <= 4)
+            else if (Cameras.Count < 5)
                 return "medium-feed";
-            if (Cameras.Count > 4)
-                return "small-feed";
-            return "";
+            return "small-feed";
         }
     }
 }
