@@ -46,7 +46,7 @@ namespace ConnectedCamerasWeb.Controllers
         }
 
         [Authorize]
-        public ActionResult LiveFeed(string id)
+        public ActionResult LiveFeed(string id = "1")
         {
             int[] cameraIds = id.UnStringify();
             var selectedCameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();

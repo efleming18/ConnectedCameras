@@ -4,19 +4,19 @@
 }
 
 <h2>Live Feed</h2>
-<div>
+<div class="clearfix">
     @foreach (var camera in Model)
     {
-        <div class="camerablock">
+        <div class="camera-block">
             <div>@camera.CameraName</div>
-            <div class="cameraframe">
-                <img src="~/Content/Images/asian.gif" style="display: table; margin: 0 auto" />
+            <div class="medium-feed">
+                <div class="feed-content">Live Feed</div>
             </div>
         </div>
     }
 </div>
 
-@*I am still working on this.......................................................*@
+
 <div class="camerainput">
     <h3 class="center">Controls</h3>
     <div>

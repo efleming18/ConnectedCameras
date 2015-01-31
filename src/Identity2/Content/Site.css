@@ -50,6 +50,7 @@ h3.center {
     color: #999;
 }
 
+/***********************Camera Controls****************************/
 div.tilt {
     margin-left:auto;
     margin-right:auto;
@@ -68,4 +69,54 @@ div.controlbutton {
     width:50px;
     height:50px;
     text-align:center;
+}
+/***********************Camera Feeds*******************************/
+.small-feed {
+    position:relative;
+    width:320px;
+    border: 2px solid black;
+}
+.medium-feed {
+    position:relative;
+    width:640px;
+    border: 2px solid black;
+}
+.large-feed {
+    position:relative;
+    width:1280px;
+    border: 2px solid black;
+}
+.small-feed:before {
+    content:"";
+    display:block;
+    padding-top:56.25%;
+}
+.medium-feed:before {
+    content:"";
+    display:block;
+    padding-top:56.25%;    
+}
+.large-feed:before {
+    content:"";
+    display:block;
+    padding-top:56.25%;
+}
+.feed-content {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:black;
+    text-align:center;
+    color:white;
+}
+.camera-block {
+    float: left;
+}
+.clearfix:after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
 }
