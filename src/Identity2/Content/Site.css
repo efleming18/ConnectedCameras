@@ -5,8 +5,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -36,7 +36,7 @@ div.camerainput {
     right: 0px;
     top: 50px;
     width: 250px;
-    height: 60px;
+    height: 55px;
     background-color: #222;
     overflow:hidden;
     position: fixed;
