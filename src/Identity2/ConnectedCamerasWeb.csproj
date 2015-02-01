@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201501201905284_CreateCameraTable.Designer.cs">
       <DependentUpon>201501201905284_CreateCameraTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502012132465_CreateAccountsTable.cs" />
+    <Compile Include="Migrations\201502012132465_CreateAccountsTable.Designer.cs">
+      <DependentUpon>201502012132465_CreateAccountsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Camera.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
@@ -330,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501201905284_CreateCameraTable.resx">
       <DependentUpon>201501201905284_CreateCameraTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502012132465_CreateAccountsTable.resx">
+      <DependentUpon>201502012132465_CreateAccountsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
