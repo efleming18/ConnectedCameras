@@ -13,5 +13,18 @@
         </div>
     }
 </div>
+@* Only show the camera list if the user is not authenticated to control cameras. *@
+<div class="control-panel dock-bottom dark"></div>
+<div class="camera-list dock-bottom dark">
+    <h3>Feeds Showing:</h3>
+    @foreach (var camera in Model.Cameras)
+    {
+        <div>@camera.CameraName</div>
+    }
+</div> 
+<div class="camera-input dock-bottom dark">
+    <h3>Controls</h3>
+</div>
+
 
 

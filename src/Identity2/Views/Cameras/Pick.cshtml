@@ -6,20 +6,22 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Camera Picker</h2>
+<div class="center">
+    <h2>Camera Picker</h2>
 
-@using (Html.BeginForm())
-{
-    <div>
-        @Html.CheckBoxListFor(model => model.PostedCameras.CameraIDs,
+    @using (Html.BeginForm())
+    {
+        <div class="center">
+            @Html.CheckBoxListFor(model => model.PostedCameras.CameraIDs,
                               model => model.AvailableCameras,
                               camera => camera.Id,
                               camera => camera.CameraName,
                               model => model.SelectedCameras,
                               Position.Vertical)
-    </div>
-    <input type="submit" value="Continue" class="btn btn-default" />
-}
+        </div>
+        <input type="submit" value="Continue" class="btn btn-default" />
+    }
+</div>
 
 
 
