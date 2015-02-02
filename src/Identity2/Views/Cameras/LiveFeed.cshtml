@@ -8,7 +8,9 @@
 <div class="feed-block center">
     @foreach (var camera in Model.Cameras)
     {
-        <div class="@Model.DecideFeedSize()"></div>
+        <div class="@Model.DecideFeedSize()" style="overflow:hidden;">
+            <img src="~/Content/Images/cat.gif" class="@Model.DecideImageSize()" alt="Alternate Text" />
+        </div>
     }
 </div>
 

@@ -39,35 +39,6 @@ h3.center {
     text-align: center;
     color: #999;
 }
-
-/***********************Camera Controls****************************/
-div.tilt {
-    margin-left:auto;
-    margin-right:auto;
-}
-div.panleft {
-    margin-left:48px;
-    display:inline-block;
-}
-div.panright {
-    float:right;
-    margin-right:48px;
-    display:inline-block;
-}
-div.controlbutton {
-    background-color:white;
-    width:50px;
-    height:50px;
-    text-align:center;
-}
-h4.controlling-label {
-    margin-left:10px;
-    color: #999;
-}
-div.current-camera {
-    margin-left:20px;
-    color:darkred;
-}
 /***********************Camera Feeds*******************************/
 .feed-block {
 	max-width:1310px;
@@ -111,4 +82,16 @@ div.current-camera {
       #B4B4B4,
       #5A5A5A
     );
+}
+img.small {
+    width:360px;
+    height:240px;
+}
+img.medium {
+    width:540px;
+    height:360px;
+}
+img.large {
+    width:1081px;
+    height:720px
 }
