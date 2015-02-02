@@ -69,52 +69,46 @@ div.current-camera {
     color:darkred;
 }
 /***********************Camera Feeds*******************************/
-.small-feed {
-    position:relative;
-    width:375px;
-    border: 2px solid black;
+.feed-block {
+	max-width:1310px;
+	padding-right:10px;
+	padding-left:10px;
 }
-.medium-feed {
-    position:relative;
-    width:575px;
-    border: 2px solid black;
+.live-feed {
+	position: relative;
+	background-color:black;
+	color:white;
+	display:inline-block;
 }
-.large-feed {
-    position:relative;
-    width:1155px;
-    border: 2px solid black;
+.small {
+	width:426px;
+	height:240px;
 }
-.small-feed:before {
-    content:"";
-    display:block;
-    padding-top:56.25%;
+.medium {
+	width:640px;
+	height:360px;
 }
-.medium-feed:before {
-    content:"";
-    display:block;
-    padding-top:56.25%;    
+.large {
+	width:1280px;
+	height:720px;
 }
-.large-feed:before {
-    content:"";
-    display:block;
-    padding-top:56.25%;
+
+.control-panel {
+	position:fixed;
+	bottom:0px;
+	width:1290px;
+	min-width:427px;
+	height:125px;
+	background-color:aqua;
 }
-.feed-content {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    background-color:black;
-    text-align:center;
-    color:white;
+.center {
+	margin: 0 auto;
+	text-align:center;
 }
-.camera-block {
-    float: left;
-}
-.clearfix:after { 
-   content: " ";
-   display: block; 
-   height: 0; 
-   clear: both;
+.gradient {
+  background-image:
+    radial-gradient(
+      #B4B4B4,
+      #5A5A5A
+    );
 }

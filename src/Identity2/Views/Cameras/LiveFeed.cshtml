@@ -4,36 +4,12 @@
 }
 
 <h2>Live Feed</h2>
-<div class="clearfix">
+
+<div class="feed-block center">
     @foreach (var camera in Model.Cameras)
     {
-        <div class="camera-block">
-            <div>@camera.CameraName</div>
-            <div class=@Model.DecideFeedSize()>
-                <div class="feed-content">
-                </div>
-            </div>
-        </div>
+        <div class="@Model.DecideFeedSize()"></div>
     }
-</div>
-
-
-<div class="camerainput">
-    <h3 class="center">Controls</h3>
-    <div>
-        <div class="controlbutton tilt">Up</div>
-    </div>
-    <div style="margin:3px 0">
-        <div class="controlbutton panleft">Left</div>
-        <div class="controlbutton panright">Right</div>
-    </div>
-    <div>
-        <div class="controlbutton tilt">Down</div>
-    </div>
-    <h4 class="controlling-label">You are now controlling:</h4>
-    <div class="current-camera">Camera 1</div>
-
-    
 </div>
 
 
