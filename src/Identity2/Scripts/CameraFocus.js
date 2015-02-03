@@ -8,3 +8,10 @@ $('.live-feed').on('tap', function () {
     $(this).parent().parent().find('.small-feed').css('border', 'solid 3px black');
     $(this).css('border', 'solid 3px darkred');
 });
+
+$('.camera-input').mousedown(function () {
+    $(this).css('background-color', '#4bacbd');
+});
+$('.camera-input').mouseup(function () {
+    $(this).css('background-color', 'lightgray');
+});
