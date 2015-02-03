@@ -103,15 +103,19 @@ img.large {
     height:300px;
 }
 .camera-input {
-    width:60px;
-    height:60px;
-    background-color:lightgray;
+    width:65px;
+    height:65px;
+    background-color:darkgray;
+    border-radius:50%;
+    overflow:hidden;
 }
 .pan-right {
     display:inline-block;
+    margin-left:29px;
 }
 .pan-left {
     display:inline-block;
+    margin-right:29px;
 }
 .camera-list {
     border-radius:50%;
@@ -119,4 +123,37 @@ img.large {
     bottom:-20px;
     width:300px;
     height:300px;
+}
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 25px 50px 25px;
+    border-color: transparent transparent #007bff transparent;
+}
+.arrow-down {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 25px 0 25px;
+    border-color: #007bff transparent transparent transparent;
+    margin-top:13px;
+}
+.arrow-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 25px 0 25px 50px;
+    border-color: transparent transparent transparent #007bff;
+    margin-top:7px;
+    margin-left:14px;
+}
+.arrow-left {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 25px 50px 25px 0;
+    border-color: transparent #007bff transparent transparent;
+    margin-top:7px;
+    margin-right:14px;
 }
