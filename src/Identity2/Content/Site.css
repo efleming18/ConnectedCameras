@@ -56,6 +56,7 @@ h3.center {
 	max-width:1310px;
 	padding-right:10px;
 	padding-left:10px;
+    overflow:hidden;
 }
 .live-feed {
 	position: relative;
@@ -99,12 +100,12 @@ img.large {
     border-radius:50%;
     left:-30px;
     bottom:-20px;
-    width:300px;
-    height:300px;
+    width:250px;
+    height:250px;
 }
 .camera-input {
-    width:65px;
-    height:65px;
+    width:55px;
+    height:55px;
     background-color:darkgray;
     border-radius:50%;
     overflow:hidden;
@@ -121,29 +122,32 @@ img.large {
     border-radius:50%;
     right:-30px;
     bottom:-20px;
-    width:300px;
-    height:300px;
+    width:250px;
+    height:250px;
 }
 .arrow-up {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 0 25px 50px 25px;
+    border-width: 0 20px 40px 20px;
     border-color: transparent transparent #2e3b7d transparent;
+    margin-top:2px;
+    margin-left:8px;
 }
 .arrow-down {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 50px 25px 0 25px;
+    border-width: 40px 20px 0 20px;
     border-color: #2e3b7d transparent transparent transparent;
     margin-top:13px;
+    margin-left:8px;
 }
 .arrow-right {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 25px 0 25px 50px;
+    border-width: 20px 0 20px 40px;
     border-color: transparent transparent transparent #2e3b7d;
     margin-top:7px;
     margin-left:14px;
@@ -152,7 +156,7 @@ img.large {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 25px 50px 25px 0;
+    border-width: 20px 40px 20px 0;
     border-color: transparent #2e3b7d transparent transparent;
     margin-top:7px;
     margin-right:14px;
