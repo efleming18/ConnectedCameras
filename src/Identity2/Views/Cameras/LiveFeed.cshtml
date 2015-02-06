@@ -6,11 +6,21 @@
 
 <h2>Live Feed</h2>
 
-<div class="feed-block center">
+@*<div class="feed-block center">
     @foreach (var camera in Model.Cameras)
     {
         <div id="@camera.CameraName" class="@Model.DecideFeedSize()" style="overflow:hidden;">
             <img src="~/Content/Images/cat.gif" class="@Model.DecideImageSize()" alt="Alternate Text" />
+        </div>
+    }
+</div>*@
+<div class="feed-block center">
+    @foreach (var camera in Model.Cameras) 
+    {
+        <div class="@Model.DecideFeedSize()">
+            <div id="@camera.CameraName" class="feed-content">
+                <img class="fill" src="~/Content/Images/cat.gif" />
+            </div>
         </div>
     }
 </div>

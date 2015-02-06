@@ -52,42 +52,59 @@ h3.center {
 	bottom:0px;
 }
 /***********************Camera Feeds*******************************/
+.big-feed {
+    position:relative;
+    width:100%;
+    background-color:black;
+    min-width:290px;
+    display:inline-block;
+}
+    .big-feed:before {
+        content:"";
+        display:block;
+        padding-top:56.25%;
+    }
+.medium-feed {
+    position:relative;
+    width:49%;
+    background-color:black;
+    min-width:290px;
+    display:inline-block;
+}
+    .medium-feed:before {
+        content:"";
+        display:block;
+        padding-top:56.25%;
+    }
+.small-feed {
+    position:relative;
+    width:33%;
+    background-color:black;
+    min-width:290px;
+    display:inline-block;
+}
+    .small-feed:before {
+        content:"";
+        display:block;
+        padding-top:56.25%;
+    }
 .feed-block {
-	max-width:1310px;
-	padding-right:10px;
-	padding-left:10px;
-    overflow:hidden;
+    width:70%;
+    min-width:290px;
 }
-.live-feed {
-	position: relative;
-	background-color:black;
-	color:white;
-	display:inline-block;
+.feed-content {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    border: solid 2px black;
 }
-.small {
-	width:426px;
-	height:240px;
+img.fill {
+    height:100%;
+    width:auto;
 }
-.medium {
-	width:640px;
-	height:360px;
-}
-.large {
-	width:1280px;
-	height:720px;
-}
-img.small {
-    width:360px;
-    height:240px;
-}
-img.medium {
-    width:540px;
-    height:360px;
-}
-img.large {
-    width:1081px;
-    height:720px
-}
+
 
 /*********Camera User Input**************/
 .control-panel {
