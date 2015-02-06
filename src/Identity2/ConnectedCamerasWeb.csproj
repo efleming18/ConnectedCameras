@@ -218,6 +218,9 @@
       <DependentUpon>201502012132465_CreateAccountsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AspNetRoles.cs" />
+    <Compile Include="Models\AspNetUserRole.cs" />
+    <Compile Include="Models\AspNetUsers.cs" />
     <Compile Include="Models\Camera.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />

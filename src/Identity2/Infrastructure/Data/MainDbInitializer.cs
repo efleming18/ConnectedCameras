@@ -13,9 +13,6 @@ namespace ConnectedCamerasWeb.Infrastructure.Data
 
         private void CreateInitialAccounts()
         {
-            //var db = new ApplicationDbContext();
-            //db.Accounts.Add(new Account() {Name = "Acme"});
-            //db.SaveChanges();
         }
     }
 }
