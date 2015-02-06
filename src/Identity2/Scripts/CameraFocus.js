@@ -9,22 +9,22 @@ $('.feed-content').on('tap', function () {
     $(this).css('border', 'solid 3px red');
 });
 
-//$('.camera-input').mousedown(function () {
-//    $(this).css('background-color', '#4bacbd');
-//});
-//$('.camera-input').mouseup(function () {
-//    $(this).css('background-color', 'lightgray');
-//});
+$('.camera-input').mousedown(function () {
+    $(this).css('background-color', '#4bacbd');
+});
+$('.camera-input').mouseup(function () {
+    $(this).css('background-color', 'lightgray');
+});
 
 $('.arrow-up').mousedown(function () {
-    $(this).css('background-color', '#4bacbd');
+    $(this).parent().css('background-color', '#4bacbd')
 });
 $('.arrow-down').mousedown(function () {
-    $(this).css('background-color', '#4bacbd');
+    $(this).parent().css('background-color', '#4bacbd')
 });
 $('.arrow-left').mousedown(function () {
-    $(this).css('background-color', '#4bacbd');
+    $(this).parent().css('background-color', '#4bacbd')
 });
 $('.arrow-right').mousedown(function () {
-    $(this).css('background-color', '#4bacbd');
+    $(this).parent().css('background-color', '#4bacbd')
 });

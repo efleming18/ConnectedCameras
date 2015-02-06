@@ -6,14 +6,6 @@
 
 <h2>Live Feed</h2>
 
-@*<div class="feed-block center">
-    @foreach (var camera in Model.Cameras)
-    {
-        <div id="@camera.CameraName" class="@Model.DecideFeedSize()" style="overflow:hidden;">
-            <img src="~/Content/Images/cat.gif" class="@Model.DecideImageSize()" alt="Alternate Text" />
-        </div>
-    }
-</div>*@
 <div class="feed-block center">
     @foreach (var camera in Model.Cameras) 
     {
@@ -53,27 +45,6 @@
 </div>
 
 <script type="text/javascript" src="~/Scripts/CameraFocus.js"></script>
-<script type="text/javascript">
-    var arrowUp = $('.arrow-up');
-    var arrowLeft = $('.arrow-left');
-    var arrowRight = $('.arrow-right');
-    var arrowDown = $('.arrow-down');
-
-    arrowUp.on('click', function () {
-        alert('You clicked the arrow up button');
-    });
-    arrowLeft.on('click', function () {
-        alert('You clicked the arrow left button');
-    });
-    arrowRight.on('click', function () {
-        alert('You clicked the arrow right button');
-    });
-    arrowDown.on('click', function () {
-        alert('You clicked the arrow down function');
-    });
-
-
-</script>
 
 
 
