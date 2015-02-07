@@ -157,7 +157,7 @@ namespace ConnectedCamerasWeb.Controllers
                 if (result.Succeeded)
                 {
                     var currentUser = UserManager.FindByName(user.UserName);
-                    var roleResult = UserManager.AddToRole(currentUser.Id, "Admin");
+                    var roleResult = UserManager.AddToRole(currentUser.Id, "Unconfirmed");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

@@ -18,7 +18,8 @@
             context.Roles.AddOrUpdate(
                 x => x.Name,
                 new IdentityRole { Name = "Admin" },
-                new IdentityRole { Name = "Camera User"}
+                new IdentityRole { Name = "Camera User"},
+                new IdentityRole { Name = "Unconfirmed"}
                 );
             context.SaveChanges();
         }
