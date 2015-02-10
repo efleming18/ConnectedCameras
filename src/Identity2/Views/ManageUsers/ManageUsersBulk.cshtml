@@ -1,6 +1,13 @@
-﻿@{
+﻿@model System.Collections.Generic.IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>
+@{
     ViewBag.Title = "ManageUsersBulk";
 }
 
-<h2>ManageUsersBulk</h2>
+<h2>Manage Users</h2>
+
+@foreach (var user in Model)
+{
+    <div>@user.Email</div>
+    <div>@user.CameraGroup</div>
+}
 

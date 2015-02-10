@@ -23,5 +23,6 @@ namespace ConnectedCamerasWeb.Models
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
+        public int? CameraGroup { get; set; }
     }
 }
