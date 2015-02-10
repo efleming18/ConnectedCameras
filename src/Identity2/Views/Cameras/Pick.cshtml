@@ -12,12 +12,12 @@
     @using (Html.BeginForm())
     {
         <div class="center">
-            @Html.CheckBoxListFor(model => model.PostedCameras.CameraIDs,
-                              model => model.AvailableCameras,
-                              camera => camera.Id,
-                              camera => camera.CameraName,
-                              model => model.SelectedCameras,
-                              Position.Vertical)
+            @for (int i = 1; i <= Model.AvailableCameras.Count; i++) 
+            {
+                <input id="PostedCameras @i" name="PostedCameras.CameraIDs" type="checkbox" value="@i" />
+                <label for="PostedCameras @i">@Model.AvailableCameras[i-1].CameraName</label>
+                <br />
+            }
         </div>
         <input type="submit" value="Continue" class="btn btn-default" />
     }
