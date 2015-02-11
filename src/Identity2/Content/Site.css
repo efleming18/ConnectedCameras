@@ -5,8 +5,8 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 10px;
-    padding-right: 10px;
+    width:40%;
+    height:900px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -42,6 +42,11 @@ h3.center {
 .center {
 	margin: 0 auto;
 	text-align:center;
+}
+.center-vertical {
+    position:relative;
+    top:50%;
+    transform:translateY(-50%);
 }
 .dark {
     background-color:#222;
@@ -177,4 +182,141 @@ img.fill {
     border-color: transparent #2e3b7d transparent transparent;
     margin-top:7px;
     margin-right:14px;
+}
+/**Grid Stuff**/
+.grid,
+.grid20percent,
+.grid50percent,
+.grid60percent,
+.grid70percent {
+}
+.grid {
+	width:100%;
+}
+.grid20percent {
+	width:20%;
+}
+.grid50percent {
+	width:50%;
+}
+.grid60percent {
+	width:40%;
+}
+.grid70percent {
+	width:70%;
+}
+.cell5percent,
+.cell10percent,
+.cell15percent,
+.cell25percent,
+.cell30percent,
+.cell50percent,
+.cell60percent,
+.cell75percent,
+.cell85percent {
+	float:left;
+	height:100%;
+}
+.cell5percent {
+    width:5%;
+}
+.cell10percent {
+	width:10%;
+}
+.cell15percent {
+    width:15%;
+}
+.cell25percent {
+	width:25%;
+}
+.cell30percent {
+	width:30%;
+}
+.cell50percent {
+    width:50%;
+}
+.cell60percent {
+	width:60%;
+}
+.cell75percent {
+	width:75%;
+}
+.cell85percent {
+    width:85%
+}
+.cell95percent {
+    width:95%;
+}
+.row5percent,
+.row10percent,
+.row15percent,
+.row20percent,
+.row25percent,
+.row40percent,
+.row50percent,
+.row55percent,
+.row60percent,
+.row70percent,
+.row75percent,
+.row80percent,
+.row90percent,
+.row100percent,
+.row50px,
+.row100px,
+.row150px,
+.row200px,
+.row250px {
+	width:100%;
+	clear:both;
+}
+.row5percent {
+	height:5%;
+}
+.row10percent {
+	height:10%;
+}
+.row15percent {
+	height:15%;
+}
+.row20percent {
+	height:20%;
+}
+.row25percent {
+	height:25%;
+}
+.row40percent {
+    height:40%;
+}
+.row50percent {
+	height:50%;
+}
+.row55percent {
+    height:55%;
+}
+.row60percent {
+    height:60%;
+}
+.row70percent {
+    height:70%;
+}
+.row80percent {
+    height:80%;
+}
+.row90percent {
+	height:90%;
+}
+.row20px {
+	height:20px;
+}
+.row50px {
+	height:50px;
+}
+.row100px {
+	height:100px;
+}
+.row150px {
+	height:150px;
+}
+.row200px {
+	height:200px;
 }
