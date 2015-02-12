@@ -19,32 +19,34 @@
                     <div class="cell85percent" style="border-bottom:1px solid black;"></div>
                 </div>
                 <div class="row90percent" style="border-bottom: 1px solid black;">
-                    <div class="cell10percent" style="text-align:center;">
-                        <input id="PostedCameras @i" name="PostedCameras.CameraIDs" value="@i" class="center-vertical" type="checkbox"/>
-                    </div>
                     <div class="cell30percent" style="text-align:center;">
                         <img src="~/Content/Images/cat.gif" class="center-vertical" style="height:90%; width:auto;"/>
                     </div>
                     <div class="cell60percent">
-                        <div class="row15percent" style="text-align:left;">Description: </div>
+                        <div class="row15percent">
+                            <div class="cell50percent" style="text-align:left">Description:</div>
+                            <div class="cell50percent" style="text-align:right">
+                                <input id="PostedCameras @i" name="PostedCameras.CameraIDs" value="@i" class="center-vertical checkboxjquery" type="checkbox" />
+                            </div>
+                        </div>
                         <div class="row25percent" style="text-align:left; font-style:italic;">
                             <div class="cell5percent"></div>
                             <div class="cell95percent">@Model.AvailableCameras[i - 1].Description</div>
                         </div>
                         <div class="row15percent" style="text-align:left;">
-                            <div class="cell50percent">Camera group: </div>
+                            <div class="cell50percent cellmin150">Camera group: </div>
                             <div class="cell50percent" style="text-align:right;">@Model.AvailableCameras[i - 1].CameraGroup</div>
                         </div>
                         <div class="row15percent" style="text-align:left;">
-                            <div class="cell50percent">Number of viewers: </div>
+                            <div class="cell50percent cellmin150">Number of viewers: </div>
                             <div class="cell50percent" style="text-align:right;">0</div>
                         </div>
                         <div class="row15percent" style="text-align:left;">
-                            <div class="cell50percent">Viewers with control: </div>
+                            <div class="cell50percent cellmin150">Viewers with control: </div>
                             <div class="cell50percent" style="text-align:right;">0</div>
                         </div>
                         <div class="row15percent" style="text-align:left;">
-                            <div class="cell50percent">Date installed: </div>
+                            <div class="cell50percent cellmin150">Date installed: </div>
                             <div class="cell50percent" style="text-align:right;">10:00:00pm</div>
                         </div>
                     </div>

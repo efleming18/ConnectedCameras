@@ -5,7 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    width:40%;
+    width:50%;
     height:900px;
 }
 
@@ -213,7 +213,11 @@ img.fill {
 .cell50percent,
 .cell60percent,
 .cell75percent,
-.cell85percent {
+.cell85percent,
+.cell95percent,
+.cell200px,
+.cellmin150,
+.cellauto {
 	float:left;
 	height:100%;
 }
@@ -247,6 +251,16 @@ img.fill {
 .cell95percent {
     width:95%;
 }
+.cellmin150 {
+    min-width:150px;
+}
+.cell200px {
+    width:200px;
+}
+.cellauto {
+    width:auto;
+    overflow:hidden;
+}.row,
 .row5percent,
 .row10percent,
 .row15percent,
@@ -319,4 +333,7 @@ img.fill {
 }
 .row200px {
 	height:200px;
+}
+.checkboxjquery {
+    visibility:collapse;
 }
