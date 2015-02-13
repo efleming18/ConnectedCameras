@@ -19,12 +19,15 @@
                 </div>
                 <div class="cellauto">
                     <div class="row" style="margin:0;">
-                        <div class="cell50percent" style="text-align:left;">@Model.AvailableCameras[i - 1].CameraName</div>
+                        <div class="cell50percent" style="text-align:left;">Name:</div>
+                        <div class="cell50percent" style="text-align:right; font-weight:bold;">@Model.AvailableCameras[i - 1].CameraName</div>
+                    </div>
+                    <div class="row" style="text-align:left;">
+                        <div class="cell50percent" style="text-align:left;">Description:</div>
                         <div class="cell50percent" style="text-align:right;">
                             <input id="PostedCameras @i" name="PostedCameras.CameraIDs" value="@i" class="center-vertical checkboxjquery" type="checkbox" />
                         </div>
                     </div>
-                    <div class="row" style="text-align:left;">Description:</div>
                     <div class="row" style="text-align:left;">@Model.AvailableCameras[i-1].Description</div>
                     <div class="row">
                         <div class="cell50percent" style="text-align:left;">Camera Group:</div>
