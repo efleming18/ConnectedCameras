@@ -1,10 +1,10 @@
-﻿$('.row90percent').mouseover(function () {
+﻿$('.row150px').mouseover(function () {
     $(this).css('background-color', 'aqua');
 });
-$('.row90percent').mouseleave(function () {
+$('.row150px').mouseleave(function () {
     $(this).css('background-color', 'transparent');
 })
-$('.row90percent').click(function () {
+$('.row150px').click(function () {
     if ($(this).find('.checkboxjquery').prop('checked')) {
         $(this).find('.checkboxjquery').prop('checked', false);
     }

@@ -13,45 +13,39 @@
     <div class="body-content center">
         @for (int i = 1; i <= Model.AvailableCameras.Count; i++)
         {
-            <div class="grid" style="height:20%;">
-                <div class="row10percent">
-                    <div class="cell15percent">@Model.AvailableCameras[i-1].CameraName</div>
-                    <div class="cell85percent" style="border-bottom:1px solid black;"></div>
+            <div class="row150px" style="width:100%; border-top:1px solid black; border-bottom:1px solid black;">
+                <div class="cell200px" style="width:250px;">
+                    <img src="~/Content/Images/cat.gif" class="center-vertical" style="height:90%; width:auto;" />
                 </div>
-                <div class="row90percent" style="border-bottom: 1px solid black;">
-                    <div class="cell30percent" style="text-align:center;">
-                        <img src="~/Content/Images/cat.gif" class="center-vertical" style="height:90%; width:auto;"/>
+                <div class="cellauto">
+                    <div class="row" style="margin:0;">
+                        <div class="cell50percent" style="text-align:left;">@Model.AvailableCameras[i - 1].CameraName</div>
+                        <div class="cell50percent" style="text-align:right;">
+                            <input id="PostedCameras @i" name="PostedCameras.CameraIDs" value="@i" class="center-vertical checkboxjquery" type="checkbox" />
+                        </div>
                     </div>
-                    <div class="cell60percent">
-                        <div class="row15percent">
-                            <div class="cell50percent" style="text-align:left">Description:</div>
-                            <div class="cell50percent" style="text-align:right">
-                                <input id="PostedCameras @i" name="PostedCameras.CameraIDs" value="@i" class="center-vertical checkboxjquery" type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row25percent" style="text-align:left; font-style:italic;">
-                            <div class="cell5percent"></div>
-                            <div class="cell95percent">@Model.AvailableCameras[i - 1].Description</div>
-                        </div>
-                        <div class="row15percent" style="text-align:left;">
-                            <div class="cell50percent cellmin150">Camera group: </div>
-                            <div class="cell50percent" style="text-align:right;">@Model.AvailableCameras[i - 1].CameraGroup</div>
-                        </div>
-                        <div class="row15percent" style="text-align:left;">
-                            <div class="cell50percent cellmin150">Number of viewers: </div>
-                            <div class="cell50percent" style="text-align:right;">0</div>
-                        </div>
-                        <div class="row15percent" style="text-align:left;">
-                            <div class="cell50percent cellmin150">Viewers with control: </div>
-                            <div class="cell50percent" style="text-align:right;">0</div>
-                        </div>
-                        <div class="row15percent" style="text-align:left;">
-                            <div class="cell50percent cellmin150">Date installed: </div>
-                            <div class="cell50percent" style="text-align:right;">10:00:00pm</div>
-                        </div>
+                    <div class="row" style="text-align:left;">Description:</div>
+                    <div class="row" style="text-align:left;">@Model.AvailableCameras[i-1].Description</div>
+                    <div class="row">
+                        <div class="cell50percent" style="text-align:left;">Camera Group:</div>
+                        <div class="cell50percent" style="text-align:right;">@Model.AvailableCameras[i-1].CameraGroup</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell50percent" style="text-align:left;">Number of viewers:</div>
+                        <div class="cell50percent" style="text-align:right;">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell50percent" style="text-align:left;">Viewers with control:</div>
+                        <div class="cell50percent" style="text-align:right;">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell50percent" style="text-align:left;">Date Installed:</div>
+                        <div class="cell50percent" style="text-align:right;">12:00:00am</div>
                     </div>
                 </div>
             </div>
+            <br/>
+            <br/>
         }
     </div>
     <input type="submit" value="Continue" class="btn btn-default" />
