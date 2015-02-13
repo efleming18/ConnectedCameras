@@ -8,6 +8,7 @@
     width:50%;
     min-width:550px;
     height:900px;
+    overflow-y:hidden;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -343,4 +344,11 @@ img.fill {
 }
 .checkboxjquery {
     /*visibility:collapse;*/
+}
+/*********************Camera picking***********************/
+.light {    
+}
+.dark {
+}
+.darker {
 }
