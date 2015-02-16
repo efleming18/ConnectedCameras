@@ -10,24 +10,54 @@ var lightRed = '#ED8C8F';
 var red = '#BA575B';
 var darkRed = '#5C2B2B';
 
+$(document).ready(function () {
+    if ($(this).find('.checkboxjquery').prop('checked')) {
+        ToggleRed($(this));
+        return;
+    }
+    ToggleGray($(this));
+});
+
 $('.row150px').mouseover(function () {
-    $(this).css('background-color', 'aqua');
-    $(this).find('.darker').css('background-color', darkBlue);
-    $(this).find('.dark-row').css('background-color', blue);
-    $(this).find('.light').css('background-color', lightBlue);
+    if ($(this).find('.checkboxjquery').prop('checked')) {
+        ToggleRed($(this));
+        return;
+    }
+    ToggleBlue($(this));
 });
 $('.row150px').mouseleave(function () {
     $(this).css('background-color', 'transparent');
-    $(this).find('.darker').css('background-color', darkGray);
-    $(this).find('.dark-row').css('background-color', gray);
-    $(this).find('.light').css('background-color', lightGray);
+    if ($(this).find('.checkboxjquery').prop('checked')) {
+        ToggleRed($(this));
+        return;
+    }
+    ToggleGray($(this));
 })
 $('.row150px').click(function () {
     if ($(this).find('.checkboxjquery').prop('checked')) {
         $(this).find('.checkboxjquery').prop('checked', false);
+        ToggleBlue($(this));
+        return;
     }
-    else {
-        $(this).find('.checkboxjquery').prop('checked', true);
-    }
+    $(this).find('.checkboxjquery').prop('checked', true);
+    ToggleRed($(this));
     
 });
+function ToggleBlue(element)
+{
+    element.find('.darker').css('background-color', darkBlue);
+    element.find('.dark-row').css('background-color', blue);
+    element.find('.light').css('background-color', lightBlue);
+}
+function ToggleRed(element)
+{
+    element.find('.darker').css('background-color', darkRed);
+    element.find('.dark-row').css('background-color', red);
+    element.find('.light').css('background-color', lightRed);
+}
+function ToggleGray(element)
+{
+    element.find('.darker').css('background-color', darkGray);
+    element.find('.dark-row').css('background-color', gray);
+    element.find('.light').css('background-color', lightGray);
+}
