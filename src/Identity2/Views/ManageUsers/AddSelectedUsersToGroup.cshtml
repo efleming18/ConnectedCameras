@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "AddSelectedUsersToGroup";
+}
+
+@if (Model != null)
+{
+    foreach (var user in Model)
+    {
+        <div>@user.Email</div>
+    }
+}
+
+<div>Nothing in the model..... :(</div>
+
+

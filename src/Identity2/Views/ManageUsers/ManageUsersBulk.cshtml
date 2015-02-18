@@ -1,13 +1,42 @@
-﻿@model System.Collections.Generic.IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>
+﻿@using Microsoft.Ajax.Utilities
+@model IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>
+
 @{
     ViewBag.Title = "ManageUsersBulk";
 }
 
+<script src="~/Content/js/jquery.js"></script>
 <h2>Manage Users</h2>
+@*@using (Html.BeginForm("ManageUsersBulk", "ManageUsers", FormMethod.Post, new { id = "User Form" }))
+{*@
+    @if (Model != null)
+    {
+        foreach (var user in Model)
+        {
+            @Html.CheckBox("user-checkbox", false, new { Value = @user.Id })
+            <label>@user.Email</label>
+        }
+    }
 
-@foreach (var user in Model)
-{
-    <div>@user.Email</div>
-    <div>@user.CameraGroup</div>
-}
+    <br /><input type="submit" class="choose-users" value="Select Camera Group(s)"/>
+@*}*@
 
+<div class="camera-groups">
+    
+</div>
+<script type="text/javascript">
+    $('.choose-users').click(function(e) {
+        e.preventDefault();
+        var arr = new Array();
+        $('#user-checkbox:checked').each(function () {
+            arr.push($(this).val());
+        });
+        $.post('/manageusers/AddSelectedUsersToGroup', { ids: arr }
+                //function (data) {
+                    
+                    //window.location.href = "AddSelectedUsersToGroup";
+                //}
+            );
+    });
+
+</script>

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>
+
+@if (Model != null)
+{
+    foreach (var user in Model)
+    {
+        <div>@user.Email</div>
+    }
+}

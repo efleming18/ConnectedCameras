@@ -22,6 +22,14 @@ namespace ConnectedCamerasWeb
                 name: "Camera",
                 url: "{controller}/{action}/{cameraList}",
                 defaults: new { controller = "Cameras", action = "LiveFeed", cameraList = UrlParameter.Optional });
+            routes.MapRoute(
+                name: "ManageUsers",
+                url: "{controller}/{action}/{ids}",
+                defaults: new { controller = "ManageUsers", action = "AddSelectedUsersToGroup", ids = UrlParameter.Optional });
+            //routes.MapRoute(
+            //    name: "ManageUsersController",
+            //    url: "{controller}/{action}/{ids}",
+            //    defaults: new { controller = "ManageUsers", action = "ManageUsersBulk", ids = UrlParameter.Optional });
         }
     }
 }
