@@ -7,19 +7,20 @@
 
 <script src="~/Content/js/jquery.js"></script>
 <h2>Manage Users</h2>
-@*@using (Html.BeginForm("ManageUsersBulk", "ManageUsers", FormMethod.Post, new { id = "User Form" }))
-{*@
-    @if (Model != null)
+@using (Html.BeginForm("ManageUsersBulk", "ManageUsers", FormMethod.Post))
+{
+    if (Model != null)
     {
         foreach (var user in Model)
         {
-            @Html.CheckBox("user-checkbox", false, new { Value = @user.Id })
+            @Html.CheckBox("user-checkbox", false)
+            @Html.HiddenFor(x => user.Id)
             <label>@user.Email</label>
         }
     }
 
-    <br /><input type="submit" class="choose-users" value="Select Camera Group(s)"/>
-@*}*@
+    <br /><input type="submit"  value="Select Camera Group(s)"/>
+}
 
 <div class="camera-groups">
     
@@ -30,8 +31,8 @@
         var arr = new Array();
         $('#user-checkbox:checked').each(function () {
             arr.push($(this).val());
-        });
-        $.post('/manageusers/AddSelectedUsersToGroup', { ids: arr }
+        }//);
+        //$.post('/manageusers/manageusersbulk', { ids: arr }
                 //function (data) {
                     
                     //window.location.href = "AddSelectedUsersToGroup";

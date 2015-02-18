@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>
+﻿@*@model IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>*@
+@model Identity2.ViewModels.ManageUsers.UsersToCameraGroupViewModel
 
 @{
     ViewBag.Title = "AddSelectedUsersToGroup";
@@ -6,11 +7,16 @@
 
 @if (Model != null)
 {
-    foreach (var user in Model)
+    foreach (var user in Model.SelectedUsers)
     {
         <div>@user.Email</div>
     }
+    foreach (var cameraGroup in Model.CameraGroups)
+    {
+        <div>@cameraGroup</div>
+    }
 }
+
 
 <div>Nothing in the model..... :(</div>
 

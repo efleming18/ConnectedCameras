@@ -1,4 +1,5 @@
-﻿using ConnectedCamerasWeb.Infrastructure.Data;
+﻿using System.Web.Security;
+using ConnectedCamerasWeb.Infrastructure.Data;
 using ConnectedCamerasWeb.Models;
 using ConnectedCamerasWeb.ViewModels.Cameras;
 using ConnectedCamerasWeb.ExtensionMethods;
@@ -48,6 +49,17 @@ namespace ConnectedCamerasWeb.Controllers
         [Authorize]
         public ActionResult LiveFeed(string id = "1")
         {
+            var ticket = new FormsAuthenticationTicket(1, "ticket", DateTime.Now, DateTime.Now.AddMinutes(1), true, FormsAuthentication.FormsCookiePath);
+            var encTicket = FormsAuthentication.Encrypt(ticket);
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket)
+            {
+                HttpOnly = true,
+                Secure = FormsAuthentication.RequireSSL,
+                Path = FormsAuthentication.FormsCookiePath,
+                Expires = DateTime.Now.AddMinutes(1),
+                Domain = FormsAuthentication.CookieDomain
+            };
+            Response.AppendCookie(cookie);
             int[] cameraIds = id.UnStringify();
             var liveFeedViewModel = new LiveFeedViewModel();
             liveFeedViewModel.Cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();

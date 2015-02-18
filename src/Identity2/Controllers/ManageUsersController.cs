@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web.Mvc;
 using ConnectedCamerasWeb.Models;
 using Identity2.Models;
+using Identity2.ViewModels.ManageUsers;
 
 namespace Identity2.Controllers
 {
@@ -24,27 +25,18 @@ namespace Identity2.Controllers
         }
 
         [HttpPost]
-        [Route("ManageUsers/ManageUsersBulk")]
-        public ActionResult ManageUsersBulk(Guid[] ids)
+        public ActionResult ManageUsersBulk(FormCollection formCollection)
         {
             var usersSelected = _db.Users.ToList();
+            var selectedUsers = formCollection[1].Split(',');
             var listOfUsersSelected = new List<AspNetUser>();
-            foreach (var id in ids)
+            foreach (var id in selectedUsers)
             {
                 listOfUsersSelected.Add(usersSelected.Single(x => x.Id == id.ToString()));
             }
             
-            return View(listOfUsersSelected);
+            return AddSelectedUsersToGroup(listOfUsersSelected);
         }
-
-        //[HttpPost]
-        //[Route("ManageUsers/AddSelectedUsersToGroup")]
-        //public ActionResult AddSelectedUsersToGroup(Guid[] usersSelected)
-        //{
-        //    var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
-
-        //    return View();
-        //}
 
         public ActionResult AddSelectedUsersToGroup()
         {
@@ -52,13 +44,16 @@ namespace Identity2.Controllers
 
             return View();
         }
+
         [HttpPost]
-        [Route("ManageUsers/AddSelectedUsersToGroup")]
-        public ActionResult AddSelectedUsersToGroup(Guid[] usersSelected)
+        public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected)
         {
             var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
 
-            return View("AddSelectedUsersToGroup");
+            var viewModel = new UsersToCameraGroupViewModel();
+            viewModel.CameraGroups = availableCameraGroups;
+            viewModel.SelectedUsers = usersSelected;
+            return View("AddSelectedUsersToGroup", viewModel);
         }
     }
 }
