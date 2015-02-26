@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Web.Routing;
 using ConnectedCamerasWeb.Infrastructure.Data;
 using System.Linq;
 using System.Web.Mvc;
@@ -30,30 +28,90 @@ namespace Identity2.Controllers
             var usersSelected = _db.Users.ToList();
             var selectedUsers = formCollection[1].Split(',');
             var listOfUsersSelected = new List<AspNetUser>();
-            foreach (var id in selectedUsers)
+            if (formCollection != null)
             {
-                listOfUsersSelected.Add(usersSelected.Single(x => x.Id == id.ToString()));
+                var listOfSelectedBooleans = formCollection[0].Split(',');
+                for (int i = 0; i < listOfSelectedBooleans.Count() - 1; i++)
+                {
+                    if (listOfSelectedBooleans[i] == "true")
+                    {
+                        listOfUsersSelected.Add(usersSelected.Single(x => x.Id == selectedUsers[i].ToString()));
+                    }
+                }
             }
             
-            return AddSelectedUsersToGroup(listOfUsersSelected);
-        }
-
-        public ActionResult AddSelectedUsersToGroup()
-        {
-            var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
-
-            return View();
+            return AddSelectedUsersToGroup(listOfUsersSelected, null);
         }
 
         [HttpPost]
-        public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected)
+        public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected, FormCollection formCollection)
         {
-            var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
+            if (formCollection != null)
+            {
+                var usersActuallySelected = formCollection[0].Split(',');
+                var userGuids = formCollection[1].Split(',');
+                var cameraGroupActuallySelected = formCollection[2].Split(',');
+                var possibleCameraGroups = formCollection[3].Split(',');
+                var usersToUpdate = new List<string>();
+                var cameraGroupsToAddTo = new List<string>();
 
+                for (int i = 0; i < userGuids.Count(); i++)
+                {
+                    if (usersActuallySelected[i] == "true")
+                    {
+                        usersToUpdate.Add(userGuids[i]);
+                    }
+                }
+
+                var usersToUpdate1 = new List<AspNetUser>();
+                var usersSelected1 = _db.Users.ToList();
+                foreach (var id in usersToUpdate)
+                {
+                    usersToUpdate1.Add(usersSelected1.Single(x => x.Id == id.ToString()));
+                }
+
+                for (int i = 0; i < possibleCameraGroups.Count(); i++)
+                {
+                    if (cameraGroupActuallySelected[i] == "true")
+                    {
+                        cameraGroupsToAddTo.Add(possibleCameraGroups[i]);
+                    }
+                }
+                foreach (var user in usersToUpdate1)
+                {
+                    user.CameraGroup = Convert.ToInt32(cameraGroupsToAddTo[0]);
+                    _db.SaveChanges();
+                }
+            }
+            
+            var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
             var viewModel = new UsersToCameraGroupViewModel();
-            viewModel.CameraGroups = availableCameraGroups;
-            viewModel.SelectedUsers = usersSelected;
+            var temp = new List<AspNetUser>();
+            if (usersSelected != null)
+            {
+                temp = usersSelected;
+            }
+            if (usersSelected != null)
+            {
+                viewModel.CameraGroups = availableCameraGroups;
+                viewModel.SelectedUsers = usersSelected;
+                return View("AddSelectedUsersToGroup", viewModel);
+            }
+
+            if (formCollection != null)
+            {
+                var results = HandleFormCollection(temp, formCollection);
+            }
+
+
+
             return View("AddSelectedUsersToGroup", viewModel);
+        }
+
+        private object HandleFormCollection(List<AspNetUser> users, FormCollection formCollection)
+        {
+            var selectedCameraGroup = formCollection[1].Split(',');
+            return null;
         }
     }
 }

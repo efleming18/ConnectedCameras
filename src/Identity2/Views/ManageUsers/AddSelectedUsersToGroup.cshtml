@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>*@
-@model Identity2.ViewModels.ManageUsers.UsersToCameraGroupViewModel
+﻿@model Identity2.ViewModels.ManageUsers.UsersToCameraGroupViewModel
 
 @{
     ViewBag.Title = "AddSelectedUsersToGroup";
@@ -7,13 +6,30 @@
 
 @if (Model != null)
 {
-    foreach (var user in Model.SelectedUsers)
+    using (Html.BeginForm("AddSelectedUsersToGroup", "ManageUsers", FormMethod.Post))
     {
-        <div>@user.Email</div>
-    }
-    foreach (var cameraGroup in Model.CameraGroups)
-    {
-        <div>@cameraGroup</div>
+        if (Model.SelectedUsers != null)
+        {
+            foreach (var user in Model.SelectedUsers)
+            {
+                @Html.CheckBox("user-checkbox", true)
+                @Html.HiddenFor(x => user.Id)
+                <label>@user.Email</label>
+            }
+        }
+        if (Model.CameraGroups != null)
+        {
+            foreach (var cameraGroup in Model.CameraGroups)
+            {
+                @Html.CheckBox("camera-group-checkbox", false)
+                @Html.LabelFor(x => cameraGroup)
+                @Html.HiddenFor(x => cameraGroup)
+                <br />
+            }
+        }
+
+        <br />
+        <input type="submit" value="Submit" />
     }
 }
 
