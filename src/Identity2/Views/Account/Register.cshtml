@@ -3,10 +3,7 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
-
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })){
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
     <hr />
@@ -34,8 +31,41 @@
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>
-}
+}*@
+<div class="register-panel">
+    <div class="login-panel-title">Connected Cameras</div>
+    <div class="login-label">Register</div>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <section>
+            <hr />
+            @Html.ValidationSummary("", new { @class="text-danger" })
+            <div class="row">
+                @Html.LabelFor(m => m.Email, new { @class = "cell30percent input-label" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "cell50percent form-control" })
+            </div>
+            <div class="row10px"></div>
+            <div class="row">
+                @Html.LabelFor(m => m.Password, new { @class = "cell30percent input-label" })
+                @Html.PasswordFor(m => m.Password, new { @class = "cell50percent form-control" })
+            </div>
+            <div class="row10px"></div>
+            <div class="row">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "cell30percent input-label" })
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "cell50percent form-control" })
+            </div>
+            <div class="row10px"></div>
+            <div class="row">
+                <div class="cell25percent">&nbsp</div>
+                <div class="cell50percent center">
+                    <input type="submit" value="Register" class="btn btn-default" />
+                </div>
+            </div>
+        </section>
+    }
+</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

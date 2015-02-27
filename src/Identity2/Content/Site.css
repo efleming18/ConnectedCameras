@@ -58,6 +58,7 @@ h3.center {
     position:fixed;
 	bottom:0px;
 }
+/**************Login*************************/
 .login-panel-title {
     font-size:32px;
     color:black;
@@ -88,6 +89,17 @@ h3.center {
     padding-top:7px;
     padding-right:7px;
     text-align:right;
+}
+/****************************Register*********************************/
+.register-panel {
+    height:400px;
+    width:500px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:5%;
+    border:2px dotted gray;
+    background-color:#DBDADA;
+    box-shadow: 10px 10px 5px #888888;
 }
 /***********************Camera Feeds*******************************/
 .big-feed {
