@@ -58,6 +58,37 @@ h3.center {
     position:fixed;
 	bottom:0px;
 }
+.login-panel-title {
+    font-size:32px;
+    color:black;
+    font-family:'Segoe WP';
+    font-weight:bold;
+    margin-left:10px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.login-label {
+    font-size:28px;
+    color:black;
+    font-family:'Segoe WP';
+    margin-left:45px;
+    margin-top:10px;
+    margin-bottom:5px;
+}
+.login-panel {
+    height:100%;
+	float:right;
+	right:0px;
+	position:fixed;
+	width:500px;
+	border-left:2px dotted gray;
+	background-color:white;
+}
+.input-label {
+    padding-top:7px;
+    padding-right:7px;
+    text-align:right;
+}
 /***********************Camera Feeds*******************************/
 .big-feed {
     position:relative;
@@ -282,6 +313,7 @@ img.fill {
 .row80percent,
 .row90percent,
 .row100percent,
+.row10px,
 .row50px,
 .row100px,
 .row150px,
@@ -326,6 +358,9 @@ img.fill {
 }
 .row90percent {
 	height:90%;
+}
+.row10px {
+    height:10px;
 }
 .row20px {
 	height:20px;
