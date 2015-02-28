@@ -249,6 +249,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\asian.gif" />
+    <Content Include="Content\Images\binary.png" />
     <Content Include="Content\Images\CameraWeb.png" />
     <Content Include="Content\Images\cat.gif" />
     <Content Include="Content\Images\ConnectedCameras.png" />

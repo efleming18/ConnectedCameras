@@ -45,6 +45,10 @@ h3.center {
 	margin: 0 auto;
 	text-align:center;
 }
+img.center {
+    margin:0 auto;
+    display:block;
+}
 .center-vertical {
     position:relative;
     top:50%;
@@ -155,6 +159,14 @@ img.fill {
     width:auto;
 }
 
+.camera-controller {
+    width:85%;
+	height:85%;
+	border:2px dotted gray;
+	box-shadow: 10px 10px 5px #888888;
+	margin-top:60px;
+}
+
 
 /*********Camera User Input**************/
 .control-panel {
@@ -262,6 +274,7 @@ img.fill {
 .cell95percent,
 .cell200px,
 .cell250px,
+.cell300px,
 .cellmin150 {
 	float:left;
 	height:100%;
@@ -305,6 +318,10 @@ img.fill {
 .cell250px {
     width:250px;
 }
+.cell300px {
+    width:300px;
+}
+
 .cellauto {
     width:auto;
     overflow:hidden;
