@@ -267,6 +267,7 @@ img.fill {
 .cell15percent,
 .cell25percent,
 .cell30percent,
+.cell33percent,
 .cell50percent,
 .cell60percent,
 .cell75percent,
@@ -293,6 +294,9 @@ img.fill {
 }
 .cell30percent {
 	width:30%;
+}
+.cell33percent {
+    width:33.3333%;
 }
 .cell50percent {
     width:50%;
@@ -387,6 +391,9 @@ img.fill {
 }
 .row90percent {
 	height:90%;
+}
+.row100percent {
+    height:100%;
 }
 .row10px {
     height:10px;

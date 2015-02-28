@@ -7,22 +7,7 @@
     <div class="camera-controller center">
         <div class="cell300px" style="border-right:2px dotted gray; background-color:white;"></div>
         <div class="cellauto">
-            <div class="row50percent">
-                <div class="cell50percent" style="background-color:black;">
-                    <img class="fill center" src="~/Content/Images/cat.gif" />
-                </div>
-                <div class="cell50percent" style="background-color:black;">
-                    <img class="fill center" src="~/Content/Images/cat.gif" />
-                </div>
-            </div>
-            <div class="row50percent">
-                <div class="cell50percent" style="background-color:black;">
-                    <img class="fill center" src="~/Content/Images/cat.gif" />
-                </div>
-                <div class="cell50percent" style="background-color:black;">
-                    <img class="fill center" src="~/Content/Images/cat.gif" />
-                </div>
-            </div>
+            @Model.GenerateFeedHtml()
         </div>
     </div>
 </div>
