@@ -142,10 +142,20 @@ img.center {
         display:block;
         padding-top:56.25%;
     }
-.feed-block {
+    .feed-block {
     width:70%;
     min-width:290px;
 }
+
+.feed {
+    position:relative;
+    width:100%;
+}
+    .feed:before {
+        content:"";
+        display:block;
+        padding-top:56.25%;
+    }
 .feed-content {
     position:absolute;
     top:0;
