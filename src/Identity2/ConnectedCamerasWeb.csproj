@@ -238,7 +238,6 @@
     <Compile Include="ViewModels\Admin\EditUserViewModel.cs" />
     <Compile Include="ViewModels\Admin\RoleViewModel.cs" />
     <Compile Include="ViewModels\Cameras\CameraPickerModel.cs" />
-    <Compile Include="ViewModels\Cameras\LiveFeedViewModel.cs" />
     <Compile Include="ViewModels\Identity\ApplicationUser.cs" />
     <Compile Include="Infrastructure\Data\ApplicationDbContext.cs" />
     <Compile Include="ViewModels\ManageUsers\UsersToCameraGroupViewModel.cs" />
