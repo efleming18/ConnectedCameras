@@ -1,19 +1,16 @@
-﻿$(document).ready(function () {
+﻿var feed = $('.fill');
+
+$(document).ready(function () {
     var fixHeight = $('.camera-controller').css('height');
     var fixWidth = $('.camera-controller').css('width');
     $('.camera-controller').height(fixHeight);
     $('.camera-controller').width(fixWidth);
 });
-$('.feed-content').click(function () {
-    $(this).parent().parent().find('.feed-content').css('border', 'solid 2px black');
-    $(this).css('border', 'solid 3px red');
-    var cameraName = $(this).attr('id');
-    $('#currentCamera').html(cameraName);
+feed.click(function () {
+    $(document).find('.fill').css('border', '');
+    $(this).css('border', 'solid 2px red');
 });
-$('.feed-content').on('tap', function () {
-    $(this).parent().parent().find('.feed-content').css('border', 'solid 3px black');
-    $(this).css('border', 'solid 3px red');
-});
+
 
 $('.camera-input').mousedown(function () {
     $(this).css('background-color', '#4bacbd');
