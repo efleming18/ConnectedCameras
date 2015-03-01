@@ -1,4 +1,10 @@
-﻿$('.feed-content').click(function () {
+﻿$(document).ready(function () {
+    var fixHeight = $('.camera-controller').css('height');
+    var fixWidth = $('.camera-controller').css('width');
+    $('.camera-controller').height(fixHeight);
+    $('.camera-controller').width(fixWidth);
+});
+$('.feed-content').click(function () {
     $(this).parent().parent().find('.feed-content').css('border', 'solid 2px black');
     $(this).css('border', 'solid 3px red');
     var cameraName = $(this).attr('id');
