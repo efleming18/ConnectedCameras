@@ -106,47 +106,6 @@ img.center {
     box-shadow: 10px 10px 5px #888888;
 }
 /***********************Camera Feeds*******************************/
-.big-feed {
-    position:relative;
-    width:100%;
-    background-color:black;
-    min-width:290px;
-    display:inline-block;
-}
-    .big-feed:before {
-        content:"";
-        display:block;
-        padding-top:56.25%;
-    }
-.medium-feed {
-    position:relative;
-    width:49%;
-    background-color:black;
-    min-width:290px;
-    display:inline-block;
-}
-    .medium-feed:before {
-        content:"";
-        display:block;
-        padding-top:56.25%;
-    }
-.small-feed {
-    position:relative;
-    width:33%;
-    background-color:black;
-    min-width:290px;
-    display:inline-block;
-}
-    .small-feed:before {
-        content:"";
-        display:block;
-        padding-top:56.25%;
-    }
-    .feed-block {
-    width:70%;
-    min-width:290px;
-}
-
 .feed {
     position:relative;
     width:100%;
@@ -168,7 +127,6 @@ img.fill {
     height:100%;
     width:auto;
 }
-
 .camera-controller {
     width:85%;
 	height:85%;

@@ -28,7 +28,7 @@ namespace ConnectedCamerasWeb.Helpers
                     htmlString = string.Format("<div class='row50percent' style='background-color:black;'>" +
                                                    "<img id='{0}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                "</div>" +
-                                               "<div class='row50percent'>" +
+                                               "<div class='row50percent' style='background-color:black;'>" +
                                                    "<img id='{1}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                "</div>",
                                                cameras[0].CameraName,
