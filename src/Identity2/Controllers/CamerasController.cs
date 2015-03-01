@@ -61,9 +61,8 @@ namespace ConnectedCamerasWeb.Controllers
             };
             Response.AppendCookie(cookie);
             int[] cameraIds = id.UnStringify();
-            var liveFeedViewModel = new LiveFeedViewModel();
-            liveFeedViewModel.Cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
-            return View(liveFeedViewModel);
+            var cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
+            return View(cameras);
         }
 
         protected override void Dispose(bool disposing)

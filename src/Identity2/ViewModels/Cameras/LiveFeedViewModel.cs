@@ -9,14 +9,5 @@ namespace ConnectedCamerasWeb.ViewModels.Cameras
     public class LiveFeedViewModel
     {
         public List<Camera> Cameras { get; set; }
-
-        public string DecideFeedSize()
-        {
-            if (Cameras.Count < 2)
-                return "big-feed";
-            else if (Cameras.Count < 5)
-                return "medium-feed";
-            return "small-feed";
-        }
     }
 }
