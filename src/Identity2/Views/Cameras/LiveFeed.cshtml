@@ -1,4 +1,5 @@
-﻿@model ConnectedCamerasWeb.ViewModels.Cameras.LiveFeedViewModel
+﻿@using ConnectedCamerasWeb.Helpers
+@model ConnectedCamerasWeb.ViewModels.Cameras.LiveFeedViewModel
 @{
     ViewBag.Title = "CameraFeed";
 }
@@ -7,7 +8,7 @@
     <div class="camera-controller center">
         <div class="cell300px" style="border-right:2px dotted gray; background-color:white;"></div>
         <div class="cellauto">
-            @Model.GenerateFeedHtml()
+            @Html.LiveFeedFor(Model.Cameras)
         </div>
     </div>
 </div>
