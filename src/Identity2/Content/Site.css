@@ -202,28 +202,7 @@ img.fill {
     -webkit-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
 }
-/**Grid Stuff**/
-.grid,
-.grid20percent,
-.grid50percent,
-.grid60percent,
-.grid70percent {
-}
-.grid {
-	width:100%;
-}
-.grid20percent {
-	width:20%;
-}
-.grid50percent {
-	width:50%;
-}
-.grid60percent {
-	width:40%;
-}
-.grid70percent {
-	width:70%;
-}
+/****************Grid Stuff*********************/
 .cell5percent,
 .cell10percent,
 .cell15percent,
@@ -299,7 +278,6 @@ img.fill {
 .cell300px {
     width:300px;
 }
-
 .cellauto {
     width:auto;
     overflow:hidden;
