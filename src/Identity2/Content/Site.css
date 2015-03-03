@@ -150,13 +150,6 @@ img.fill {
     width:250px;
     height:250px;
 }
-.camera-input {
-    width:55px;
-    height:55px;
-    background-color:darkgray;
-    border-radius:50%;
-    overflow:hidden;
-}
 .pan-right {
     display:inline-block;
     margin-left:29px;
@@ -172,41 +165,31 @@ img.fill {
     width:250px;
     height:250px;
 }
+.control-panel-label {
+    font-size:22px;
+    font-family: 'Segoe WP';
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.camera-input {
+}
 .arrow-up {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 20px 40px 20px;
-    border-color: transparent transparent #2e3b7d transparent;
-    margin-top:2px;
-    margin-left:8px;
+
 }
 .arrow-down {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 40px 20px 0 20px;
-    border-color: #2e3b7d transparent transparent transparent;
-    margin-top:13px;
-    margin-left:8px;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
 }
 .arrow-right {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 20px 0 20px 40px;
-    border-color: transparent transparent transparent #2e3b7d;
-    margin-top:7px;
-    margin-left:14px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
 }
 .arrow-left {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 20px 40px 20px 0;
-    border-color: transparent #2e3b7d transparent transparent;
-    margin-top:7px;
-    margin-right:14px;
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
 }
 /**Grid Stuff**/
 .grid,
@@ -241,6 +224,8 @@ img.fill {
 .cell75percent,
 .cell85percent,
 .cell95percent,
+.cell50px,
+.cell100px,
 .cell200px,
 .cell250px,
 .cell300px,
@@ -283,6 +268,12 @@ img.fill {
 }
 .cellmin150 {
     min-width:150px;
+}
+.cell50px {
+    width:50px;
+}
+.cell100px {
+    width:100px;
 }
 .cell200px {
     width:200px;
@@ -380,6 +371,9 @@ img.fill {
 }
 .row200px {
 	height:200px;
+}
+.row250px {
+    height:250px;
 }
 .checkboxjquery {
     /*visibility:collapse;*/

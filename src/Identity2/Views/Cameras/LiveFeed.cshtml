@@ -6,7 +6,33 @@
 <script src="~/Content/js/jquery.js"></script>
 <div style="width:100%; height:100%; position:fixed; background:no-repeat center url('../../Content/Images/binary.png'); background-size: 100% auto;">
     <div class="camera-controller center">
-        <div class="cell300px" style="border-right:2px dotted gray; background-color:white;"></div>
+        <div class="cell250px" style="border-right:2px dotted gray; background-color:white;">
+            <div class="row" style="border-bottom:2px dotted gray;">
+                <div class="row control-panel-label">Controls</div>
+                <div class="row50px">
+                    <div class="cell100px"></div>
+                    <div class="cell50px">
+                        <img src="~/Content/Images/Arrow.png" class="camera-input" style="width:50px; height:50px;" />
+                    </div>
+                </div>
+                <div class="row50px">
+                    <div class="cell50px"></div>
+                    <div class="cell50px">
+                        <img src="~/Content/Images/Arrow.png" class="camera-input arrow-left" style="width:50px; height:50px;"/>
+                    </div>
+                    <div class="cell50px"></div>
+                    <div class="cell50px">
+                        <img src="~/Content/Images/Arrow.png" class="camera-input arrow-right" style="width:50px; height:50px;" />
+                    </div>
+                </div>
+                <div class="row50px">
+                    <div class="cell100px"></div>
+                    <div class="cell50px">
+                        <img src="~/Content/Images/Arrow.png" class="camera-input arrow-down" style="width:50px; height:50px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="cellauto">
             @Html.LiveFeedFor(Model)
         </div>
