@@ -113,11 +113,14 @@ img.center {
     height:400px;
     width:500px;
 }
-/*TODO: make this fixed when the page loads*/
 .pick-panel {
     height:90%;
     width:600px;
     margin-top:70px;
+}
+.control-panel {
+    border-right:2px dotted gray;
+    background-color: #DBDADA;
 }
 /***********************Camera Feeds*******************************/
 .feed {
@@ -151,12 +154,6 @@ img.fill {
 
 
 /*********Camera User Input**************/
-.control-panel {
-	width:100%;
-	min-width:427px;
-	height:100px;
-    text-align:center;
-}
 .camera-control {
     border-radius:50%;
     left:-30px;
@@ -238,6 +235,7 @@ img.fill {
 .cell75percent,
 .cell85percent,
 .cell95percent,
+.cell100percent,
 .cell50px,
 .cell100px,
 .cell200px,
@@ -279,6 +277,9 @@ img.fill {
 }
 .cell95percent {
     width:95%;
+}
+.cell100percent {
+    width:100%;
 }
 .cellmin150 {
     min-width:150px;
