@@ -31,18 +31,13 @@ namespace Identity2.Controllers
             if (formCollection != null)
             {
                 var listOfSelectedBooleans = formCollection[0].Split(',');
-                for (int i = 0; i < listOfSelectedBooleans.Count() - 1; i++)
-                {
-                    if (listOfSelectedBooleans[i] == "true")
-                    {
-                        listOfUsersSelected.Add(usersSelected.Single(x => x.Id == selectedUsers[i].ToString()));
-                    }
-                }
+                listOfUsersSelected = AddOnlySelectedUsers(selectedUsers, listOfSelectedBooleans, usersSelected,
+                    selectedUsers);
             }
             
             return AddSelectedUsersToGroup(listOfUsersSelected, null);
         }
-
+        
         [HttpPost]
         public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected, FormCollection formCollection)
         {
@@ -106,6 +101,20 @@ namespace Identity2.Controllers
 
 
             return View("AddSelectedUsersToGroup", viewModel);
+        }
+
+        //Possibly pull these private functions out in to a "Helper" or "Manager" class.
+        private List<AspNetUser> AddOnlySelectedUsers(string[] selectedUsers, string[] listOfSelectedBooleans, List<AspNetUser> usersSelected, string[] strings)
+        {
+            var listOfUsersSelected = new List<AspNetUser>();
+            for (int i = 0; i < listOfSelectedBooleans.Count(); i++)
+            {
+                if (listOfSelectedBooleans[i] == "true")
+                {
+                    listOfUsersSelected.Add(usersSelected.Single(x => x.Id == selectedUsers[i].ToString()));
+                }
+            }
+            return listOfUsersSelected;
         }
 
         private object HandleFormCollection(List<AspNetUser> users, FormCollection formCollection)

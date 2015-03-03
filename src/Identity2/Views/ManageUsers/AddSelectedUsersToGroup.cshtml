@@ -8,6 +8,8 @@
 {
     using (Html.BeginForm("AddSelectedUsersToGroup", "ManageUsers", FormMethod.Post))
     {
+        <h3>You've selected the following users:</h3>
+        <br />
         if (Model.SelectedUsers != null)
         {
             foreach (var user in Model.SelectedUsers)
@@ -19,10 +21,13 @@
         }
         if (Model.CameraGroups != null)
         {
+            <h3>All Available Camera Groups</h3>
+            <br />
             foreach (var cameraGroup in Model.CameraGroups)
             {
                 @Html.CheckBox("camera-group-checkbox", false)
-                @Html.LabelFor(x => cameraGroup)
+                <label>@cameraGroup</label>
+                //Probably want to display a brief description about the camera group as well?
                 @Html.HiddenFor(x => cameraGroup)
                 <br />
             }
@@ -32,8 +37,3 @@
         <input type="submit" value="Submit" />
     }
 }
-
-
-<div>Nothing in the model..... :(</div>
-
-
