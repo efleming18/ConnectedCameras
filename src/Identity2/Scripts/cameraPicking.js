@@ -16,6 +16,8 @@ $(document).ready(function () {
         return;
     }
     ToggleGray($(this));
+    var fixHeight = $('.pick-panel').css('height');
+    $('.pick-panel').height(fixHeight);
 });
 
 $('.row150px').mouseover(function () {
