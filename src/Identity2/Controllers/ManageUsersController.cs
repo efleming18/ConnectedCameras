@@ -30,8 +30,7 @@ namespace Identity2.Controllers
             if (formCollection != null)
             {
                 var listOfSelectedBooleans = formCollection[0].Split(',');
-                listOfUsersSelected = AddOnlySelectedUsers(selectedUsers, listOfSelectedBooleans, usersSelected,
-                    selectedUsers);
+                listOfUsersSelected = AddOnlySelectedUsers(selectedUsers, listOfSelectedBooleans, usersSelected);
             }
             
             return AddSelectedUsersToGroup(listOfUsersSelected, null);
@@ -98,7 +97,7 @@ namespace Identity2.Controllers
             }
         }
 
-        private List<AspNetUser> AddOnlySelectedUsers(string[] selectedUsers, string[] listOfSelectedBooleans, List<AspNetUser> usersSelected, string[] strings)
+        private List<AspNetUser> AddOnlySelectedUsers(string[] selectedUsers, string[] listOfSelectedBooleans, List<AspNetUser> usersSelected)
         {
             var actualListOfBooleans = GetActualListOfBooleans(listOfSelectedBooleans);
             var listOfUsersSelected = new List<AspNetUser>();
