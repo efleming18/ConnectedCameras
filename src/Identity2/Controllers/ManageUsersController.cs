@@ -17,7 +17,6 @@ namespace Identity2.Controllers
             var userlist = _db.Users.ToList();
             var userModel = new ManageUserModel();
             userModel.AllUsers = userlist;
-            userlist[0].CameraGroup = 17;
             _db.SaveChanges();
             return View(userlist);
         }
@@ -106,15 +105,30 @@ namespace Identity2.Controllers
         //Possibly pull these private functions out in to a "Helper" or "Manager" class.
         private List<AspNetUser> AddOnlySelectedUsers(string[] selectedUsers, string[] listOfSelectedBooleans, List<AspNetUser> usersSelected, string[] strings)
         {
+            var actualListOfBooleans = GetActualListOfBooleans(listOfSelectedBooleans);
             var listOfUsersSelected = new List<AspNetUser>();
-            for (int i = 0; i < listOfSelectedBooleans.Count(); i++)
+            for (int i = 0; i < actualListOfBooleans.Count(); i++)
             {
-                if (listOfSelectedBooleans[i] == "true")
+                if (actualListOfBooleans[i] == "true")
                 {
                     listOfUsersSelected.Add(usersSelected.Single(x => x.Id == selectedUsers[i].ToString()));
                 }
             }
             return listOfUsersSelected;
+        }
+
+        private List<string> GetActualListOfBooleans(string[] listOfSelectedBooleans)
+        {
+            var listToReturn = new List<string>();
+            for (int i = 0; i < listOfSelectedBooleans.Count(); i++)
+            {
+                listToReturn.Add(listOfSelectedBooleans[i]);
+                if (listOfSelectedBooleans[i] == "true")
+                {
+                    i++;   
+                }
+            }
+            return listToReturn;
         }
 
         private object HandleFormCollection(List<AspNetUser> users, FormCollection formCollection)
