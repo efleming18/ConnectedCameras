@@ -42,9 +42,10 @@ namespace Identity2.Controllers
         {
             if (formCollection != null)
             {
-                var usersActuallySelected = formCollection[0].Split(',');
+                var usersActuallySelected = GetActualListOfBooleans(formCollection[0].Split(','));
                 var userGuids = formCollection[1].Split(',');
                 var cameraGroupActuallySelected = formCollection[2].Split(',');
+                var actualCamerGroupsSelected = GetActualListOfBooleans(formCollection[2].Split(','));
                 var possibleCameraGroups = formCollection[3].Split(',');
                 var usersToUpdate = new List<string>();
                 var cameraGroupsToAddTo = new List<string>();
@@ -66,7 +67,7 @@ namespace Identity2.Controllers
 
                 for (int i = 0; i < possibleCameraGroups.Count(); i++)
                 {
-                    if (cameraGroupActuallySelected[i] == "true")
+                    if (actualCamerGroupsSelected[i] == "true")
                     {
                         cameraGroupsToAddTo.Add(possibleCameraGroups[i]);
                     }
