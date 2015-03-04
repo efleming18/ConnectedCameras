@@ -39,9 +39,3 @@ function setAttributesPanelHeight() {
     var attributeHeight = totalHeight - controlsHeight;
     $('#attributes').height(attributeHeight);
 }
-$('.camera-input').mousedown(function () {
-
-});
-$('.camera-input').mouseup(function () {
-
-});

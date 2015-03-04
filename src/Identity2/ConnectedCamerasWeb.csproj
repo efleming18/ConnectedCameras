@@ -253,6 +253,7 @@
     <Content Include="Content\Images\Arrow.png" />
     <Content Include="Content\Images\asian.gif" />
     <Content Include="Content\Images\binary.png" />
+    <Content Include="Content\Images\CameraPicking-wide.png" />
     <Content Include="Content\Images\CameraWeb.png" />
     <Content Include="Content\Images\cat.gif" />
     <Content Include="Content\Images\ConnectedCameras.png" />
