@@ -46,6 +46,7 @@ namespace Identity2.Controllers
             if (formCollection != null)
             {
                 HandleAddingUsersToSpecificCameraGroup(formCollection);
+                return RedirectToAction("ManageUsersBulk");
             }
             
             if (usersSelected != null)
