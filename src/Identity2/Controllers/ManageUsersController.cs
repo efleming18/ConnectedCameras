@@ -37,55 +37,18 @@ namespace Identity2.Controllers
             return AddSelectedUsersToGroup(listOfUsersSelected, null);
         }
         
+        //Desperately need to refactor this code
         [HttpPost]
         public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected, FormCollection formCollection)
         {
-            if (formCollection != null)
-            {
-                var usersActuallySelected = GetActualListOfBooleans(formCollection[0].Split(','));
-                var userGuids = formCollection[1].Split(',');
-                var cameraGroupActuallySelected = formCollection[2].Split(',');
-                var actualCamerGroupsSelected = GetActualListOfBooleans(formCollection[2].Split(','));
-                var possibleCameraGroups = formCollection[3].Split(',');
-                var usersToUpdate = new List<string>();
-                var cameraGroupsToAddTo = new List<string>();
-
-                for (int i = 0; i < userGuids.Count(); i++)
-                {
-                    if (usersActuallySelected[i] == "true")
-                    {
-                        usersToUpdate.Add(userGuids[i]);
-                    }
-                }
-
-                var usersToUpdate1 = new List<AspNetUser>();
-                var usersSelected1 = _db.Users.ToList();
-                foreach (var id in usersToUpdate)
-                {
-                    usersToUpdate1.Add(usersSelected1.Single(x => x.Id == id.ToString()));
-                }
-
-                for (int i = 0; i < possibleCameraGroups.Count(); i++)
-                {
-                    if (actualCamerGroupsSelected[i] == "true")
-                    {
-                        cameraGroupsToAddTo.Add(possibleCameraGroups[i]);
-                    }
-                }
-                foreach (var user in usersToUpdate1)
-                {
-                    user.CameraGroup = Convert.ToInt32(cameraGroupsToAddTo[0]);
-                    _db.SaveChanges();
-                }
-            }
-            
             var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
             var viewModel = new UsersToCameraGroupViewModel();
-            var temp = new List<AspNetUser>();
-            if (usersSelected != null)
+
+            if (formCollection != null)
             {
-                temp = usersSelected;
+                HandleAddingUsersToSpecificCameraGroup(formCollection);
             }
+            
             if (usersSelected != null)
             {
                 viewModel.CameraGroups = availableCameraGroups;
@@ -93,17 +56,48 @@ namespace Identity2.Controllers
                 return View("AddSelectedUsersToGroup", viewModel);
             }
 
-            if (formCollection != null)
-            {
-                var results = HandleFormCollection(temp, formCollection);
-            }
-
-
-
             return View("AddSelectedUsersToGroup", viewModel);
         }
 
         //Possibly pull these private functions out in to a "Helper" or "Manager" class.
+        private void HandleAddingUsersToSpecificCameraGroup(FormCollection formCollection)
+        {
+            var usersActuallySelected = GetActualListOfBooleans(formCollection[0].Split(','));
+            var userGuids = formCollection[1].Split(',');
+            var actualCamerGroupsSelected = GetActualListOfBooleans(formCollection[2].Split(','));
+            var possibleCameraGroups = formCollection[3].Split(',');
+            var usersToUpdate = new List<string>();
+            var cameraGroupsToAddTo = new List<string>();
+            var usersToUpdate1 = new List<AspNetUser>();
+            var usersSelected1 = _db.Users.ToList();
+
+            for (int i = 0; i < userGuids.Count(); i++)
+            {
+                if (usersActuallySelected[i] == "true")
+                {
+                    usersToUpdate.Add(userGuids[i]);
+                }
+            }
+
+            foreach (var id in usersToUpdate)
+            {
+                usersToUpdate1.Add(usersSelected1.Single(x => x.Id == id.ToString()));
+            }
+
+            for (int i = 0; i < possibleCameraGroups.Count(); i++)
+            {
+                if (actualCamerGroupsSelected[i] == "true")
+                {
+                    cameraGroupsToAddTo.Add(possibleCameraGroups[i]);
+                }
+            }
+            foreach (var user in usersToUpdate1)
+            {
+                user.CameraGroup = Convert.ToInt32(cameraGroupsToAddTo[0]);
+                _db.SaveChanges();
+            }
+        }
+
         private List<AspNetUser> AddOnlySelectedUsers(string[] selectedUsers, string[] listOfSelectedBooleans, List<AspNetUser> usersSelected, string[] strings)
         {
             var actualListOfBooleans = GetActualListOfBooleans(listOfSelectedBooleans);
@@ -130,12 +124,6 @@ namespace Identity2.Controllers
                 }
             }
             return listToReturn;
-        }
-
-        private object HandleFormCollection(List<AspNetUser> users, FormCollection formCollection)
-        {
-            var selectedCameraGroup = formCollection[1].Split(',');
-            return null;
         }
     }
 }
