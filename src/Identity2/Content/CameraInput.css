@@ -1,0 +1,48 @@
+﻿.camera-control {
+    border-radius:50%;
+    left:-30px;
+    bottom:-20px;
+    width:250px;
+    height:250px;
+}
+.pan-right {
+    display:inline-block;
+    margin-left:29px;
+}
+.pan-left {
+    display:inline-block;
+    margin-right:29px;
+}
+.camera-list {
+    border-radius:50%;
+    right:-30px;
+    bottom:-20px;
+    width:250px;
+    height:250px;
+}
+.control-panel-label {
+    font-size:22px;
+    font-family: 'Segoe WP';
+    padding-top:5px;
+    padding-bottom:5px;
+}
+.camera-input {
+}
+.arrow-up {
+
+}
+.arrow-down {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+}
+.arrow-right {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+}
+.arrow-left {
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+}

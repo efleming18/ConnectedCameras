@@ -11,7 +11,7 @@
         <div class="login-panel-title">Pick Cameras</div>
         @using (Html.BeginForm())
         {
-            <div class="cell85percent center" style="background-color:white;">
+            <div class="camera-picker-listbox" style="background-color:white;">
                 @for (int i = 1; i < Model.AvailableCameras.Count; i++)
                 {
                 <div class="row">
@@ -20,7 +20,7 @@
                 }
             </div>
             <div class="row10px"></div>
-            <div class="row">
+            <div class="row center">
                 <input type="submit" value="Continue" class="btn btn-default" />
             </div>
         }

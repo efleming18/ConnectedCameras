@@ -1,0 +1,28 @@
+﻿.feed {
+    position:relative;
+    width:100%;
+}
+    .feed:before {
+        content:"";
+        display:block;
+        padding-top:56.25%;
+    }
+.feed-content {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    border: solid 2px black;
+}
+img.fill {
+    height:100%;
+    width:auto;
+}
+.camera-controller {
+    width:85%;
+	height:85%;
+	border:2px dotted gray;
+	box-shadow: 10px 10px 5px #888888;
+	margin-top:60px;
+}

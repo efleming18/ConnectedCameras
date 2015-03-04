@@ -1,0 +1,166 @@
+﻿.cell5percent,
+.cell10percent,
+.cell15percent,
+.cell25percent,
+.cell30percent,
+.cell33percent,
+.cell50percent,
+.cell60percent,
+.cell75percent,
+.cell85percent,
+.cell95percent,
+.cell100percent,
+.cell50px,
+.cell100px,
+.cell200px,
+.cell250px,
+.cell300px,
+.cellmin150 {
+	float:left;
+	height:100%;
+}
+.cell5percent {
+    width:5%;
+}
+.cell10percent {
+	width:10%;
+}
+.cell15percent {
+    width:15%;
+}
+.cell25percent {
+	width:25%;
+}
+.cell30percent {
+	width:30%;
+}
+.cell33percent {
+    width:33.3333%;
+}
+.cell50percent {
+    width:50%;
+}
+.cell60percent {
+	width:60%;
+}
+.cell75percent {
+	width:75%;
+}
+.cell85percent {
+    width:85%
+}
+.cell95percent {
+    width:95%;
+}
+.cell100percent {
+    width:100%;
+}
+.cellmin150 {
+    min-width:150px;
+}
+.cell50px {
+    width:50px;
+}
+.cell100px {
+    width:100px;
+}
+.cell200px {
+    width:200px;
+}
+.cell250px {
+    width:250px;
+}
+.cell300px {
+    width:300px;
+}
+.cellauto {
+    width:auto;
+    overflow:hidden;
+    height:100%;
+}
+.row,
+.row5percent,
+.row10percent,
+.row15percent,
+.row20percent,
+.row25percent,
+.row40percent,
+.row50percent,
+.row55percent,
+.row60percent,
+.row70percent,
+.row75percent,
+.row80percent,
+.row90percent,
+.row100percent,
+.row10px,
+.row20px,
+.row50px,
+.row100px,
+.row150px,
+.row200px,
+.row250px {
+	width:100%;
+	clear:both;
+    margin:0;
+}
+.row5percent {
+	height:5%;
+}
+.row10percent {
+	height:10%;
+}
+.row15percent {
+	height:15%;
+}
+.row20percent {
+	height:20%;
+}
+.row25percent {
+	height:25%;
+}
+.row40percent {
+    height:40%;
+}
+.row50percent {
+	height:50%;
+}
+.row55percent {
+    height:55%;
+}
+.row60percent {
+    height:60%;
+}
+.row70percent {
+    height:70%;
+}
+.row80percent {
+    height:80%;
+}
+.row90percent {
+	height:90%;
+}
+.row100percent {
+    height:100%;
+}
+.row10px {
+    height:10px;
+}
+.row20px {
+	height:20px;
+}
+.row50px {
+	height:50px;
+}
+.row100px {
+	height:100px;
+}
+.row150px {
+	height:142px;
+}
+.row200px {
+	height:200px;
+}
+.row250px {
+    height:250px;
+}

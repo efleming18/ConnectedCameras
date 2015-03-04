@@ -27,9 +27,17 @@ namespace ConnectedCamerasWeb
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+            bundles.Add(new StyleBundle("~/LiveFeed/css").Include(
+                       "~/Content/CameraFeeds.css",
+                       "~/Content/CameraInput.css"));
+
+            bundles.Add(new StyleBundle("~/Panels/css").Include(
+                       "~/Content/Panels.css"));
+
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;
         }
     }
 }
+//TODO: Need to include the Bacngrounds and the Grid styles under the ~/Content/css virtual path...
