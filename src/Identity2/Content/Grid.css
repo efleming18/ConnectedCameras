@@ -1,4 +1,8 @@
-﻿.cell5percent,
+﻿.center {
+	margin: 0 auto;
+	text-align:center;
+}
+.cell5percent,
 .cell10percent,
 .cell15percent,
 .cell25percent,

@@ -262,11 +262,11 @@
     <Content Include="Content\Images\cat.gif" />
     <Content Include="Content\Images\ConnectedCameras.png" />
     <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\PageFormatting.css" />
     <Content Include="Content\Panels.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

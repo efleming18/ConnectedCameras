@@ -20,19 +20,19 @@ namespace ConnectedCamerasWeb
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                       "~/Scripts/bootstrap.js",
+                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                       "~/Content/bootstrap.css",
+                       "~/Content/PageFormatting.css",
+                       "~/Content/Grid.css",
+                       "~/Content/Backgrounds.css",
+                       "~/Content/Panels.css"));
 
             bundles.Add(new StyleBundle("~/LiveFeed/css").Include(
                        "~/Content/CameraFeeds.css",
                        "~/Content/CameraInput.css"));
-
-            bundles.Add(new StyleBundle("~/Panels/css").Include(
-                       "~/Content/Panels.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
@@ -40,4 +40,3 @@ namespace ConnectedCamerasWeb
         }
     }
 }
-//TODO: Need to include the Bacngrounds and the Grid styles under the ~/Content/css virtual path...
