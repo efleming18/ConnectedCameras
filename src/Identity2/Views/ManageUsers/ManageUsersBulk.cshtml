@@ -1,5 +1,4 @@
-﻿@using Microsoft.Ajax.Utilities
-@model IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>
+﻿@model IEnumerable<ConnectedCamerasWeb.Models.AspNetUser>
 
 @{
     ViewBag.Title = "ManageUsersBulk";
@@ -21,23 +20,3 @@
     }
     <br /><input type="submit"  value="Select Camera Group(s)"/>
 }
-
-<div class="camera-groups">
-    
-</div>
-<script type="text/javascript">
-    $('.choose-users').click(function(e) {
-        e.preventDefault();
-        var arr = new Array();
-        $('#user-checkbox:checked').each(function () {
-            arr.push($(this).val());
-        }//);
-        //$.post('/manageusers/manageusersbulk', { ids: arr }
-                //function (data) {
-                    
-                    //window.location.href = "AddSelectedUsersToGroup";
-                //}
-            );
-    });
-
-</script>

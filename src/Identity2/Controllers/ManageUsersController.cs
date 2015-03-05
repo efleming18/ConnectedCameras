@@ -12,6 +12,7 @@ namespace Identity2.Controllers
     public class ManageUsersController : Controller
     {
         private MainDbContext _db = new MainDbContext();
+
         public ActionResult ManageUsersBulk()
         {
             var userlist = _db.Users.ToList();
@@ -36,7 +37,6 @@ namespace Identity2.Controllers
             return AddSelectedUsersToGroup(listOfUsersSelected, null);
         }
         
-        //Desperately need to refactor this code
         [HttpPost]
         public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected, FormCollection formCollection)
         {
@@ -59,7 +59,7 @@ namespace Identity2.Controllers
             return View("AddSelectedUsersToGroup", viewModel);
         }
 
-        //Possibly pull these private functions out in to a "Helper" or "Manager" class.
+        //Pull these private functions out in to a "Helper" or "Manager" class.
         private void HandleAddingUsersToSpecificCameraGroup(FormCollection formCollection)
         {
             var usersActuallySelected = GetActualListOfBooleans(formCollection[0].Split(','));
