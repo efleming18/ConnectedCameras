@@ -7,9 +7,9 @@
 <div class="background-add-to-group">
     @if (Model != null)
     {
-        using (Html.BeginForm("AddSelectedUsersToGroup", "ManageUsers", FormMethod.Post))
+        using (Html.BeginForm("AddSelectedUsersToGroup", "ManageUsers", FormMethod.Post, new { @class = "groups-panel" }))
         {
-            <h3>You've selected the following users:</h3>
+            <h3>Modifying Users:</h3>
             <br />
             if (Model.SelectedUsers != null)
             {
@@ -35,7 +35,7 @@
             }
 
             <br />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" class="btn btn-default" />
         }
     }
 </div>

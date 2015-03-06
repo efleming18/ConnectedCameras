@@ -1,7 +1,8 @@
 ﻿.add-panel,
 .register-panel,
 .pick-panel,
-.users-panel {
+.users-panel,
+.groups-panel {
     margin-left:auto;
     margin-right:auto;
     margin-top:70px;
@@ -23,6 +24,9 @@
 }
 .users-panel {
     width:300px;
+}
+.groups-panel {
+    width:500px;
 }
 .control-panel {
     border-right:2px dotted gray;
