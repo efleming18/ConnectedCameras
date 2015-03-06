@@ -261,6 +261,7 @@
     <Content Include="Content\Images\CameraWeb.png" />
     <Content Include="Content\Images\cat.gif" />
     <Content Include="Content\Images\ConnectedCameras.png" />
+    <Content Include="Content\Images\trampoline_lightning.gif" />
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\PageFormatting.css" />
     <Content Include="Content\Panels.css" />
