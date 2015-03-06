@@ -6,19 +6,31 @@
 
 <script src="~/Content/js/jquery.js"></script>
 <div class="background-manage-users">
-    <h2>List Of All Users - Select As Many As Desired</h2>
-    @using (Html.BeginForm("ManageUsersBulk", "ManageUsers", FormMethod.Post))
+    @using (Html.BeginForm("ManageUsersBulk", "ManageUsers", FormMethod.Post, new { @class = "users-panel" }))
     {
         if (Model != null)
         {
-            foreach (var user in Model)
-            {
-                @Html.CheckBox("user-checkbox", false)
-                @Html.HiddenFor(x => user.Id)
-                <label>@user.Email</label>
-                <br />
-            }
+            <div class="login-panel-title">Select Users</div>
+            <div class="panel-listbox" style="height:400px;">
+                @foreach (var user in Model)
+                {
+                    <div class="row10px"></div>
+                    <div class="row20px">
+                        <div class="cell10px"></div>
+                        <div class="cell20px">
+                            @Html.CheckBox("user-checkbox", false, new { @class = "center-vertical", @style = "margin:0px;" })
+                            @Html.HiddenFor(x => user.Id)
+                        </div>
+                        <div class="cellauto" style="text-align:left;">@user.Email</div>
+                    </div>
+                    <div class="row10px"></div>
+                }
+            </div>
+            <div class="row10px"></div>
         }
-        <br /><input type="submit" value="Select Camera Group(s)" />
+        <div class="row center">
+            <input type="submit" value="Select Camera Group(s)" class="btn btn-default" />
+        </div>
+        <div class="row10px"></div>
     }
 </div>

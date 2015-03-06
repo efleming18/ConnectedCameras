@@ -1,6 +1,7 @@
 ﻿.add-panel,
 .register-panel,
-.pick-panel {
+.pick-panel,
+.users-panel {
     margin-left:auto;
     margin-right:auto;
     margin-top:70px;
@@ -19,13 +20,15 @@
 .pick-panel {
     height:80%;
     width:800px;
-    margin-top:70px;
+}
+.users-panel {
+    width:300px;
 }
 .control-panel {
     border-right:2px dotted gray;
     background-color: #DBDADA;
 }
-.camera-picker-listbox {
+.panel-listbox {
     width:85%;
     height:80%;
     overflow:auto;

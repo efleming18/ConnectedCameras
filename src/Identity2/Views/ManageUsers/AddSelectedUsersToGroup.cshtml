@@ -14,7 +14,7 @@
             if (Model.SelectedUsers != null)
             {
                 foreach (var user in Model.SelectedUsers)
-                {
+                {    
                     @Html.CheckBox("user-checkbox", true)
                     @Html.HiddenFor(x => user.Id)
                     <label>@user.Email</label>
