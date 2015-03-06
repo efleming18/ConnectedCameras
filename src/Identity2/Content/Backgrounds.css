@@ -1,6 +1,8 @@
 ﻿.background-camera-pick,
 .background-camera-add,
-.background-camera-web {
+.background-camera-web,
+.background-manage-users,
+.background-add-to-group {
     width:100%;
     height:100%;
     min-width:700px;
@@ -16,4 +18,10 @@
 }
 .background-camera-web {
     background: no-repeat center url('../../Content/Images/CameraWeb.png');
+}
+.background-manage-users {
+    background: no-repeat center url('../Content/Images/UserPicking.png');
+}
+.background-add-to-group {
+    background: no-repeat center url('../Content/Images/UserGroups.png');
 }

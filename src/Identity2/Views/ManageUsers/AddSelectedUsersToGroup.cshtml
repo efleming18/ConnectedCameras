@@ -4,36 +4,38 @@
     ViewBag.Title = "AddSelectedUsersToGroup";
 }
 
-@if (Model != null)
-{
-    using (Html.BeginForm("AddSelectedUsersToGroup", "ManageUsers", FormMethod.Post))
+<div class="background-add-to-group">
+    @if (Model != null)
     {
-        <h3>You've selected the following users:</h3>
-        <br />
-        if (Model.SelectedUsers != null)
+        using (Html.BeginForm("AddSelectedUsersToGroup", "ManageUsers", FormMethod.Post))
         {
-            foreach (var user in Model.SelectedUsers)
-            {
-                @Html.CheckBox("user-checkbox", true)
-                @Html.HiddenFor(x => user.Id)
-                <label>@user.Email</label>
-            }
-        }
-        if (Model.CameraGroups != null)
-        {
-            <h3>All Available Camera Groups - Please Select ONE</h3>
+            <h3>You've selected the following users:</h3>
             <br />
-            foreach (var cameraGroup in Model.CameraGroups)
+            if (Model.SelectedUsers != null)
             {
-                @Html.CheckBox("camera-group-checkbox", false)
-                <label>@cameraGroup</label>
-                //Probably want to display a brief description about the camera group as well?
-                @Html.HiddenFor(x => cameraGroup)
-                <br />
+                foreach (var user in Model.SelectedUsers)
+                {
+                    @Html.CheckBox("user-checkbox", true)
+                    @Html.HiddenFor(x => user.Id)
+                    <label>@user.Email</label>
+                }
             }
-        }
+            if (Model.CameraGroups != null)
+            {
+                <h3>All Available Camera Groups - Please Select ONE</h3>
+                <br />
+                foreach (var cameraGroup in Model.CameraGroups)
+                {
+                    @Html.CheckBox("camera-group-checkbox", false)
+                    <label>@cameraGroup</label>
+                    //Probably want to display a brief description about the camera group as well?
+                    @Html.HiddenFor(x => cameraGroup)
+                    <br />
+                }
+            }
 
-        <br />
-        <input type="submit" value="Submit" />
+            <br />
+            <input type="submit" value="Submit" />
+        }
     }
-}
+</div>

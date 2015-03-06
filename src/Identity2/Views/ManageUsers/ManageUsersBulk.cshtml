@@ -5,18 +5,20 @@
 }
 
 <script src="~/Content/js/jquery.js"></script>
-<h2>List Of All Users - Select As Many As Desired</h2>
-@using (Html.BeginForm("ManageUsersBulk", "ManageUsers", FormMethod.Post))
-{
-    if (Model != null)
+<div class="background-manage-users">
+    <h2>List Of All Users - Select As Many As Desired</h2>
+    @using (Html.BeginForm("ManageUsersBulk", "ManageUsers", FormMethod.Post))
     {
-        foreach (var user in Model)
+        if (Model != null)
         {
-            @Html.CheckBox("user-checkbox", false)
-            @Html.HiddenFor(x => user.Id)
-            <label>@user.Email</label>
-            <br />
+            foreach (var user in Model)
+            {
+                @Html.CheckBox("user-checkbox", false)
+                @Html.HiddenFor(x => user.Id)
+                <label>@user.Email</label>
+                <br />
+            }
         }
+        <br /><input type="submit" value="Select Camera Group(s)" />
     }
-    <br /><input type="submit"  value="Select Camera Group(s)"/>
-}
+</div>
