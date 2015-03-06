@@ -9,32 +9,52 @@
     {
         using (Html.BeginForm("AddSelectedUsersToGroup", "ManageUsers", FormMethod.Post, new { @class = "groups-panel" }))
         {
-            <h3>Modifying Users:</h3>
-            <br />
-            if (Model.SelectedUsers != null)
-            {
-                foreach (var user in Model.SelectedUsers)
-                {    
-                    @Html.CheckBox("user-checkbox", true)
-                    @Html.HiddenFor(x => user.Id)
-                    <label>@user.Email</label>
-                }
-            }
-            if (Model.CameraGroups != null)
-            {
-                <h3>All Available Camera Groups - Please Select ONE</h3>
-                <br />
-                foreach (var cameraGroup in Model.CameraGroups)
-                {
-                    @Html.CheckBox("camera-group-checkbox", false)
-                    <label>@cameraGroup</label>
-                    //Probably want to display a brief description about the camera group as well?
-                    @Html.HiddenFor(x => cameraGroup)
-                    <br />
-                }
-            }
-
-            <br />
+            
+            <div class="login-panel-title">Modify User Groups</div>
+            <div class="row20px">
+                <div class="cell50percent" style="text-align:center;">Users</div>
+                <div class="cell50percent" style="text-align:center;">Camera groups</div>
+            </div>
+            <div class="row200px">
+                <div class="cell50percent">
+                    <div class="panel-listbox">
+                        @if (Model.SelectedUsers != null)
+                        {
+                            foreach (var user in Model.SelectedUsers)
+                            {
+                                <div class="row10px"></div>
+                                <div class="row20px">
+                                    <div class="cell10px"></div>
+                                    <div class="cell20px">
+                                        @Html.CheckBox("user-checkbox", false, new { @class = "center-vertical", @style = "margin:0px;" })
+                                        @Html.HiddenFor(x => user.Id)
+                                    </div>
+                                    <div class="cellauto" style="text-align:left;">@user.Email</div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="cell50percent">
+                    <div class="panel-listbox">
+                        @if (Model.CameraGroups != null)
+                        {
+                            foreach (var cameraGroup in Model.CameraGroups)
+                            {
+                                <div class="row10px"></div>
+                                <div class="row20px">
+                                    <div class="cell10px"></div>
+                                    <div class="cell20px">
+                                        @Html.CheckBox("camera-group-checkbox", false, new { @class = "center-vertical", @style = "margin:0px;" })
+                                        @Html.HiddenFor(x => cameraGroup)
+                                    </div>
+                                    <div class="cellauto" style="text-align:left">@cameraGroup</div>
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
             <input type="submit" value="Submit" class="btn btn-default" />
         }
     }
