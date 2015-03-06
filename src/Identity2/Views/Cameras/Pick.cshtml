@@ -26,53 +26,6 @@
             </div>
         }
     </div>
-    @*<h2 class="center">Camera Picker</h2>
-
-    @using (Html.BeginForm())
-    {
-        <div class="body-content center">
-            @for (int i = 1; i <= Model.AvailableCameras.Count; i++)
-            {
-                <div class="row150px" style="width:100%; border-top:1px solid black; border-bottom:1px solid black;">
-                    <div class="cell200px darker" style="width:250px; background-color:#50525C;">
-                        <img src="~/Content/Images/cat.gif" class="center-vertical" style="height:90%; width:auto;" />
-                    </div>
-                    <div class="cellauto">
-                        <div class="row dark-row" style="margin:0; background-color:#9EA4B8;">
-                            <div class="cell50percent" style="text-align:left;">Name:</div>
-                            <div class="cell50percent" style="text-align:right; font-weight:bold;">@Model.AvailableCameras[i - 1].CameraName</div>
-                        </div>
-                        <div class="row light" style="text-align:left; background-color:#D1D7EB">
-                            <div class="cell50percent" style="text-align:left;">Description:</div>
-                            <div class="cell50percent" style="text-align:right;">
-                                <input id="PostedCameras @i" name="PostedCameras.CameraIDs" value="@i" class="center-vertical checkboxjquery" type="checkbox" />
-                            </div>
-                        </div>
-                        <div class="row dark-row" style="text-align:left; background-color:#9EA4B8;">@Model.AvailableCameras[i - 1].Description</div>
-                        <div class="row light" style="background-color: #D1D7EB">
-                            <div class="cell50percent" style="text-align:left;">Camera Group:</div>
-                            <div class="cell50percent" style="text-align:right;">@Model.AvailableCameras[i - 1].CameraGroup</div>
-                        </div>
-                        <div class="row dark-row" style="background-color:#9EA4B8;">
-                            <div class="cell50percent" style="text-align:left;">Number of viewers:</div>
-                            <div class="cell50percent" style="text-align:right;">0</div>
-                        </div>
-                        <div class="row light" style="background-color: #D1D7EB">
-                            <div class="cell50percent" style="text-align:left;">Viewers with control:</div>
-                            <div class="cell50percent" style="text-align:right;">0</div>
-                        </div>
-                        <div class="row dark-row" style="background-color:#9EA4B8;">
-                            <div class="cell50percent" style="text-align:left;">Date Installed:</div>
-                            <div class="cell50percent" style="text-align:right;">12:00:00am</div>
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <br />
-            }
-        </div>
-        <input type="submit" value="Continue" class="btn btn-default" />
-    }*@
 </div>
     <script type="text/javascript" src="~/Scripts/cameraPicking.js"></script>
 

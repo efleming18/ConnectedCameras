@@ -16,7 +16,7 @@ namespace ConnectedCamerasWeb.Helpers
             {
                 case 1:
                     htmlString = string.Format("<div class='row100percent' style='background-color:black;'>" +
-                                                   "<div class='feed'>" +
+                                                   "<div class='feed center-vertical'>" +
                                                        "<div class='feed-content'>" +
                                                             "<img id='{0}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                        "</div>" +
@@ -26,10 +26,10 @@ namespace ConnectedCamerasWeb.Helpers
                     break;
                 case 2:
                     htmlString = string.Format("<div class='row50percent' style='background-color:black;'>" +
-                                                   "<img id='{0}' class='fill' src='../../Content/Images/cat.gif' />" +
+                                                   "<img id='{0}' class='fill center-vertical' src='../../Content/Images/cat.gif' />" +
                                                "</div>" +
                                                "<div class='row50percent' style='background-color:black;'>" +
-                                                   "<img id='{1}' class='fill' src='../../Content/Images/cat.gif' />" +
+                                                   "<img id='{1}' class='fill center-vertical' src='../../Content/Images/cat.gif' />" +
                                                "</div>",
                                                cameras[0].CameraName,
                                                cameras[1].CameraName);
@@ -37,14 +37,14 @@ namespace ConnectedCamerasWeb.Helpers
                 case 3:
                     htmlString = string.Format("<div class='row50percent' style='background-color:black;'>" + 
                                                    "<div class='cell50percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{0}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" + 
                                                    "<div class='cell50percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{1}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
@@ -61,14 +61,14 @@ namespace ConnectedCamerasWeb.Helpers
                 case 4:
                     htmlString = string.Format("<div class='row50percent' style='background-color:black;'>" + 
                                                    "<div class='cell50percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{0}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" + 
                                                    "<div class='cell50percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{1}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
@@ -77,14 +77,14 @@ namespace ConnectedCamerasWeb.Helpers
                                                "</div>" +
                                                "<div class='row50percent' style='background-color:black;'>" + 
                                                    "<div class='cell50percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{2}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" + 
                                                    "<div class='cell50percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{3}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
@@ -99,21 +99,21 @@ namespace ConnectedCamerasWeb.Helpers
                 case 5:
                     htmlString = string.Format("<div class='row50percent' style='background-color:black;'>" + 
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{0}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" + 
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{1}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" +
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{2}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
@@ -122,14 +122,14 @@ namespace ConnectedCamerasWeb.Helpers
                                                "</div>" +
                                                "<div class='row50percent' style='background-color:black;'>" +
                                                    "<div class='cell50percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{3}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" +
                                                    "<div class='cell50percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{4}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
@@ -145,21 +145,21 @@ namespace ConnectedCamerasWeb.Helpers
                 case 6:
                     htmlString = string.Format("<div class='row50percent' style='background-color:black;'>" + 
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{0}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" + 
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{1}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" +
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{2}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
@@ -168,21 +168,21 @@ namespace ConnectedCamerasWeb.Helpers
                                                "</div>" +
                                                "<div class='row50percent' style='background-color:black;'>" +
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{3}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" +
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{4}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
                                                        "</div>" +
                                                    "</div>" +
                                                    "<div class='cell33percent'>" +
-                                                       "<div class='feed'>" +
+                                                       "<div class='feed center-vertical'>" +
                                                            "<div class='feed-content'>" +
                                                                "<img id='{5}' class='fill' src='../../Content/Images/cat.gif' />" +
                                                            "</div>" +
