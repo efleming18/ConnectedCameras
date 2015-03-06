@@ -31,6 +31,9 @@
     overflow:auto;
     margin:0 auto;
     text-align:center;
+    box-shadow:inset 2px 5px 20px #555;
+    border-radius: 5px;
+    background-color: #F4F4F4;
 }
 .login-panel {
     height:100%;
