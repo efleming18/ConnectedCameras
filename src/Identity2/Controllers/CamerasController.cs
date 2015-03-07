@@ -47,6 +47,30 @@ namespace ConnectedCamerasWeb.Controllers
         }
 
         [Authorize]
+        public ActionResult Remove()
+        {
+            var model = new CameraPickerViewModel();
+            model.SelectedCameras = new List<Camera>();
+            model.AvailableCameras = _db.Cameras.ToList();
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<ActionResult> Remove(PostedCameras postedCameras) 
+        {
+            if (postedCameras.CameraIDs == null)
+                return RedirectToAction("Remove");
+
+            var camerasToRemove = _db.Cameras.Where(dbc => postedCameras.CameraIDs.Any(sId => sId == dbc.Id)).ToList();
+            _db.Cameras.RemoveRange(camerasToRemove);
+            await _db.SaveChangesAsync();
+
+            var model = new CameraPickerViewModel();
+            model.SelectedCameras = new List<Camera>();
+            model.AvailableCameras = _db.Cameras.ToList();
+            return View(model);
+        } 
+
+        [Authorize]
         public ActionResult LiveFeed(string id = "1")
         {
             var ticket = new FormsAuthenticationTicket(1, "ticket", DateTime.Now, DateTime.Now.AddMinutes(1), true, FormsAuthentication.FormsCookiePath);
