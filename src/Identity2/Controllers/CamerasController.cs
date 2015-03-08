@@ -18,9 +18,7 @@ namespace ConnectedCamerasWeb.Controllers
         [Authorize]
         public ActionResult Pick()
         {
-            var model = new CameraPickerViewModel();
-            model.SelectedCameras = new List<Camera>();
-            model.AvailableCameras = _db.Cameras.ToList();
+            var model = _db.Cameras.ToList();
             return View(model);
         }
         [HttpPost]

@@ -1,5 +1,5 @@
 ﻿@using MvcCheckBoxList.Model
-@model ConnectedCamerasWeb.ViewModels.Cameras.CameraPickerViewModel
+@model IEnumerable<ConnectedCamerasWeb.Models.Camera>
 
 @{
     ViewBag.Title = "CameraPicker";
@@ -12,21 +12,21 @@
         <div class="login-panel-title">Pick Cameras</div>
         
         <div class="panel-listbox">
-        @for (int i = 0; i < Model.AvailableCameras.Count; i++)
+        @foreach (var camera in Model)
         {
             <div class="row100px" style="margin-top:10px; margin-bottom:10px;">
                 <div class="cell10percent">
-                    <input name="selectedCameraIds" type="checkbox" id="@Model.AvailableCameras[i].CameraName" value="@Model.AvailableCameras[i].Id" />
+                    <input name="selectedCameraIds" type="checkbox" id="@camera.CameraName" value="@camera.Id" />
                 </div>
                 <div class="cell30percent" style="background-color:black;">
 
                 </div>
                 <div class="cellauto" style="text-align:left;">
-                    <div class="row">@Model.AvailableCameras[i].CameraName</div>
-                    <div class="row">@Model.AvailableCameras[i].Description</div>
+                    <div class="row">@camera.CameraName</div>
+                    <div class="row">@camera.Description</div>
                     <div class="row">
                         <div class="cell50px">URL:</div>
-                        <div class="cellauto">@Model.AvailableCameras[i].CameraUrl</div>
+                        <div class="cellauto">@camera.CameraUrl</div>
                     </div>
                 </div>
             </div>
