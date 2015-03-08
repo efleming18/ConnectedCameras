@@ -25,12 +25,12 @@ namespace ConnectedCamerasWeb.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Pick(PostedCameras postedCameras)
+        public ActionResult Pick(int[] selectedCameraIds)
         {
-            if (postedCameras.CameraIDs == null)
+            if (selectedCameraIds == null)
                 return RedirectToAction("Pick");
-            
-            return RedirectToAction("LiveFeed", "Cameras", new { id = postedCameras.CameraIDs.Stringify() });
+            TempData["selectedCameraIds"] = selectedCameraIds;
+            return RedirectToAction("LiveFeed");
         }
 
         [Authorize]
@@ -84,7 +84,7 @@ namespace ConnectedCamerasWeb.Controllers
                 Domain = FormsAuthentication.CookieDomain
             };
             Response.AppendCookie(cookie);
-            int[] cameraIds = id.UnStringify();
+            int[] cameraIds = TempData["selectedCameraIds"] as int[];
             var cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
             return View(cameras);
         }

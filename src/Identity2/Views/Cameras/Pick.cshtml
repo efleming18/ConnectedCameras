@@ -16,7 +16,7 @@
         {
             <div class="row100px" style="margin-top:10px; margin-bottom:10px;">
                 <div class="cell10percent">
-                    <input id="PostedCameras @i" name="PostedCameras.CameraIDs" value="@(i + 1)" type="checkbox" class="center-vertical" />
+                    <input name="selectedCameraIds" type="checkbox" id="@Model.AvailableCameras[i].CameraName" value="@Model.AvailableCameras[i].Id" />
                 </div>
                 <div class="cell30percent" style="background-color:black;">
 
