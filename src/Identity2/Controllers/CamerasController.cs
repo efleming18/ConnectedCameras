@@ -2,7 +2,6 @@
 using ConnectedCamerasWeb.Infrastructure.Data;
 using ConnectedCamerasWeb.Models;
 using ConnectedCamerasWeb.ViewModels.Cameras;
-using ConnectedCamerasWeb.ExtensionMethods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
