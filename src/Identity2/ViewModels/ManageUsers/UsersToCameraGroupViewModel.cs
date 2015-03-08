@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ConnectedCamerasWeb.Models;
 
-namespace Identity2.ViewModels.ManageUsers
+namespace ConnectedCamerasWeb.ViewModels.ManageUsers
 {
     public class UsersToCameraGroupViewModel
     {

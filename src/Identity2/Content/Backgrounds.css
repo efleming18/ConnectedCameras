@@ -1,5 +1,6 @@
 ﻿.background-camera-pick,
 .background-camera-add,
+.background-camera-remove,
 .background-camera-web,
 .background-manage-users,
 .background-add-to-group {
@@ -15,6 +16,9 @@
 }
 .background-camera-add {
     background: no-repeat center url('../../Content/Images/CameraWeb.png');
+}
+.background-camera-remove {
+    background: no-repeat center url('../../Content/Images/CameraDispose.png')
 }
 .background-camera-web {
     background: no-repeat center url('../../Content/Images/CameraWeb.png');

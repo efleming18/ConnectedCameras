@@ -4,10 +4,9 @@ using ConnectedCamerasWeb.Infrastructure.Data;
 using System.Linq;
 using System.Web.Mvc;
 using ConnectedCamerasWeb.Models;
-using Identity2.Models;
-using Identity2.ViewModels.ManageUsers;
+using ConnectedCamerasWeb.ViewModels.ManageUsers;
 
-namespace Identity2.Controllers
+namespace ConnectedCamerasWeb.Controllers
 {
     public class ManageUsersController : Controller
     {

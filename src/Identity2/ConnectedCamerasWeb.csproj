@@ -257,6 +257,7 @@
     <Content Include="Content\Images\Arrow.png" />
     <Content Include="Content\Images\asian.gif" />
     <Content Include="Content\Images\binary.png" />
+    <Content Include="Content\Images\CameraDispose.png" />
     <Content Include="Content\Images\CameraPicking-wide.png" />
     <Content Include="Content\Images\CameraWeb.png" />
     <Content Include="Content\Images\cat.gif" />
@@ -345,6 +346,7 @@
     <Content Include="Views\ManageUsers\ManageUsersBulk.cshtml" />
     <Content Include="Views\ManageUsers\AddSelectedUsersToGroup.cshtml" />
     <Content Include="Views\ManageUsers\AddSelectedUsers.cshtml" />
+    <Content Include="Views\Cameras\Remove.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

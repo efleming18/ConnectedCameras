@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ConnectedCamerasWeb.Models;
 
-namespace Identity2.Models
+namespace ConnectedCamerasWeb.Models
 {
     public class ManageUserModel
     {
