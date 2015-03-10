@@ -78,6 +78,7 @@ namespace ConnectedCamerasWeb.Controllers
             Response.AppendCookie(cookie);
             int[] cameraIds = TempData["selectedCameraIds"] as int[];
             var cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
+            TempData["selectedCameraIds"] = cameraIds; //For the sake of refreshing the screen
             return View(cameras);
         }
 
