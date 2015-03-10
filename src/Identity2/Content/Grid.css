@@ -119,7 +119,9 @@
 .row100px,
 .row150px,
 .row200px,
-.row250px {
+.row250px,
+.row300px,
+.row400px {
 	width:100%;
 	clear:both;
     margin:0;
@@ -183,4 +185,10 @@
 }
 .row250px {
     height:250px;
+}
+.row300px {
+    height:300px;
+}
+.row400px {
+    height:400px;
 }

@@ -34,7 +34,7 @@
 }
 .panel-listbox {
     width:85%;
-    height:80%;
+    height:100%;
     overflow:auto;
     margin:0 auto;
     text-align:center;

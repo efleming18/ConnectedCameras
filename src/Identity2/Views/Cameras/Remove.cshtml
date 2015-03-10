@@ -6,32 +6,34 @@
 <div class="background-camera-remove">
     @using (Html.BeginForm("Remove", "Cameras", FormMethod.Post, new { @class = "pick-panel" }))
     { 
-    <div class="login-panel-title">Remove Cameras</div>
-    <div class="panel-listbox">
-        @foreach(var camera in Model)
-        {
-            <div class="row100px" style="margin-top:10px; margin-bottom:10px;">
-                <div class="cell10percent">
-                    <input name="selectedCameraIds" type="checkbox" id="@camera.CameraName" value="@camera.Id" class="center-vertical" />
-                </div>
-                <div class="cell30percent" style="background-color:black;">
+        <div class="login-panel-title">Remove Cameras</div>
+        <div class="row80percent">
+            <div class="panel-listbox">
+                @foreach (var camera in Model)
+                {
+                    <div class="row100px" style="margin-top:10px; margin-bottom:10px;">
+                        <div class="cell10percent">
+                            <input name="selectedCameraIds" type="checkbox" id="@camera.CameraName" value="@camera.Id" class="center-vertical" />
+                        </div>
+                        <div class="cell30percent" style="background-color:black;">
 
-                </div>
-                <div class="cellauto" style="text-align:left;">
-                    <div class="row">@camera.CameraName</div>
-                    <div class="row">@camera.Description</div>
-                    <div class="row">
-                        <div class="cell50px">URL:</div>
-                        <div class="cellauto">@camera.CameraUrl</div>
+                        </div>
+                        <div class="cellauto" style="text-align:left;">
+                            <div class="row">@camera.CameraName</div>
+                            <div class="row">@camera.Description</div>
+                            <div class="row">
+                                <div class="cell50px">URL:</div>
+                                <div class="cellauto">@camera.CameraUrl</div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
-        }
-    </div>
-    <div class="row10px"></div>
-    <div class="row center">
-        <input type="submit" value="Remove" class="btn btn-default" />
-    </div>
+        </div>
+        <div class="row10px"></div>
+        <div class="row center">
+            <input type="submit" value="Remove" class="btn btn-default" />
+        </div>
     }
 </div>
 
