@@ -1,0 +1,11 @@
+﻿.camera-title {
+    font-weight:bold;
+    font-size:18px;
+}
+.camera-attribute {
+    font-weight: bold;
+}
+.camera-description {
+    font-size:12px;
+    font-style:italic;
+}

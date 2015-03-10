@@ -266,6 +266,7 @@
     <Content Include="Content\js\jquery.js" />
     <Content Include="Content\PageFormatting.css" />
     <Content Include="Content\Panels.css" />
+    <Content Include="Content\PickerStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
