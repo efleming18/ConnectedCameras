@@ -1,4 +1,5 @@
 ﻿var feed = $('.fill');
+var browserWindow = $(window);
 var cameraInput = $('.camera-input');
 
 var arrowMouseLeave = "../../Content/Images/Arrow.png";
@@ -12,6 +13,9 @@ $(document).ready(function () {
     feed.click(function () {
         $(document).find('.fill').css('border', '');
         $(this).css('border', 'solid 2px red');
+    });
+    browserWindow.on('beforeunload', function () {
+        releaseCameraLocks();
     });
     cameraInput.mouseover(function () {
         $(this).attr("src", arrowMouseOver);
@@ -38,4 +42,7 @@ function setAttributesPanelHeight() {
     var controlsHeight = $('#controls').height();
     var attributeHeight = totalHeight - controlsHeight;
     $('#attributes').height(attributeHeight);
+}
+function releaseCameraLocks() {
+    $.ajax({});
 }
