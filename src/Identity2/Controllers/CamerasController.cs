@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace ConnectedCamerasWeb.Controllers
 {
@@ -67,8 +68,15 @@ namespace ConnectedCamerasWeb.Controllers
         public ActionResult LiveFeed()
         {
             Response.AppendCookie(SetCookie());
+
             int[] cameraIds = TempData["selectedCameraIds"] as int[];
-            bool allowOtherViewers = Convert.ToBoolean(TempData["allowOtherViewers"]);
+            if (!Convert.ToBoolean(TempData["allowOtherViewers"])) 
+            {
+                foreach (var id in cameraIds)
+                    _db.CameraLocks.Add(new CameraLock { CameraId = id, UserId = User.Identity.GetUserId(), TimeStamp = DateTime.UtcNow});
+                _db.SaveChanges();
+            }
+
             var cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
             TempData["selectedCameraIds"] = cameraIds; //For the sake of refreshing the screen
             return View(cameras);

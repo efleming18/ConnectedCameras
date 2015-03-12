@@ -20,10 +20,11 @@ namespace Identity2.Migrations
             CreateTable("dbo.CameraLock",
                 c => new
                 {
+                    Id = c.Int(nullable:false, identity:true),
                     UserId = c.String(nullable: false, maxLength: 128),
-                    CameraId = c.Int(nullable: false, identity: true),
+                    CameraId = c.Int(nullable: false),
                     TimeStamp = c.DateTime(nullable: true)
-                }).PrimaryKey(k => k.CameraId);
+                }).PrimaryKey(k => k.Id);
         }
         
         public override void Down()

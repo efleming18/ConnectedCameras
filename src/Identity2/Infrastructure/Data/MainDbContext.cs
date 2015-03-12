@@ -13,6 +13,7 @@ namespace ConnectedCamerasWeb.Infrastructure.Data
         }
 
         public DbSet<Camera> Cameras { get; set; }
+        public DbSet<CameraLock> CameraLocks { get; set; }
         public DbSet<AspNetRole> DefinedRoles { get; set; }
         public DbSet<AspNetUserRole> UserRoles { get; set; }
         public DbSet<AspNetUser> Users { get; set; }

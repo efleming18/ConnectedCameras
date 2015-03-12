@@ -224,6 +224,7 @@
     <Compile Include="Models\AspNetUserRole.cs" />
     <Compile Include="Models\AspNetUsers.cs" />
     <Compile Include="Models\Camera.cs" />
+    <Compile Include="Models\CameraLocks.cs" />
     <Compile Include="Models\ManageUserModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
