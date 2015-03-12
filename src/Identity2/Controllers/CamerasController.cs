@@ -21,11 +21,12 @@ namespace ConnectedCamerasWeb.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Pick(int[] selectedCameraIds)
+        public ActionResult Pick(int[] selectedCameraIds, bool allowOtherViewers = false)
         {
             if (selectedCameraIds == null)
                 return RedirectToAction("Pick");
             TempData["selectedCameraIds"] = selectedCameraIds;
+            TempData["allowOtherViewers"] = allowOtherViewers;
             return RedirectToAction("LiveFeed");
         }
 
@@ -63,11 +64,20 @@ namespace ConnectedCamerasWeb.Controllers
         } 
 
         [Authorize]
-        public ActionResult LiveFeed(string id = "1")
+        public ActionResult LiveFeed()
+        {
+            Response.AppendCookie(SetCookie());
+            int[] cameraIds = TempData["selectedCameraIds"] as int[];
+            bool allowOtherViewers = Convert.ToBoolean(TempData["allowOtherViewers"]);
+            var cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
+            TempData["selectedCameraIds"] = cameraIds; //For the sake of refreshing the screen
+            return View(cameras);
+        }
+        private HttpCookie SetCookie() 
         {
             var ticket = new FormsAuthenticationTicket(1, "ticket", DateTime.Now, DateTime.Now.AddMinutes(1), true, FormsAuthentication.FormsCookiePath);
             var encTicket = FormsAuthentication.Encrypt(ticket);
-            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket)
+            return new HttpCookie(FormsAuthentication.FormsCookieName, encTicket)
             {
                 HttpOnly = true,
                 Secure = FormsAuthentication.RequireSSL,
@@ -75,11 +85,6 @@ namespace ConnectedCamerasWeb.Controllers
                 Expires = DateTime.Now.AddMinutes(1),
                 Domain = FormsAuthentication.CookieDomain
             };
-            Response.AppendCookie(cookie);
-            int[] cameraIds = TempData["selectedCameraIds"] as int[];
-            var cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
-            TempData["selectedCameraIds"] = cameraIds; //For the sake of refreshing the screen
-            return View(cameras);
         }
 
         protected override void Dispose(bool disposing)
