@@ -16,6 +16,14 @@ namespace Identity2.Migrations
                     CameraUrl = c.String(nullable: false),
                     Description = c.String(nullable: true, maxLength: 80)
                 }).PrimaryKey(t => t.Id);
+
+            CreateTable("dbo.CameraLock",
+                c => new
+                {
+                    UserId = c.String(nullable: false, maxLength: 128),
+                    CameraId = c.Int(nullable: false, identity: true),
+                    TimeStamp = c.DateTime(nullable: true)
+                }).PrimaryKey(k => k.CameraId);
         }
         
         public override void Down()
