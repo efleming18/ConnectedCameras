@@ -12,28 +12,19 @@ namespace ConnectedCamerasWeb.Controllers
     {
         private MainDbContext _db = new MainDbContext();
 
+        [Authorize]
         public ActionResult ManageUsersBulk()
         {
             var userlist = _db.Users.ToList();
-            var userModel = new ManageUserModel();
-            userModel.AllUsers = userlist;
-            _db.SaveChanges();
             return View(userlist);
         }
-
         [HttpPost]
-        public ActionResult ManageUsersBulk(FormCollection formCollection)
+        public ActionResult ManageUsersBulk(string[] selectedUserIds)
         {
-            var usersSelected = _db.Users.ToList();
-            var selectedUsers = formCollection[1].Split(',');
-            var listOfUsersSelected = new List<AspNetUser>();
-            if (formCollection != null)
-            {
-                var listOfSelectedBooleans = formCollection[0].Split(',');
-                listOfUsersSelected = AddOnlySelectedUsers(selectedUsers, listOfSelectedBooleans, usersSelected);
-            }
-            
-            return AddSelectedUsersToGroup(listOfUsersSelected, null);
+            if (selectedUserIds == null)
+                return RedirectToAction("ManageUsersBulk");
+            var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
+            return AddSelectedUsersToGroup(selectedUsers, null);
         }
         
         [HttpPost]
@@ -123,6 +114,11 @@ namespace ConnectedCamerasWeb.Controllers
                 }
             }
             return listToReturn;
+        }
+        protected override void Dispose(bool disposing)
+        {
+            _db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

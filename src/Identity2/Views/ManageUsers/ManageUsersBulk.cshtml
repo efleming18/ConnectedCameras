@@ -18,8 +18,7 @@
                     <div class="row20px">
                         <div class="cell10px"></div>
                         <div class="cell20px">
-                            @Html.CheckBox("user-checkbox", false, new { @class = "center-vertical", @style = "margin:0px;" })
-                            @Html.HiddenFor(x => user.Id)
+                            <input name="selectedUserIds" type="checkbox" value="@user.Id" class="center-vertical" style="margin:0px;" />
                         </div>
                         <div class="cellauto" style="text-align:left;">@user.Email</div>
                     </div>
