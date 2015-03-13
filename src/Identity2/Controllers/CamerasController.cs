@@ -96,7 +96,6 @@ namespace ConnectedCamerasWeb.Controllers
                 Domain = FormsAuthentication.CookieDomain
             };
         }
-
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();
