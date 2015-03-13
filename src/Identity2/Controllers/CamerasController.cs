@@ -70,7 +70,8 @@ namespace ConnectedCamerasWeb.Controllers
             Response.AppendCookie(SetCookie());
 
             int[] cameraIds = TempData["selectedCameraIds"] as int[];
-            if (!Convert.ToBoolean(TempData["allowOtherViewers"])) 
+            bool allowOtherViewers = Convert.ToBoolean(TempData["allowOtherViewers"]);
+            if (!allowOtherViewers) 
             {
                 foreach (var id in cameraIds)
                     _db.CameraLocks.Add(new CameraLock { CameraId = id, UserId = User.Identity.GetUserId(), TimeStamp = DateTime.UtcNow});
@@ -79,6 +80,7 @@ namespace ConnectedCamerasWeb.Controllers
 
             var cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
             TempData["selectedCameraIds"] = cameraIds; //For the sake of refreshing the screen
+            TempData["allowOtherViewers"] = allowOtherViewers;
             return View(cameras);
         }
         private HttpCookie SetCookie() 

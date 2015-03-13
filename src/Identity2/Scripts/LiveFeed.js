@@ -44,5 +44,6 @@ function setAttributesPanelHeight() {
     $('#attributes').height(attributeHeight);
 }
 function releaseCameraLocks() {
-    $.ajax({});
+    //Get all camera div ids and pass to controller.
+
 }
