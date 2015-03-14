@@ -13,7 +13,7 @@
             <div class="login-panel-title">Modify User Groups</div>
             <div class="row20px">
                 <div class="cell50percent" style="text-align:center;">Users</div>
-                <div class="cell50percent" style="text-align:center;">Camera groups (choose one)</div>
+                <div class="cell50percent" style="text-align:center;">Camera groups</div>
             </div>
             <div class="row400px">
                 <div class="cell50percent">
@@ -26,8 +26,9 @@
                                 <div class="row20px">
                                     <div class="cell10px"></div>
                                     <div class="cell20px">
-                                        @Html.CheckBox("user-checkbox", true, new { @class = "center-vertical", @style = "margin:0px;" })
-                                        @Html.HiddenFor(x => user.Id)
+                                        @*@Html.CheckBox("user-checkbox", true, new { @class = "center-vertical", @style = "margin:0px;" })*@
+                                        @*@Html.HiddenFor(x => user.Id)*@
+                                        @Html.Hidden("userIds", user.Id)
                                     </div>
                                     <div class="cellauto" style="text-align:left;">@user.Email</div>
                                 </div>
@@ -45,8 +46,9 @@
                                 <div class="row20px">
                                     <div class="cell10px"></div>
                                     <div class="cell20px">
-                                        @Html.CheckBox("camera-group-checkbox", false, new { @class = "center-vertical", @style = "margin:0px;" })
-                                        @Html.HiddenFor(x => cameraGroup)
+                                        @*@Html.CheckBox("camera-group-checkbox", false, new { @class = "center-vertical", @style = "margin:0px;" })
+                                        @Html.HiddenFor(x => cameraGroup)*@
+                                        @Html.RadioButton("selectedGroup", cameraGroup)
                                     </div>
                                     <div class="cellauto" style="text-align:left">@cameraGroup</div>
                                 </div>

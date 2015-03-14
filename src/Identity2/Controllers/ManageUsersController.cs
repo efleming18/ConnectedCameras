@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using ConnectedCamerasWeb.Models;
 using ConnectedCamerasWeb.ViewModels.ManageUsers;
+using System.Threading.Tasks;
 
 namespace ConnectedCamerasWeb.Controllers
 {
@@ -23,31 +24,60 @@ namespace ConnectedCamerasWeb.Controllers
         {
             if (selectedUserIds == null)
                 return RedirectToAction("ManageUsersBulk");
-            var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
-            return AddSelectedUsersToGroup(selectedUsers, null);
+            //var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
+            TempData["selectedUsers"] = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
+            //return AddSelectedUsersToGroup(selectedUsers, null);
+            return RedirectToAction("AddSelectedUsersToGroup");
         }
-        
-        [HttpPost]
-        public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected, FormCollection formCollection)
+
+        [Authorize]
+        public ActionResult AddSelectedUsersToGroup()
         {
             var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
-            var viewModel = new UsersToCameraGroupViewModel();
-
-            if (formCollection != null)
+            var viewModel = new UsersToCameraGroupViewModel() 
             {
-                HandleAddingUsersToSpecificCameraGroup(formCollection);
-                return RedirectToAction("ManageUsersBulk");
-            }
-            
-            if (usersSelected != null)
-            {
-                viewModel.CameraGroups = availableCameraGroups;
-                viewModel.SelectedUsers = usersSelected;
-                return View("AddSelectedUsersToGroup", viewModel);
-            }
-
-            return View("AddSelectedUsersToGroup", viewModel);
+                CameraGroups = availableCameraGroups,
+                SelectedUsers = TempData["selectedUsers"] as List<AspNetUser>
+            };
+            return View(viewModel);
         }
+        [HttpPost]
+        public async Task<ActionResult> AddSelectedUsersToGroup(string[] userIds, int selectedGroup = 0)
+        {
+            var selectedUsers = _db.Users.Where(dbu => userIds.Any(sId => sId == dbu.Id)).ToList();
+            if (selectedGroup == 0) //Assuming we do not have a group 0
+            {
+                var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
+                return View(new UsersToCameraGroupViewModel() { CameraGroups = availableCameraGroups, SelectedUsers = selectedUsers });
+            }
+            foreach (var user in selectedUsers)
+            {
+                user.CameraGroup = selectedGroup;
+                await _db.SaveChangesAsync();
+            }
+            return RedirectToAction("ManageUsersBulk");
+        }
+        //[HttpPost]
+        //public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected, FormCollection formCollection)
+        //{
+        //    var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
+        //    var viewModel = new UsersToCameraGroupViewModel();
+
+        //    if (formCollection != null)
+        //    {
+        //        HandleAddingUsersToSpecificCameraGroup(formCollection);
+        //        return RedirectToAction("ManageUsersBulk");
+        //    }
+            
+        //    if (usersSelected != null)
+        //    {
+        //        viewModel.CameraGroups = availableCameraGroups;
+        //        viewModel.SelectedUsers = usersSelected;
+        //        return View("AddSelectedUsersToGroup", viewModel);
+        //    }
+
+        //    return View("AddSelectedUsersToGroup", viewModel);
+        //}
 
         //Pull these private functions out in to a "Helper" or "Manager" class.
         private void HandleAddingUsersToSpecificCameraGroup(FormCollection formCollection)
