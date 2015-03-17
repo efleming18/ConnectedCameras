@@ -20,20 +20,9 @@ namespace ConnectedCamerasWeb.Controllers
             var userlist = _db.Users.ToList();
             return View(userlist);
         }
-        //[HttpPost]
-        //[MultipleButton(Name = "action", Argument = "ManageUsersBulk")]
-        //public ActionResult ManageUsersBulk(string[] selectedUserIds)
-        //{
-        //    if (selectedUserIds == null)
-        //        return RedirectToAction("ManageUsersBulk");
-        //    //var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
-        //    TempData["selectedUsers"] = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).OrderBy(dbu => dbu.Email).ToList();
-        //    //return AddSelectedUsersToGroup(selectedUsers, null);
-        //    return RedirectToAction("AddSelectedUsersToGroup");
-        //}
         [HttpPost]
-        [MultipleButton(Name = "action", Argument = "Priviledges")]
-        public ActionResult Priviledges(string[] selectedUserIds)
+        [MultipleButton(Name = "action", Argument = "Privileges")]
+        public ActionResult Privileges(string[] selectedUserIds)
         {
             if (selectedUserIds == null)
                 return RedirectToAction("ManageUsersBulk");

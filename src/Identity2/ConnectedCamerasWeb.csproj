@@ -349,6 +349,7 @@
     <Content Include="Views\ManageUsers\AddSelectedUsersToGroup.cshtml" />
     <Content Include="Views\ManageUsers\AddSelectedUsers.cshtml" />
     <Content Include="Views\Cameras\Remove.cshtml" />
+    <Content Include="Views\ManageUsers\Privileges.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
