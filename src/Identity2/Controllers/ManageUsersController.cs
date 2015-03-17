@@ -25,7 +25,7 @@ namespace ConnectedCamerasWeb.Controllers
             if (selectedUserIds == null)
                 return RedirectToAction("ManageUsersBulk");
             //var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
-            TempData["selectedUsers"] = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
+            TempData["selectedUsers"] = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).OrderBy(dbu => dbu.Email).ToList();
             //return AddSelectedUsersToGroup(selectedUsers, null);
             return RedirectToAction("AddSelectedUsersToGroup");
         }
