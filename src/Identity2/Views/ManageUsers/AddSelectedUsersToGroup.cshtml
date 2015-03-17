@@ -26,8 +26,6 @@
                                 <div class="row20px">
                                     <div class="cell10px"></div>
                                     <div class="cell20px">
-                                        @*@Html.CheckBox("user-checkbox", true, new { @class = "center-vertical", @style = "margin:0px;" })*@
-                                        @*@Html.HiddenFor(x => user.Id)*@
                                         @Html.Hidden("userIds", user.Id)
                                     </div>
                                     <div class="cellauto" style="text-align:left;">@user.Email</div>
@@ -46,8 +44,6 @@
                                 <div class="row20px">
                                     <div class="cell10px"></div>
                                     <div class="cell20px">
-                                        @*@Html.CheckBox("camera-group-checkbox", false, new { @class = "center-vertical", @style = "margin:0px;" })
-                                        @Html.HiddenFor(x => cameraGroup)*@
                                         @Html.RadioButton("selectedGroup", cameraGroup)
                                     </div>
                                     <div class="cellauto" style="text-align:left">@cameraGroup</div>
