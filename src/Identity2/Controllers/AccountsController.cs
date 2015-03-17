@@ -30,7 +30,7 @@ namespace ConnectedCamerasWeb.Controllers
         }
 
         // GET: Accounts
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var accounts = _accountsRepository.GetAllAccounts();
             return View(accounts);

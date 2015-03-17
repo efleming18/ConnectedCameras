@@ -48,12 +48,11 @@ namespace ConnectedCamerasWeb.Controllers
 
             var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).OrderBy(dbu => dbu.Email).ToList();
             var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
-            var viewModel = new UsersToCameraGroupViewModel() 
+            return View(new UsersToCameraGroupViewModel() 
             {
                 CameraGroups = availableCameraGroups,
                 SelectedUsers = selectedUsers
-            };
-            return View(viewModel);
+            });
         }
         [HttpPost]
         public async Task<ActionResult> AddSelectedUsersToGroup(string[] userIds, int selectedGroup = 0)

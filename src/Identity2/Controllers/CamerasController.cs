@@ -21,16 +21,6 @@ namespace ConnectedCamerasWeb.Controllers
             var model = _db.Cameras.ToList();
             return View(model);
         }
-        [HttpPost]
-        public ActionResult Pick(int[] selectedCameraIds, bool allowOtherViewers = false)
-        {
-            if (selectedCameraIds == null)
-                return RedirectToAction("Pick");
-            TempData["selectedCameraIds"] = selectedCameraIds;
-            TempData["allowOtherViewers"] = allowOtherViewers;
-            return RedirectToAction("LiveFeed");
-        }
-
         [Authorize]
         public ActionResult Add()
         {
@@ -62,25 +52,18 @@ namespace ConnectedCamerasWeb.Controllers
 
             var model = _db.Cameras.ToList();
             return View(model);
-        } 
-
-        [Authorize]
-        public ActionResult LiveFeed()
+        }
+        [HttpPost]
+        public ActionResult LiveFeed(int[] selectedCameraIds, bool allowOtherViewers = false)
         {
             Response.AppendCookie(SetCookie());
-
-            int[] cameraIds = TempData["selectedCameraIds"] as int[];
-            bool allowOtherViewers = Convert.ToBoolean(TempData["allowOtherViewers"]);
-            if (!allowOtherViewers) 
+            if (!allowOtherViewers)
             {
-                foreach (var id in cameraIds)
-                    _db.CameraLocks.Add(new CameraLock { CameraId = id, UserId = User.Identity.GetUserId(), TimeStamp = DateTime.UtcNow});
+                foreach (var id in selectedCameraIds)
+                    _db.CameraLocks.Add(new CameraLock { CameraId = id, UserId = User.Identity.GetUserId(), TimeStamp = DateTime.UtcNow });
                 _db.SaveChanges();
             }
-
-            var cameras = _db.Cameras.Where(dbc => cameraIds.Any(sId => sId == dbc.Id)).ToList();
-            TempData["selectedCameraIds"] = cameraIds; //For the sake of refreshing the screen
-            TempData["allowOtherViewers"] = allowOtherViewers;
+            var cameras = _db.Cameras.Where(dbc => selectedCameraIds.Any(sId => sId == dbc.Id)).ToList();
             return View(cameras);
         }
         private HttpCookie SetCookie() 
