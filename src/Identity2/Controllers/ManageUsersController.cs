@@ -20,32 +20,38 @@ namespace ConnectedCamerasWeb.Controllers
             var userlist = _db.Users.ToList();
             return View(userlist);
         }
-        [HttpPost]
-        [MultipleButton(Name = "action", Argument = "ManageUsersBulk")]
-        public ActionResult ManageUsersBulk(string[] selectedUserIds)
-        {
-            if (selectedUserIds == null)
-                return RedirectToAction("ManageUsersBulk");
-            //var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
-            TempData["selectedUsers"] = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).OrderBy(dbu => dbu.Email).ToList();
-            //return AddSelectedUsersToGroup(selectedUsers, null);
-            return RedirectToAction("AddSelectedUsersToGroup");
-        }
+        //[HttpPost]
+        //[MultipleButton(Name = "action", Argument = "ManageUsersBulk")]
+        //public ActionResult ManageUsersBulk(string[] selectedUserIds)
+        //{
+        //    if (selectedUserIds == null)
+        //        return RedirectToAction("ManageUsersBulk");
+        //    //var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).ToList();
+        //    TempData["selectedUsers"] = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).OrderBy(dbu => dbu.Email).ToList();
+        //    //return AddSelectedUsersToGroup(selectedUsers, null);
+        //    return RedirectToAction("AddSelectedUsersToGroup");
+        //}
         [HttpPost]
         [MultipleButton(Name = "action", Argument = "Priviledges")]
         public ActionResult Priviledges(string[] selectedUserIds)
         {
+            if (selectedUserIds == null)
+                return RedirectToAction("ManageUsersBulk");
             return View();
         }
-
-        [Authorize]
-        public ActionResult AddSelectedUsersToGroup()
+        [HttpPost]
+        [MultipleButton(Name = "action", Argument = "AddSelectedUsersToGroup")]
+        public ActionResult AddSelectedUsersToGroup(string[] selectedUserIds)
         {
+            if (selectedUserIds == null)
+                return RedirectToAction("ManageUsersBulk");
+
+            var selectedUsers = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).OrderBy(dbu => dbu.Email).ToList();
             var availableCameraGroups = _db.Cameras.ToList().Select(x => x.CameraGroup).Distinct();
             var viewModel = new UsersToCameraGroupViewModel() 
             {
                 CameraGroups = availableCameraGroups,
-                SelectedUsers = TempData["selectedUsers"] as List<AspNetUser>
+                SelectedUsers = selectedUsers
             };
             return View(viewModel);
         }
