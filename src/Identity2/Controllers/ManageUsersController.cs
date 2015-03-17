@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web.Mvc;
 using ConnectedCamerasWeb.Models;
 using ConnectedCamerasWeb.ViewModels.ManageUsers;
+using ConnectedCamerasWeb.Attributes;
 using System.Threading.Tasks;
 
 namespace ConnectedCamerasWeb.Controllers
@@ -20,6 +21,7 @@ namespace ConnectedCamerasWeb.Controllers
             return View(userlist);
         }
         [HttpPost]
+        [MultipleButton(Name = "action", Argument = "ManageUsersBulk")]
         public ActionResult ManageUsersBulk(string[] selectedUserIds)
         {
             if (selectedUserIds == null)
@@ -28,6 +30,12 @@ namespace ConnectedCamerasWeb.Controllers
             TempData["selectedUsers"] = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).OrderBy(dbu => dbu.Email).ToList();
             //return AddSelectedUsersToGroup(selectedUsers, null);
             return RedirectToAction("AddSelectedUsersToGroup");
+        }
+        [HttpPost]
+        [MultipleButton(Name = "action", Argument = "Priviledges")]
+        public ActionResult Priviledges(string[] selectedUserIds)
+        {
+            return View();
         }
 
         [Authorize]
@@ -57,6 +65,10 @@ namespace ConnectedCamerasWeb.Controllers
             }
             return RedirectToAction("ManageUsersBulk");
         }
+        
+
+
+
         //[HttpPost]
         //public ActionResult AddSelectedUsersToGroup(List<AspNetUser> usersSelected, FormCollection formCollection)
         //{

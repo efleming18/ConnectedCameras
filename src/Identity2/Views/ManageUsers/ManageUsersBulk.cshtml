@@ -6,30 +6,35 @@
 
 <script src="~/Content/js/jquery.js"></script>
 <div class="background-manage-users">
-    @using (Html.BeginForm("ManageUsersBulk", "ManageUsers", FormMethod.Post, new { @class = "users-panel" }))
-    {
-        if (Model != null)
+    <form action="" class="users-panel" method="post">
+        @if (Model != null)
         {
-            <div class="login-panel-title">Select Users</div>
-            <div class="panel-listbox" style="height:400px;">
-                @foreach (var user in Model)
-                {
-                    <div class="row10px"></div>
-                    <div class="row20px">
-                        <div class="cell10px"></div>
-                        <div class="cell20px">
-                            <input name="selectedUserIds" type="checkbox" value="@user.Id" class="center-vertical" style="margin:0px;" />
-                        </div>
-                        <div class="cellauto" style="text-align:left;">@user.Email</div>
+        <div class="login-panel-title">Select Users</div>
+        <div class="panel-listbox" style="height:400px;">
+            @foreach (var user in Model)
+            {
+                <div class="row10px"></div>
+                <div class="row20px">
+                    <div class="cell10px"></div>
+                    <div class="cell20px">
+                        <input name="selectedUserIds" type="checkbox" value="@user.Id" class="center-vertical" style="margin:0px;" />
                     </div>
-                    <div class="row10px"></div>
-                }
-            </div>
-            <div class="row10px"></div>
-        }
-        <div class="row center">
-            <input type="submit" value="Select Camera Group(s)" class="btn btn-default" />
+                    <div class="cellauto" style="text-align:left;">@user.Email</div>
+                </div>
+                <div class="row10px"></div>
+            }
         </div>
         <div class="row10px"></div>
-    }
+        }
+        <div class="row center">
+            <div class="cell50percent">
+                <input type="submit" name="action:Priviledges" value="Manage Priviledges" class="btn btn-default" />
+            </div>
+            <div class="cell50percent">
+                <input type="submit" name="action:ManageUsersBulk" value="Manage Groups" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="row10px"></div>
+    </form>
+
 </div>
