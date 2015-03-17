@@ -4,9 +4,16 @@
 }
 
 <div class="background-camera-web">
-    @using (Html.BeginForm("Privileges", "ManageUsers", FormMethod.Post, new { @class = "groups-panel" }))
+    @using (Html.BeginForm("Privileges", "ManageUsers", FormMethod.Post, new { @class = "privilege-panel" }))
     {
+        <div class="login-panel-title">Modify User Privileges</div>
+        <div class="row20px">
+            <div class="cell50percent" style="text-align:center;">Users</div>
+            <div class="cell50percent" style="text-align:center;">Privileges</div>
+        </div>
+        <div class="row400px">
 
+        </div>
     }
 </div>
 
