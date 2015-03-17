@@ -29,9 +29,9 @@ namespace ConnectedCamerasWeb.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Privileges(string[] userIds, int selectedRole)
+        public ActionResult Privileges(string[] userIds, int selectedRole = 0)
         {
-            return View();
+            return RedirectToAction("ManageUsersBulk");
         }
         [HttpPost]
         [MultipleButton(Name = "action", Argument = "AddSelectedUsersToGroup")]
