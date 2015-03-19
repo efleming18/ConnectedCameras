@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Styles.Render("~/Picker/css")
-
+<script src="~/Content/js/jquery.js"></script>
 <div class="background-camera-pick">
 @using (Html.BeginForm("LiveFeed", "Cameras", FormMethod.Post, new { @class = "pick-panel" }))
 {
@@ -15,7 +15,7 @@
         <div class="panel-listbox">
             @if (!Model.Any())
             {
-                <div>You do not belong to any camera groups. Please contact your administrator in order to be added to a specific camera group.</div>
+                <div class="no-camera-groups">You do not belong to any camera groups. Please contact your administrator in order to be added to a specific camera group.</div>
             }
             else
             {
@@ -54,7 +54,7 @@
     <div class="row10px"></div>
     <div class="row center">
         <div class="cell50percent">
-            <input name="allowOtherViewers" type="checkbox" checked="checked" value="true" class="center-vertical" />
+            <input name="allowOtherViewers" type="checkbox" checked="checked" value="true" class="center-vertical allow-others" />
             <label>Allow Other Viewers</label>
         </div>
         <div class="cell50percent">
