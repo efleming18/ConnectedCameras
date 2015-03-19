@@ -2,7 +2,6 @@
 using ConnectedCamerasWeb.Infrastructure.Data;
 using ConnectedCamerasWeb.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,7 +17,11 @@ namespace ConnectedCamerasWeb.Controllers
         [Authorize]
         public ActionResult Pick()
         {
-            var model = _db.Cameras.ToList();
+            //var model = _db.Cameras.ToList();
+            var currentlyLoggedInUser = System.Web.HttpContext.Current.User.Identity.Name;
+            var currentUserInDatabase = _db.Users.Single(x => x.UserName == currentlyLoggedInUser);
+            var cameraGroupForUser = currentUserInDatabase.CameraGroup;
+            var model = _db.Cameras.Where(x => x.CameraGroup == cameraGroupForUser).ToList();
             return View(model);
         }
         [Authorize]
