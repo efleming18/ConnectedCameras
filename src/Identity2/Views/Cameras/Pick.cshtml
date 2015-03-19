@@ -1,5 +1,4 @@
-﻿@using MvcCheckBoxList.Model
-@model IEnumerable<ConnectedCamerasWeb.Models.Camera>
+﻿@model IEnumerable<ConnectedCamerasWeb.Models.Camera>
 
 @{
     ViewBag.Title = "CameraPicker";
@@ -14,33 +13,40 @@
         
     <div class="row80percent">
         <div class="panel-listbox">
-            @foreach (var camera in Model)
+            @if (!Model.Any())
             {
-                <div class="row100px" style="margin-top:10px; margin-bottom:10px;">
-                    <div class="cell10percent">
-                        <input name="selectedCameraIds" type="checkbox" id="@camera.CameraName" value="@camera.Id" class="center-vertical" />
-                    </div>
-                    <div class="cell30percent" style="background-color:black;">
+                <div>You do not belong to any camera groups. Please contact your administrator in order to be added to a specific camera group.</div>
+            }
+            else
+            {
+                foreach (var camera in Model)
+                {
+                    <div class="row100px" style="margin-top:10px; margin-bottom:10px;">
+                        <div class="cell10percent">
+                            <input name="selectedCameraIds" type="checkbox" id="@camera.CameraName" value="@camera.Id" class="center-vertical" />
+                        </div>
+                        <div class="cell30percent" style="background-color:black;">
 
+                        </div>
+                        <div class="cellauto" style="text-align:left;">
+                            <div class="row camera-title">@camera.CameraName</div>
+                            <div class="row">
+                                <div class="cell20px">&nbsp;</div>
+                                <div class="cellauto camera-description">@camera.Description</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell camera-attribute">URL:</div>
+                                <div class="cell10px">&nbsp;</div>
+                                <div class="cellauto" style="font-style:italic;">@camera.CameraUrl</div>
+                            </div>
+                            <div class="row">
+                                <div class="cell camera-attribute">Group:</div>
+                                <div class="cell10px">&nbsp;</div>
+                                <div class="cellauto" style="font-style:italic;">@camera.CameraGroup</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="cellauto" style="text-align:left;">
-                        <div class="row camera-title">@camera.CameraName</div>
-                        <div class="row">
-                            <div class="cell20px">&nbsp;</div>
-                            <div class="cellauto camera-description">@camera.Description</div>
-                        </div>
-                        <div class="row">
-                            <div class="cell camera-attribute">URL:</div>
-                            <div class="cell10px">&nbsp;</div>
-                            <div class="cellauto" style="font-style:italic;">@camera.CameraUrl</div>
-                        </div>
-                        <div class="row">
-                            <div class="cell camera-attribute">Group:</div>
-                            <div class="cell10px">&nbsp;</div>
-                            <div class="cellauto" style="font-style:italic;">@camera.CameraGroup</div>
-                        </div>
-                    </div>
-                </div>
+                }
             }
         </div>
         
