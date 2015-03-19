@@ -19,15 +19,14 @@ namespace ConnectedCamerasWeb.Controllers
         public ActionResult Pick()
         {
             var model = new List<Camera>();
-            var currentlyLoggedInUser = System.Web.HttpContext.Current.User.Identity.Name;
-            var currentUserInDatabase = _db.Users.Single(x => x.UserName == currentlyLoggedInUser);
-            var cameraGroupForUser = currentUserInDatabase.CameraGroup;
+            var cameraGroupForUser = GetCameraGroupForLoggedInUser();
             if (cameraGroupForUser != null)
             {
                 model = _db.Cameras.Where(x => x.CameraGroup == cameraGroupForUser).ToList();   
             }
             return View(model);
         }
+
         [Authorize]
         public ActionResult Add()
         {
@@ -86,6 +85,15 @@ namespace ConnectedCamerasWeb.Controllers
                 Domain = FormsAuthentication.CookieDomain
             };
         }
+
+        private int? GetCameraGroupForLoggedInUser()
+        {
+            var currentlyLoggedInUser = System.Web.HttpContext.Current.User.Identity.Name;
+            var currentUserInDatabase = _db.Users.Single(x => x.UserName == currentlyLoggedInUser);
+            var cameraGroupForUser = currentUserInDatabase.CameraGroup;
+            return cameraGroupForUser;
+        }
+
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();
