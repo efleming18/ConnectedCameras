@@ -241,6 +241,7 @@
     <Compile Include="ViewModels\Cameras\LiveFeedViewModel.cs" />
     <Compile Include="ViewModels\Identity\ApplicationUser.cs" />
     <Compile Include="Infrastructure\Data\ApplicationDbContext.cs" />
+    <Compile Include="ViewModels\ManageUsers\UserPrivilegesViewModel.cs" />
     <Compile Include="ViewModels\ManageUsers\UsersToCameraGroupViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

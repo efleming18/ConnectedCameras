@@ -1,4 +1,4 @@
-﻿
+﻿@model ConnectedCamerasWeb.ViewModels.ManageUsers.UserPrivilegesViewModel
 @{
     ViewBag.Title = "Priviledges";
 }
@@ -11,8 +11,37 @@
             <div class="cell50percent" style="text-align:center;">Users</div>
             <div class="cell50percent" style="text-align:center;">Privileges</div>
         </div>
-        <div class="row400px">
-
+        <div class="row200px">
+            <div class="cell50percent">
+                <div class="panel-listbox">
+                    @foreach (var user in Model.Users)
+                    {
+                        <div class="row10px"></div>
+                        <div class="row20px">
+                            <div class="cell10px"></div>
+                            <div class="cell20px">
+                                @Html.Hidden("userIds", user.Id)
+                            </div>
+                            <div class="cellauto" style="text-align:left;">@user.Email</div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="cell50percent">
+                <div class="panel-listbox">
+                    @foreach (var role in Model.Definedroles)
+                    {
+                        <div class="row10px"></div>
+                        <div class="row20px">
+                            <div class="cell10px"></div>
+                            <div class="cell20px">
+                                @Html.RadioButton("selectedRole", role.Id)
+                            </div>
+                            <div class="cellauto" style="text-align:left">@role.Name</div>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
         <div class="row10px"></div>
         <div class="row center">

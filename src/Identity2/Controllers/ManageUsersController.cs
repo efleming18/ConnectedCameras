@@ -7,12 +7,26 @@ using ConnectedCamerasWeb.Models;
 using ConnectedCamerasWeb.ViewModels.ManageUsers;
 using ConnectedCamerasWeb.Attributes;
 using System.Threading.Tasks;
+using Microsoft.Owin.Host.SystemWeb;
 
 namespace ConnectedCamerasWeb.Controllers
 {
     public class ManageUsersController : Controller
     {
         private MainDbContext _db = new MainDbContext();
+
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         [Authorize]
         public ActionResult ManageUsersBulk()
@@ -26,13 +40,21 @@ namespace ConnectedCamerasWeb.Controllers
         {
             if (selectedUserIds == null)
                 return RedirectToAction("ManageUsersBulk");
-            return View();
+            return View(new UserPrivilegesViewModel()
+            {
+                Users = _db.Users.Where(dbu => selectedUserIds.Any(sId => sId == dbu.Id)).OrderBy(dbu => dbu.Email).ToList(),
+                Definedroles = _db.DefinedRoles.ToList()
+            });
         }
         [HttpPost]
-        public ActionResult Privileges(string[] userIds, int selectedRole = 0)
+        public ActionResult Privileges(string[] userIds, string selectedRole = "")
         {
+            if (string.IsNullOrEmpty(selectedRole))
+                return RedirectToAction("ManageUsersBulk");
+
             return RedirectToAction("ManageUsersBulk");
         }
+
         [HttpPost]
         [MultipleButton(Name = "action", Argument = "AddSelectedUsersToGroup")]
         public ActionResult AddSelectedUsersToGroup(string[] selectedUserIds)
