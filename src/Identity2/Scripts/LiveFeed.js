@@ -1,6 +1,8 @@
 ﻿var feed = $('.fill');
 var browserWindow = $(window);
 var cameraInput = $('.camera-input');
+var currentCamera;
+var camerasInFeed;
 
 var arrowMouseLeave = "../../Content/Images/Arrow.png";
 var arrowMouseOver = "../../Content/Images/Arrow-mouse-over.png";
@@ -13,6 +15,7 @@ $(document).ready(function () {
     feed.click(function () {
         $(document).find('.fill').css('border', '');
         $(this).css('border', 'solid 2px red');
+        currentCamera = $(this).attr('id');
     });
     browserWindow.on('beforeunload', function () {
         releaseCameraLocks();
