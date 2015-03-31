@@ -10,9 +10,10 @@ namespace ConnectedCamerasWeb.Models
     [Table("AspNetUserRoles")]
     public class AspNetUserRole
     {
-        [ForeignKey("UserId")]
+        //[ForeignKey("UserId")]
+        [Key]
         public string UserId { get; set; }
-        [ForeignKey("RoleId")]
+        //[ForeignKey("RoleId")]
         public string RoleId { get; set; }
     }
 }

@@ -16,6 +16,7 @@ $(document).ready(function () {
         $(document).find('.fill').css('border', '');
         $(this).css('border', 'solid 2px red');
         currentCamera = $(this).attr('id');
+        $('#currentFocus').html(currentCamera);
     });
     browserWindow.on('beforeunload', function () {
         releaseCameraLocks();
