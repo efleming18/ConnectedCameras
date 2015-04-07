@@ -33,6 +33,9 @@ $(document).ready(function () {
     cameraInput.mouseup(function () {
         $(this).attr("src", arrowMouseOver);
     });
+    var fiveMinutes = 60 * 15,
+        display = $('#timeRemaining');
+    startTimer(fiveMinutes, display);
 });
 
 function setCameraControllerHeight() {
@@ -46,6 +49,28 @@ function setAttributesPanelHeight() {
     var controlsHeight = $('#controls').height();
     var attributeHeight = totalHeight - controlsHeight;
     $('#attributes').height(attributeHeight);
+}
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10)
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.text(minutes + ":" + seconds);
+
+        if (--timer < 0) {
+            bootUser();
+        }
+    }, 1000);
+}
+function bootUser() {
+    $.ajax({
+        url: "/Cameras/Pick"
+    });
 }
 function releaseCameraLocks() {
 

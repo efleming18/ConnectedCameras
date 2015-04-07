@@ -24,7 +24,6 @@ namespace ConnectedCamerasWeb
                        "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/LiveFeed/js").Include(
-                       "~/Scripts/Countdown.js",
                        "~/Scripts/LiveFeed.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
