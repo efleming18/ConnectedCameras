@@ -90,7 +90,7 @@ namespace ConnectedCamerasWeb.Controllers
                 Domain = FormsAuthentication.CookieDomain
             };
         }
-        public IEnumerable<string> CheckLockedCameras(IEnumerable<Camera> selectedCameras) 
+        public IEnumerable<string> CheckRemainingLockedCameras(IEnumerable<Camera> selectedCameras) 
         {
             var allLockedCameras = _db.CameraLocks.ToList();
             var selectedCamerasLocked = selectedCameras.Where(sc => allLockedCameras.Any(lc => sc.Id == lc.Id))
@@ -98,8 +98,6 @@ namespace ConnectedCamerasWeb.Controllers
                                                        .ToList();
             return selectedCamerasLocked;
         }
-        //Remove any cameras from CameraLock table that have timed out.
-        //This will be called before a user goes to the live feed.
         public async Task RemoveAnyLockedCameras()
         {
             var lockedCameras = _db.CameraLocks.Where(cl => DateTime.UtcNow > cl.TimeStamp.Value.AddMinutes(15));
