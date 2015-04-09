@@ -10,41 +10,44 @@
 <div style="width:100%; height:100%; position:fixed; background:no-repeat center url('../../Content/Images/binary.png'); background-size: 100% auto;">
     <div class="camera-controller center">
         <div class="cell250px control-panel">
-            <div>
-                @*<video width="356" height="200" controls poster="full/http/link/to/image/file.png">
+            @*@foreach (var camera in Model)
+            {
+                <div>*@
+                    @*<video width="356" height="200" controls poster="full/http/link/to/image/file.png">
 
-                     <source src="http://10.10.10.100:8080/stream.wmv" type="video/wmv" />
-</video>*@
-                <!-- begin embedded Windows Media file... -->
-                <table border="0" cellpadding="0" align="left">
-                    <!-- begin video window... -->
-                    <tr>
-                        <td>
-                            <object id="mediaPlayer" classid='CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95' width="640"
-                                    height="480" type="application/x-oleobject">
-                                <param name='src' value="http://10.10.10.100:8080/stream.wmv">
-                                <param name="showcontrols" value="true">
-                                <param name="showstatusbar" value="true">
-                                <param name="showdisplay" value="false">
-                                <param name='autostart' value="true">
-                                <param name='loop' value="true">
-                                <embed type="application/x-mplayer2" src="http://10.10.10.100:8080/stream.wmv" width="640" height="480"
-                                       autostart="true" showcontrols="true" showstatusbar="true" showdisplay="false" loop="true"
-                                       name="mediaPlayer" pluginspage="http://microsoft.com/windows/mediaplayer/en/download/">
-                                </EMBED>
-                            </object>
-                        </td>
-                    </tr>
-                    <!-- ...end embedded QuickTime file -->
-                    <!-- begin link to DOWNLOAD... -->
-                    <tr>
-                        <td align="center">
-                            <a href="http://10.10.10.100:8080/stream.wmv" style="font-size: 85%;" target="_blank">DOWNLOAD</a>
-                            <!-- ...end link to DOWNLOAD... -->
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                                             <source src="http://10.10.10.100:8080/stream.wmv" type="video/wmv" />
+                        </video>*@
+                    <!-- begin embedded Windows Media file... -->
+                    @*<table border="0" cellpadding="0" align="left">*@
+                        <!-- begin video window... -->
+                        @*<tr>
+                            <td>
+                                <object id="mediaPlayer" classid='CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95' width="640"
+                                        height="480" type="application/x-oleobject">
+                                    <param name='src' value="@camera.CameraUrl">
+                                    <param name="showcontrols" value="true">
+                                    <param name="showstatusbar" value="true">
+                                    <param name="showdisplay" value="false">
+                                    <param name='autostart' value="true">
+                                    <param name='loop' value="true">
+                                    <EMBED type="application/x-mplayer2" src="@camera.CameraUrl" width="640" height="480"
+                                           autostart="true" showcontrols="true" showstatusbar="true" showdisplay="false" loop="true"
+                                           name="mediaPlayer" pluginspage="http://microsoft.com/windows/mediaplayer/en/download/">
+                                    </EMBED>
+                                </object>
+                            </td>
+                        </tr>*@
+                        <!-- ...end embedded QuickTime file -->
+                        <!-- begin link to DOWNLOAD... -->
+                        @*<tr>
+                            <td align="center">
+                                <a href="http://10.10.10.100:8080/stream.wmv" style="font-size: 85%;" target="_blank">DOWNLOAD</a>*@
+                                <!-- ...end link to DOWNLOAD... -->
+                            @*</td>
+                        </tr>
+                    </table>
+                </div>
+            }*@
             <div class="row" id="attributes" style="border-bottom:2px dotted gray;">
                 <div class="row control-panel-label">Attributes</div>
                 <br/>
@@ -55,7 +58,7 @@
                 </div>
                 <div class="row10px"></div>
                 <div class="row" style="text-align:left; font-weight:bold;">Time Remaining</div>
-                <div class="row">countdown</div>
+                <div class="row" id="timeRemaining">time remaining goes here.....</div>
                 <div class="row10px"></div>
                 <div class="row" style="text-align:left; font-weight:bold;">Others viewing</div>
                 <div class="row">Viewing people</div>
@@ -92,6 +95,8 @@
         </div>
     </div>
 </div>
+
+@*@Scripts.Render("~/LiveFeed/js")*@
 
 <script type="text/javascript" src="~/Scripts/LiveFeed.js"></script>
 

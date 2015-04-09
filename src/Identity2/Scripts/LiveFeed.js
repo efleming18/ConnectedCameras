@@ -33,7 +33,7 @@ $(document).ready(function () {
     cameraInput.mouseup(function () {
         $(this).attr("src", arrowMouseOver);
     });
-    var fiveMinutes = 60 * 15,
+    var fiveMinutes = 60 * 0.25,
         display = $('#timeRemaining');
     startTimer(fiveMinutes, display);
 });
@@ -68,9 +68,8 @@ function startTimer(duration, display) {
     }, 1000);
 }
 function bootUser() {
-    $.ajax({
-        url: "/Cameras/Pick"
-    });
+    var url = "/Cameras/Pick";
+    window.location.href = url;
 }
 function releaseCameraLocks() {
 

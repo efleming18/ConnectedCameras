@@ -60,19 +60,24 @@ namespace ConnectedCamerasWeb.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult LiveFeed(int[] selectedCameraIds, bool allowOtherViewers = false)
+        public async Task<ActionResult> LiveFeed(int[] selectedCameraIds, bool allowOtherViewers = false)
         {
             Response.AppendCookie(SetCookie());
             if (!allowOtherViewers)
             {
                 foreach (var id in selectedCameraIds)
-                    _db.CameraLocks.Add(new CameraLock { CameraId = id, UserId = User.Identity.GetUserId(), TimeStamp = DateTime.UtcNow });
-                _db.SaveChanges();
+                    _db.CameraLocks.Add(new CameraLock
+                    { 
+                        CameraId = id, 
+                        UserId = User.Identity.GetUserId(), 
+                        TimeStamp = DateTime.UtcNow
+                    });
+                await _db.SaveChangesAsync();
             }
             var cameras = _db.Cameras.Where(dbc => selectedCameraIds.Any(sId => sId == dbc.Id)).ToList();
             return View(cameras);
         }
-        private HttpCookie SetCookie() 
+        private HttpCookie SetCookie()
         {
             var ticket = new FormsAuthenticationTicket(1, "ticket", DateTime.Now, DateTime.Now.AddMinutes(1), true, FormsAuthentication.FormsCookiePath);
             var encTicket = FormsAuthentication.Encrypt(ticket);
@@ -85,7 +90,17 @@ namespace ConnectedCamerasWeb.Controllers
                 Domain = FormsAuthentication.CookieDomain
             };
         }
+        //Check if any of the selected cameras have locks on them
+        public IEnumerable<string> CheckLockedCameras() 
+        {
+            return new string[] { "" };
+        }
+        //Remove any cameras from CameraLock table that have timed out.
+        //This will be called before a user goes to the live feed.
+        public void RemoveAnyLockedCameras()
+        {
 
+        }
         private int? GetCameraGroupForLoggedInUser()
         {
             var currentlyLoggedInUser = System.Web.HttpContext.Current.User.Identity.Name;
