@@ -13,7 +13,7 @@ namespace ConnectedCamerasWeb.Peripherals
         #region Private Fields
         private MainDbContext _db = new MainDbContext();
         private bool _disposed = false;
-        private double _expirationInMinutes;
+        private int _expirationInMinutes;
         #endregion
 
         #region Properties
@@ -38,7 +38,8 @@ namespace ConnectedCamerasWeb.Peripherals
 
         public void RemoveExpiredLocks() 
         {
-            var expiredCameraLocks = _db.CameraLocks.Where(cl => DateTime.Compare(cl.TimeStamp.Value, DateTime.UtcNow) < _expirationInMinutes).ToList();
+            var aLongTimeAgo = DateTime.UtcNow.Subtract(new TimeSpan(0, _expirationInMinutes, 0));
+            var expiredCameraLocks = _db.CameraLocks.Where(cl => DateTime.Compare(cl.TimeStamp.Value, aLongTimeAgo) <= 0).ToList();
             if (expiredCameraLocks.Count == 0)
                 return;
             _db.CameraLocks.RemoveRange(expiredCameraLocks);
