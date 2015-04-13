@@ -10,7 +10,7 @@
         <div class="panel-listbox" style="height:400px;">
             @foreach (var camera in Model)
             {
-                
+                <div>@camera.CameraName</div>
             }
         </div>
         @Html.ActionLink("Return To Picker", "Pick")
