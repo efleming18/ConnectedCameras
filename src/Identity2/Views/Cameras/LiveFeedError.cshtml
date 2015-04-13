@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ConnectedCamerasWeb.Models.CameraLock>
+﻿@model IEnumerable<ConnectedCamerasWeb.Models.Camera>
 
 @{
     ViewBag.Title = "LiveFeedError";
@@ -8,8 +8,11 @@
         <div class="login-panel-title">Error</div>
         <div>You selected cameras that are currently locked</div>
         <div class="panel-listbox" style="height:400px;">
-
+            @foreach (var camera in Model)
+            {
+                
+            }
         </div>
-        @Html.ActionLink("About", "About", "Home")
+        @Html.ActionLink("Return To Picker", "Pick")
     </div>
 </div>

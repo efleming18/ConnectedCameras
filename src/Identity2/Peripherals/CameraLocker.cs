@@ -17,9 +17,12 @@ namespace ConnectedCamerasWeb.Peripherals
         #endregion
 
         #region Properties
-        public IEnumerable<CameraLock> LockedCameras 
+        public IEnumerable<Camera> LockedCameras 
         {
-            get { return _db.CameraLocks; }
+            get 
+            {
+                return _db.Cameras.Where(dbc => _db.CameraLocks.Any(lc => dbc.Id == lc.CameraId));
+            }
         }
         #endregion
 
