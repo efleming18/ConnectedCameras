@@ -227,6 +227,7 @@
     <Compile Include="Models\Camera.cs" />
     <Compile Include="Models\CameraLocks.cs" />
     <Compile Include="Models\ManageUserModel.cs" />
+    <Compile Include="Peripherals\CameraLocker.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
@@ -355,6 +356,7 @@
     <Content Include="Views\ManageUsers\AddSelectedUsers.cshtml" />
     <Content Include="Views\Cameras\Remove.cshtml" />
     <Content Include="Views\ManageUsers\Privileges.cshtml" />
+    <Content Include="Views\Cameras\LiveFeedError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using ConnectedCamerasWeb.Peripherals;
 
 namespace ConnectedCamerasWeb.Controllers
 {
     public class CamerasController : Controller
     {
         private MainDbContext _db = new MainDbContext();
+        private CameraLocker _cameraLocker = new CameraLocker(5);
 
         [Authorize]
         public ActionResult Pick()
@@ -63,19 +65,22 @@ namespace ConnectedCamerasWeb.Controllers
         public async Task<ActionResult> LiveFeed(int[] selectedCameraIds, bool allowOtherViewers = false)
         {
             Response.AppendCookie(SetCookie());
+
+            _cameraLocker.RemoveExpiredLocks();                 //Must always be called before everything else.
+
+            if (_cameraLocker.AnyLockedCameras(selectedCameraIds))
+                return RedirectToAction("LiveFeedError");        //Maybe redirect to a different view displaying which cameras are locked.
+
             if (!allowOtherViewers)
-            {
-                foreach (var id in selectedCameraIds)
-                    _db.CameraLocks.Add(new CameraLock
-                    { 
-                        CameraId = id, 
-                        UserId = User.Identity.GetUserId(), 
-                        TimeStamp = DateTime.UtcNow
-                    });
-                await _db.SaveChangesAsync();
-            }
-            var cameras = _db.Cameras.Where(dbc => selectedCameraIds.Any(sId => sId == dbc.Id)).ToList();
-            return View(cameras);
+                await _cameraLocker.LockAsync(selectedCameraIds, User.Identity.GetUserId());
+
+            return View(_db.Cameras.Where(dbc => selectedCameraIds.Any(sId => sId == dbc.Id)).ToList());
+        }
+        [Authorize]
+        public ActionResult LiveFeedError()
+        {
+            var lockedCameras = _cameraLocker.LockedCameras;
+            return View(lockedCameras);
         }
         private HttpCookie SetCookie()
         {
@@ -90,20 +95,6 @@ namespace ConnectedCamerasWeb.Controllers
                 Domain = FormsAuthentication.CookieDomain
             };
         }
-        public IEnumerable<string> CheckRemainingLockedCameras(IEnumerable<Camera> selectedCameras) 
-        {
-            var allLockedCameras = _db.CameraLocks.ToList();
-            var selectedCamerasLocked = selectedCameras.Where(sc => allLockedCameras.Any(lc => sc.Id == lc.Id))
-                                                       .Select(sc => sc.CameraName)
-                                                       .ToList();
-            return selectedCamerasLocked;
-        }
-        public async Task RemoveAnyLockedCameras()
-        {
-            var lockedCameras = _db.CameraLocks.Where(cl => DateTime.UtcNow > cl.TimeStamp.Value.AddMinutes(15));
-            _db.CameraLocks.RemoveRange(lockedCameras);
-            await _db.SaveChangesAsync();
-        }
         private int? GetCameraGroupForLoggedInUser()
         {
             var currentlyLoggedInUser = System.Web.HttpContext.Current.User.Identity.Name;
@@ -115,6 +106,7 @@ namespace ConnectedCamerasWeb.Controllers
         protected override void Dispose(bool disposing)
         {
             _db.Dispose();
+            _cameraLocker.Dispose();
             base.Dispose(disposing);
         }
     }
