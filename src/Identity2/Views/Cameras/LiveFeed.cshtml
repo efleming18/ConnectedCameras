@@ -27,8 +27,8 @@
                                 <object id="mediaPlayer" classid='CLSID:22D6F312-B0F6-11D0-94AB-0080C74C7E95' width="640"
                                         height="480" type="application/x-oleobject">
                                     <param name='src' value="@camera.CameraUrl">
-                                    <param name="showcontrols" value="true">
-                                    <param name="showstatusbar" value="true">
+                                    <param name="showcontrols" value="false">
+                                    <param name="showstatusbar" value="false">
                                     <param name="showdisplay" value="false">
                                     <param name='autostart' value="true">
                                     <param name='loop' value="true">
@@ -87,7 +87,8 @@
             </div>
         </div>
         <div class="cellauto">
-            @Html.LiveFeedFor(Model)
+            @*@Html.LiveFeedFor(Model)*@
+            @Html.LiveFeed(Model)
         </div>
     </div>
 </div>

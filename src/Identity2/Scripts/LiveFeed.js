@@ -71,6 +71,17 @@ function bootUser() {
     var url = "/Cameras/Pick";
     window.location.href = url;
 }
-function releaseCameraLocks() {
-
+function getRemainingTime()
+{
+    $.ajax({
+        type: 'get',
+        dataType: 'json',
+        cache: false,
+        url: '/Cameras/GetRemainingTime',
+        data: { keyid: 1, newval: 10 },
+        success: function (timeLeft) {
+            startTimer(timeLeft * 60);
+        },
+        error: bootUser()
+    });
 }

@@ -34,10 +34,28 @@ namespace ConnectedCamerasWeb.Peripherals
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Indicates whether there are any locked cameras among the selected camera IDs
+        /// </summary>
         public bool AnyLockedCameras(IEnumerable<int> selectedCameraIds)
         {
             RemoveExpiredLocks();
             return _db.CameraLocks.Any(lc => selectedCameraIds.Any(sc => lc.CameraId == sc));
+        }
+        /// <summary>
+        /// Indicates whether there are any locked cameras among the selected camera IDs. Returns false if the current user locked the cameras selected.
+        /// </summary>
+        public bool AnyLockedCameras(IEnumerable<int> selectedCameraIds, string userId)
+        {
+            RemoveExpiredLocks();
+            return _db.CameraLocks.Any(lc => selectedCameraIds.Any(scId => lc.CameraId == scId && lc.UserId != userId));
+        }
+        public DateTime? GetTimeStamp(IEnumerable<int> selectedCameraIds)
+        {
+            var lockedCamera = _db.CameraLocks.First(lc => selectedCameraIds.Any(scId => lc.CameraId == scId));
+            if (lockedCamera == null)
+                return DateTime.UtcNow;
+            return lockedCamera.TimeStamp;
         }
         #endregion
 

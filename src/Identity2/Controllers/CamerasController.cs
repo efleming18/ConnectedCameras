@@ -14,8 +14,16 @@ namespace ConnectedCamerasWeb.Controllers
 {
     public class CamerasController : Controller
     {
-        private MainDbContext _db = new MainDbContext();
-        private CameraLocker _cameraLocker = new CameraLocker(15);
+        private MainDbContext _db;
+        private int _timeLockInMinutes;
+        private CameraLocker _cameraLocker;
+
+        public CamerasController() 
+        {
+            _timeLockInMinutes = 15;
+            _db = new MainDbContext();
+            _cameraLocker = new CameraLocker(_timeLockInMinutes);
+        }
 
         [Authorize]
         public ActionResult Pick()
@@ -64,10 +72,13 @@ namespace ConnectedCamerasWeb.Controllers
         [HttpPost]
         public async Task<ActionResult> LiveFeed(int[] selectedCameraIds, bool allowOtherViewers = false)
         {
+            if (selectedCameraIds == null)
+                RedirectToAction("Pick");
+
             Response.AppendCookie(SetCookie());
 
-            if (_cameraLocker.AnyLockedCameras(selectedCameraIds))
-                return RedirectToAction("LiveFeedError");        //Maybe redirect to a different view displaying which cameras are locked.
+            if (_cameraLocker.AnyLockedCameras(selectedCameraIds, User.Identity.GetUserId()))
+                return RedirectToAction("LiveFeedError");
 
             if (!allowOtherViewers)
                 await _cameraLocker.LockAsync(selectedCameraIds, User.Identity.GetUserId());
@@ -79,6 +90,14 @@ namespace ConnectedCamerasWeb.Controllers
         {
             var lockedCameras = _cameraLocker.LockedCameras;
             return View(lockedCameras);
+        }
+        public ActionResult GetRemainingTime(int[] cameraIds) 
+        {
+            var lockedTimeStamp = _cameraLocker.GetTimeStamp(cameraIds);
+            var timePassedSinceCameraWasLocked = DateTime.UtcNow - lockedTimeStamp;
+            var expirationTimeSpan = TimeSpan.FromMinutes(_timeLockInMinutes);
+            var timeRemaining = expirationTimeSpan - timePassedSinceCameraWasLocked; 
+            return Json(timeRemaining.Value.TotalMinutes);
         }
         private HttpCookie SetCookie()
         {
