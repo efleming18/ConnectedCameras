@@ -91,7 +91,6 @@ $(document).ready(function () {
             function oninput(e) {
                 if (e.which == 10 || e.which == 13) {
                     var givenAddress = $('#connect-ip').val();
-                    debugger;
                     setTargetAddress(givenAddress, handlers);
                     serversToTry = [givenAddress];
                 }
@@ -109,7 +108,6 @@ $(document).ready(function () {
                 }
             }
             function initialized() {
-                debugger;
                 console.log('Bonescript: initialized');
                 if (ga && (typeof ga == "function")) {
                     ga('send', 'event', 'bonescript', 'connected', window.location.href);

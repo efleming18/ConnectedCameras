@@ -9,13 +9,11 @@ function setTargetAddress(address, handlers) {
     url = url.replace(/(\/)*$/, '/bonescript.js');
     loadScript(url, addHandlers);
     function loadScript(url, onload) {
-        debugger;
         var head = document.getElementsByTagName('head')[0];
         var script = document.createElement('script');
         script.type = 'text/javascript';
         script.src = url;
         script.charset = 'UTF-8';
-        debugger;
         var scriptObj = head.appendChild(script);
         scriptObj.onload = onload;
     }
