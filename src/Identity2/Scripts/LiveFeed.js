@@ -18,9 +18,6 @@ $(document).ready(function () {
         currentCamera = $(this).attr('id');
         $('#currentFocus').html(currentCamera);
     });
-    browserWindow.on('beforeunload', function () {
-        releaseCameraLocks();
-    });
     cameraInput.mouseover(function () {
         $(this).attr("src", arrowMouseOver);
     });
