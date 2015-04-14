@@ -15,7 +15,7 @@ namespace ConnectedCamerasWeb.Controllers
     public class CamerasController : Controller
     {
         private MainDbContext _db = new MainDbContext();
-        private CameraLocker _cameraLocker = new CameraLocker(1);
+        private CameraLocker _cameraLocker = new CameraLocker(15);
 
         [Authorize]
         public ActionResult Pick()

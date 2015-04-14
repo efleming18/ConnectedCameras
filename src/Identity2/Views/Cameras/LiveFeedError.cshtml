@@ -6,13 +6,19 @@
 <div class="background-camera-web">
     <div class="error-panel" style="margin-left: auto; margin-right: auto; margin-top: 70px; border: 2px dotted gray; background-color: #DBDADA; box-shadow: 10px 10px 5px #888888;">
         <div class="login-panel-title">Error</div>
-        <div>You selected cameras that are currently locked</div>
+        <div class="row">
+            <div class="cell10px">&nbsp;</div>
+            <div class="cell">You selected cameras that are currently locked</div>
+        </div>
         <div class="panel-listbox" style="height:400px;">
             @foreach (var camera in Model)
             {
+                <div class="row10px"></div>
                 <div>@camera.CameraName</div>
             }
         </div>
-        @Html.ActionLink("Return To Picker", "Pick")
+        <div class="row10px"></div>
+        <div class="center">@Html.ActionLink("Return To Picker", "Pick")</div>
+        <div class="row10px"></div>
     </div>
 </div>

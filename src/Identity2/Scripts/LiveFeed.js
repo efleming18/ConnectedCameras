@@ -33,9 +33,8 @@ $(document).ready(function () {
     cameraInput.mouseup(function () {
         $(this).attr("src", arrowMouseOver);
     });
-    var fiveMinutes = 60 * 0.25,
-        display = $('#timeRemaining');
-    startTimer(fiveMinutes, display);
+    var fifteenMinutes = 60 * 15;
+    startTimer(fifteenMinutes);
 });
 
 function setCameraControllerHeight() {
@@ -51,7 +50,8 @@ function setAttributesPanelHeight() {
     $('#attributes').height(attributeHeight);
 }
 
-function startTimer(duration, display) {
+function startTimer(duration) {
+    var display = $('#timeRemaining');
     var timer = duration, minutes, seconds;
     setInterval(function () {
         minutes = parseInt(timer / 60, 10)
