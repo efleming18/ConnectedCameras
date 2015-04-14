@@ -2,81 +2,46 @@
 @{
     ViewBag.Title = "Register";
 }
-@{
-    ViewBag.Title = "Bonescript";
-}
-<script src="~/Content/js/jquery.js"></script>
-<script src="~/Scripts/beagle-ui.js"></script>
-<script src="~/Scripts/bonescript1.js"></script>
-<script src="~/Scripts/beagleboard.js"></script>
-<script src="~/Scripts/bonescript-demo.js"></script>
-<script src="~/Scripts/bonescript.js"></script>
-
-<div id="connect-status">    <div class="browser-connect">        <img alt="Not Connected" src="/static/images/usb.png" border="0">        <div id="browser-content"><strong>Did you know?</strong>  This page can interact with your BeagleBone<br>Type in your BeagleBone's IP address here:<input id="connect-ip">        </div>    </div></div>
-
-<h2>Bonescript</h2>
-
-
-<script type="text/javascript">
-   $(document).ready(
-    function() {
-     var indexID = 0;
-     $('.wants-g-plusone').each(function() {
-      $(this).attr('id', 'gp' + indexID);
-      var gp = document.createElement('script');
-      gp.type = 'text/javascript';
-      gp.async = true;
-      var args = {"size":"small"};
-      var href = $(this).attr('data-href');
-      if(href) args.href = href;
-      gp.text = 'setTimeout(function() {' +
-       'gapi.plusone.render(gp' +
-       indexID +
-       ', ' +
-       JSON.stringify(args) +
-       ');}, ' +
-       (indexID * 800) +
-       ');';
-      $('#footer').append(gp);
-      indexID++;
-     });
-    }
-   );
-</script>
-<script type="text/javascript">
-
-    var b = require('bonescript');
-    var SERVO = 'P9_14';
-    var duty_min = 0.03;
-    var position = 0;
-    var increment = 0.1;
-
-    b.pinMode(SERVO, b.OUTPUT);
-    updateDuty();
-
-    function updateDuty() {
-        // compute and adjust duty_cycle based on
-        // desired position in range 0..1
-        var duty_cycle = (position * 0.115) + duty_min;
-        b.analogWrite(SERVO, duty_cycle, 60, scheduleNextUpdate);
-        console.log("Duty Cycle: " +
-            parseFloat(duty_cycle * 100).toFixed(1) + " %");
-    }
-
-    function scheduleNextUpdate() {
-        // adjust position by increment and 
-        // reverse if it exceeds range of 0..1
-        position = position + increment;
-        if (position < 0) {
-            position = 0;
-            increment = -increment;
-        } else if (position > 1) {
-            position = 1;
-            increment = -increment;
+<div class="background-camera-web">
+    <div class="register-panel">
+        <div class="login-panel-title">Connected Cameras</div>
+        <div class="login-label">Register</div>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <section>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="row">
+                    @Html.LabelFor(m => m.Email, new { @class = "cell30percent input-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "cell50percent form-control" })
+                </div>
+                <div class="row10px"></div>
+                <div class="row">
+                    @Html.LabelFor(m => m.Password, new { @class = "cell30percent input-label" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "cell50percent form-control" })
+                </div>
+                <div class="row10px"></div>
+                <div class="row">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "cell30percent input-label" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "cell50percent form-control" })
+                </div>
+                <div class="row10px"></div>
+                <div class="row">
+                    <div class="cell25percent">&nbsp</div>
+                    <div class="cell50percent center">
+                        <input type="submit" value="Register" class="btn btn-default" />
+                    </div>
+                </div>
+                <div class="row10px"></div>
+                <div class="row" style="text-align:center;">
+                    @Html.ActionLink("Go Back", "Login")
+                </div>
+            </section>
         }
+    </div>
+</div>
 
-        // call updateDuty after 200ms
-        setTimeout(updateDuty, 200);
-    }
-
-</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
