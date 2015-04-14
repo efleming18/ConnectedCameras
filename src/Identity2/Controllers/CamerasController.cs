@@ -66,8 +66,6 @@ namespace ConnectedCamerasWeb.Controllers
         {
             Response.AppendCookie(SetCookie());
 
-            _cameraLocker.RemoveExpiredLocks();                 //Must always be called before everything else.
-
             if (_cameraLocker.AnyLockedCameras(selectedCameraIds))
                 return RedirectToAction("LiveFeedError");        //Maybe redirect to a different view displaying which cameras are locked.
 

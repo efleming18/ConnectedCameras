@@ -36,10 +36,13 @@ namespace ConnectedCamerasWeb.Peripherals
         #region Public Methods
         public bool AnyLockedCameras(IEnumerable<int> selectedCameraIds)
         {
+            RemoveExpiredLocks();
             return _db.CameraLocks.Any(lc => selectedCameraIds.Any(sc => lc.CameraId == sc));
         }
+        #endregion
 
-        public void RemoveExpiredLocks() 
+        #region Private Methods
+        private void RemoveExpiredLocks()
         {
             var aLongTimeAgo = DateTime.UtcNow.Subtract(new TimeSpan(0, _expirationInMinutes, 0));
             var expiredCameraLocks = _db.CameraLocks.Where(cl => DateTime.Compare(cl.TimeStamp.Value, aLongTimeAgo) <= 0).ToList();
@@ -48,7 +51,6 @@ namespace ConnectedCamerasWeb.Peripherals
             _db.CameraLocks.RemoveRange(expiredCameraLocks);
             _db.SaveChanges();
         }
-
         #endregion
 
         #region Asynchronous Methods
