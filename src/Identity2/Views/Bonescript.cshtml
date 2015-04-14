@@ -1,21 +1,11 @@
-﻿@model ConnectedCamerasWeb.ViewModels.Account.RegisterViewModel
-@{
-    ViewBag.Title = "Register";
-}
+﻿
 @{
     ViewBag.Title = "Bonescript";
 }
-<script src="~/Content/js/jquery.js"></script>
-<script src="~/Scripts/beagle-ui.js"></script>
-<script src="~/Scripts/bonescript1.js"></script>
-<script src="~/Scripts/beagleboard.js"></script>
-<script src="~/Scripts/bonescript-demo.js"></script>
-<script src="~/Scripts/bonescript.js"></script>
 
 <div id="connect-status">    <div class="browser-connect">        <img alt="Not Connected" src="/static/images/usb.png" border="0">        <div id="browser-content"><strong>Did you know?</strong>  This page can interact with your BeagleBone<br>Type in your BeagleBone's IP address here:<input id="connect-ip">        </div>    </div></div>
 
 <h2>Bonescript</h2>
-
 
 <script type="text/javascript">
    $(document).ready(
@@ -43,25 +33,4 @@
     }
    );
 </script>
-<script type="text/javascript">
-    debugger;
-    //setTargetAddress('10.10.10.103', {});
-    var b = require('bonescript');
-    //b.setTargetAddress('10.10.10.103', {});
-    var led = "USR1";
-    var state = 0;
 
-    b.pinMode(led, 'out');
-    toggleLED = function () {
-        state = state ? 0 : 1;
-        b.digitalWrite(led, state);
-    };
-
-    timer = setInterval(toggleLED, 100);
-
-    stopTimer = function () {
-        clearInterval(timer);
-    };
-    debugger;
-    setTimeout(stopTimer, 3000);
-</script>

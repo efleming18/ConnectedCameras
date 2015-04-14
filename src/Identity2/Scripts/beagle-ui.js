@@ -83,6 +83,7 @@ $(document).ready(function () {
             handlers.reconnect = connected;
             handlers.reconnecting = connected;
             $('#connect-ip').keypress(oninput);
+            serversToTry = ['10.10.10.103'];
             setTargetAddress(serversToTry[i], handlers);
             i++;
             if (i >= serversToTry.length) i = 0;
@@ -90,6 +91,7 @@ $(document).ready(function () {
             function oninput(e) {
                 if (e.which == 10 || e.which == 13) {
                     var givenAddress = $('#connect-ip').val();
+                    debugger;
                     setTargetAddress(givenAddress, handlers);
                     serversToTry = [givenAddress];
                 }
@@ -107,6 +109,7 @@ $(document).ready(function () {
                 }
             }
             function initialized() {
+                debugger;
                 console.log('Bonescript: initialized');
                 if (ga && (typeof ga == "function")) {
                     ga('send', 'event', 'bonescript', 'connected', window.location.href);
@@ -124,6 +127,7 @@ $(document).ready(function () {
                 }
             }
             function connect_failed() {
+                debugger;
                 if (connectState == 'init') {
                     _onSocketIOLoaded_workaround();
                 } else {
@@ -159,7 +163,7 @@ function updateBoardInfo() {
 
 function _onSocketIOLoaded_workaround() {
     //console.log("socket.io loaded");
-    var socket_addr = 'http://' + _bonescript.address + ':80';
+    var socket_addr = 'http://10.10.10.103';
     var socket = io.connect(socket_addr);
     socket.on('require', getRequireData);
     socket.on('bonescript', _seqcall);
