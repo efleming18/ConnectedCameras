@@ -106,10 +106,7 @@
 <script type="text/javascript">
 
     if (typeof currentAngle === 'undefined') {
-        var currentAngle = 90;
-    }
-    else {
-        currentAngle += 1;
+        var currentAngle = 40;
     }
 
     var leftArrow = $('.arrow-left');
@@ -118,22 +115,18 @@
     var upArrow = $('.arrow-up');
 
     leftArrow.on('click', function () {
-        alert('left arrow clicked');
         moveServo("left");
     });
 
     rightArrow.on('click', function () {
-        alert('right arrow clicked');
         moveServo("right");
     });
 
     upArrow.on('click', function () {
-        alert('up arrow clicked');
         moveServo("up");
     });
 
     downArrow.on('click', function () {
-        alert('down arrow clicked');
         moveServo("down");
     });
 
@@ -141,30 +134,26 @@
     function moveServo(direction) {
         var servo = '';
         var panServo = '\"P9_22\"';
-        var tiltServo = '\"P9_16\"';
+        var tiltServo = '\"P9_14\"';
         var beginningOfCommand = 'python ../connectedCameras/servo.py ';
 
-        //\"P9_14\" 90
         if (direction === "left") {
             servo = panServo;
-            currentAngle = 0;
-            //set position to go left
+            currentAngle -= 10;
         }
         else if (direction === "right") {
             servo = panServo;
-            currentAngle = 90;
-            //set position to go right
+            currentAngle += 10;
         }
         else if (direction === "up") {
             servo = tiltServo;
             currentAngle += 10;
-            //set position to go up
         }
         else if (direction === "down") {
             servo = tiltServo;
             currentAngle -= 10;
-            //set position to go down
         }
+
         beginningOfCommand += servo + " " + currentAngle;
         moveServoForReal(beginningOfCommand, currentAngle);
     };
@@ -172,13 +161,9 @@
     function moveServoForReal(commandToSend, currentAngle) {
         var beagleBone = require('bonescript');
         var file = '/home/root/calls/msg/command.txt';
-        debugger;
         beagleBone.writeTextFile(file, commandToSend, readStatus);
         function readStatus(x) {
             console.log("Current Angle set to: " + currentAngle);
-        }
-        function printStatus(x) {
-            console.log(currentAngle);
         }
     };
 </script>
