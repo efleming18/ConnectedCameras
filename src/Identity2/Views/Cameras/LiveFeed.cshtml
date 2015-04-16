@@ -59,7 +59,7 @@
                 <div class="row50px">
                     <div class="cell100px"></div>
                     <div class="cell50px">
-                        <img src="~/Content/Images/Arrow.png" class="camera-input" style="width:50px; height:50px;" />
+                        <img src="~/Content/Images/Arrow.png" class="camera-input arrow-up" style="width:50px; height:50px;" />
                     </div>
                 </div>
                 <div class="row50px">
@@ -92,6 +92,7 @@
 <script type="text/javascript" src="~/Scripts/LiveFeed.js"></script>
 
 <script type="text/javascript">
+
     if (typeof currentAngle === 'undefined') {
         var currentAngle = 90;
     }
@@ -102,7 +103,7 @@
     var leftArrow = $('.arrow-left');
     var rightArrow = $('.arrow-right');
     var downArrow = $('.arrow-down');
-    var upArrow = $('.camera-input');
+    var upArrow = $('.arrow-up');
 
     leftArrow.on('click', function () {
         alert('left arrow clicked');
@@ -121,25 +122,25 @@
 
     downArrow.on('click', function () {
         alert('down arrow clicked');
-        moveServoLeft("down");
+        moveServo("down");
     });
 
-    
-    function moveServo(direction) {
-        var beagleBone = require('bonescript');
-        var servo = '';
-        var panServo = 'P9_14';
-        var tiltServo = 'P9_16';
-        var dutyMin = 0.03;
 
+    function moveServo(direction) {
+        var servo = '';
+        var panServo = '\"P9_22\"';
+        var tiltServo = '\"P9_16\"';
+        var beginningOfCommand = 'python ../connectedCameras/servo.py ';
+
+        //\"P9_14\" 90
         if (direction === "left") {
             servo = panServo;
-            currentAngle -= 10;
+            currentAngle = 0;
             //set position to go left
         }
         else if (direction === "right") {
             servo = panServo;
-            currentAngle += 10;
+            currentAngle = 90;
             //set position to go right
         }
         else if (direction === "up") {
@@ -152,60 +153,27 @@
             currentAngle -= 10;
             //set position to go down
         }
-
-        var position = currentAngle / 180;
-        var increment = 0.1;
-
-        beagleBone.pinMode(servo, beagleBone.OUTPUT);
-        updateDuty();
-
-        function updateDuty() {
-            // compute and adjust duty_cycle based on
-            // desired position in range 0..1
-            var dutyCycle = (position * 0.110) + dutyMin;
-            beagleBone.analogWrite(servo, dutyCycle, 60, console.log(currentAngle));
-            console.log("Duty Cycle: " +
-                parseFloat(dutyCycle * 100).toFixed(1) + " %");
-        }
+        beginningOfCommand += servo + " " + currentAngle;
+        moveServoForReal(beginningOfCommand, currentAngle);
     };
 
-    function moveServoLeft() {
+    function moveServoForReal(commandToSend, currentAngle) {
+        var beagleBone = require('bonescript');
+        var file = '/home/root/calls/msg/command.txt';
         debugger;
-        var b = require('bonescript');
-        var SERVO = 'P9_14';
-        var duty_min = 0.03;
-        var position = 0;
-        var increment = 0.1;
-
-        b.pinMode(SERVO, b.OUTPUT);
-        updateDuty();
-
-        function updateDuty() {
-            // compute and adjust duty_cycle based on
-            // desired position in range 0..1
-            var duty_cycle = (position * 0.115) + duty_min;
-            b.analogWrite(SERVO, duty_cycle, 60, scheduleNextUpdate);
-            console.log("Duty Cycle: " +
-                parseFloat(duty_cycle * 100).toFixed(1) + " %");
+        beagleBone.writeTextFile(file, commandToSend, readStatus);
+        function readStatus(x) {
+            console.log("Current Angle set to: " + currentAngle);
         }
-
-        function scheduleNextUpdate() {
-            // adjust position by increment and 
-            // reverse if it exceeds range of 0..1
-            position = position + increment;
-            if (position < 0) {
-                position = 0;
-                increment = -increment;
-            } else if (position > 1) {
-                position = 1;
-                increment = -increment;
-            }
-
-            // call updateDuty after 200ms
-            setTimeout(updateDuty, 200);
+        function printStatus(x) {
+            console.log(currentAngle);
         }
     };
 </script>
+
+
+
+
 
 
 
