@@ -395,6 +395,178 @@ namespace ConnectedCamerasWeb.Helpers
             }
             return new HtmlString(htmlString);
         }
+        public static IHtmlString LiveFeedForIE(this HtmlHelper helper, List<Camera> cameras)
+        {
+            string htmlString;
+            switch (cameras.Count)
+            {
+                case 1:
+                    htmlString = "<div class='row100percent' style='background-color:black;'>" +
+                                     "<div class='feed center-vertical'>" +
+                                         "<div class='feed-content'>" +
+                                              EmbedVLC(cameras[0].CameraUrl, cameras[0].CameraName) +
+                                         "</div>" +
+                                     "</div>" +
+                                 "</div>";
+                    break;
+                case 2:
+                    htmlString = "<div class='row50percent' style='background-color:black;'>" +
+                                                   EmbedVLC(cameras[0].CameraUrl, cameras[0].CameraName) +
+                                               "</div>" +
+                                               "<div class='row50percent' style='background-color:black;'>" +
+                                                   EmbedVLC(cameras[1].CameraUrl, cameras[1].CameraName) +
+                                               "</div>";
+                    break;
+                case 3:
+                    htmlString = "<div class='row50percent' style='background-color:black;'>" +
+                                                   "<div class='cell50percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[0].CameraUrl, cameras[0].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell50percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[1].CameraUrl, cameras[1].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                               "</div>" +
+                                               "<div class='row50percent' style='background-color:black;'>" +
+                                                   EmbedVLC(cameras[2].CameraUrl, cameras[2].CameraName) +
+                                               "</div>";
+                    break;
+                case 4:
+                    htmlString = "<div class='row50percent' style='background-color:black;'>" +
+                                                   "<div class='cell50percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[0].CameraUrl, cameras[0].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell50percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[1].CameraUrl, cameras[1].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                               "</div>" +
+                                               "<div class='row50percent' style='background-color:black;'>" +
+                                                   "<div class='cell50percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[2].CameraUrl, cameras[2].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell50percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[3].CameraUrl, cameras[3].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                               "</div>";
+                    break;
+                case 5:
+                    htmlString = "<div class='row50percent' style='background-color:black;'>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[0].CameraUrl, cameras[0].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[1].CameraUrl, cameras[1].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[2].CameraUrl, cameras[2].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                               "</div>" +
+                                               "<div class='row50percent' style='background-color:black;'>" +
+                                                   "<div class='cell50percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[3].CameraUrl, cameras[3].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell50percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[4].CameraUrl, cameras[4].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                               "</div>";
+                    break;
+                case 6:
+                    htmlString = "<div class='row50percent' style='background-color:black;'>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[0].CameraUrl, cameras[0].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[1].CameraUrl, cameras[1].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[2].CameraUrl, cameras[2].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                               "</div>" +
+                                               "<div class='row50percent' style='background-color:black;'>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[3].CameraUrl, cameras[3].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[4].CameraUrl, cameras[4].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                                   "<div class='cell33percent'>" +
+                                                       "<div class='feed center-vertical'>" +
+                                                           "<div class='feed-content'>" +
+                                                               EmbedVLC(cameras[5].CameraUrl, cameras[5].CameraName) +
+                                                           "</div>" +
+                                                       "</div>" +
+                                                   "</div>" +
+                                               "</div>";
+                    break;
+                default:
+                    htmlString = "We do not support this many cameras.";
+                    break;
+            }
+            return new HtmlString(htmlString);
+        }
         public static string EmbedPlayer(string sourceUrl, string name)
         {
             var htmlString = string.Format("<OBJECT id='mediaPlayer1' width='180' height='50' classid='CLSID:22d6f312-b0f6-11d0-94ab-0080c74c7e95' codebase='http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=5,1,52,701' standby='Loading Microsoft Windows Media Player components...' type='application/x-oleobject'>"
@@ -409,6 +581,20 @@ namespace ConnectedCamerasWeb.Helpers
                                             + "<EMBED type='application/x-mplayer2' pluginspage='http://microsoft.com/windows/mediaplayer/en/download/' id='{1}' name='mediaPlayer' displaysize='4' autosize='-1' bgcolor='darkblue' showcontrols='true' showtracker='-1'  showdisplay='0' showstatusbar='-1' videoborder3d='-1' width='100%' height='100%' src='{0}' autostart='true' designtimesp='5311' loop='false'></EMBED>"
                                           +"</OBJECT>", sourceUrl, name);
             return htmlString;
+        }
+        public static string EmbedVLC(string sourceUrl, string name)
+        {
+            return string.Format("<embed type='application/x-vlc-plugin'" 
+                                      + "pluginspage='http://www.videolan.org'" 
+                                      + "version='VideoLAN.VLCPlugin.2'" 
+                                      + "width='100%' height='100%'" 
+                                      + "id='{1}' loop='yes' autoplay='yes'" 
+                                      + "target='{0}'/>",
+                                      sourceUrl, name);
+        }
+        public static string EmbedVLCForIE(string sourceUrl, string name)
+        {
+            return "";
         }
     }
 }
