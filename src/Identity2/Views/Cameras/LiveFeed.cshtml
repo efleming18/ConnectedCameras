@@ -152,8 +152,8 @@
     function startStream() {
         var beagleBone = require('bonescript');
         var file = '/home/root/calls/msg/command.txt';
-        beagleBone.writeTextFile(file, "../connectedCameras/startStream.sh", readStatus);
-        location.reload();
+        beagleBone.writeTextFile(file, "/home/root/connectedCameras/startStream.sh", readStatus);
+        location.reload(true);
         function readStatus(x) {
             console.log("Current Angle set to: " + currentAngle);
         }
@@ -162,8 +162,8 @@
     function killStream() {
         var beagleBone = require('bonescript');
         var file = '/home/root/calls/msg/command.txt';
-        beagleBone.writeTextFile(file, "../connectedCameras/stopStream.sh", readStatus);
-        location.reload();
+        beagleBone.writeTextFile(file, "/home/root/connectedCameras/stopStream.sh", readStatus);
+        location.reload(true);
         function readStatus(x) {
             console.log("Current Angle set to: " + currentAngle);
         }
@@ -172,8 +172,8 @@
     function killServo() {
         var beagleBone = require('bonescript');
         var file = '/home/root/calls/msg/command.txt';
-        beagleBone.writeTextFile(file, "python ../connectedCameras/stopServo.py \"P9_14\" \"P9_22\"", readStatus);
-        location.reload();
+        beagleBone.writeTextFile(file, "python /home/root/connectedCameras/stopServo.py \"P9_14\" \"P9_22\"", readStatus);
+        location.reload(true);
         function readStatus(x) {
             console.log("Current Angle set to: " + currentAngle);
         }
@@ -183,7 +183,7 @@
         var servo = '';
         var panServo = '\"P9_22\"';
         var tiltServo = '\"P9_14\"';
-        var beginningOfCommand = 'python ../connectedCameras/servo.py ';
+        var beginningOfCommand = 'python /home/root/connectedCameras/servo.py ';
 
         if (direction === "left") {
             servo = panServo;
