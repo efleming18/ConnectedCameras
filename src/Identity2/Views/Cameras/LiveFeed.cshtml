@@ -53,6 +53,10 @@
                 <div class="row10px"></div>
                 <div class="row" style="text-align:left; font-weight:bold;">Time Remaining</div>
                 <div class="row" id="timeRemaining">N/A</div>
+
+                <button class="start-stream">Start Stream</button>
+                <button class="kill-stream">Kill Stream</button>
+                <button class="kill-servos">Kill Servos</button>
             </div>
             <div id="controls" class="row">
                 <div class="row control-panel-label">Controls</div>
@@ -113,23 +117,67 @@
     var rightArrow = $('.arrow-right');
     var downArrow = $('.arrow-down');
     var upArrow = $('.arrow-up');
+    var startButton = $('.start-stream');
+    var stopButton = $('.kill-stream');
+    var killServoButton = $('.kill-servos');
 
-    leftArrow.on('click', function () {
+    leftArrow.on('click', function() {
         moveServo("left");
     });
 
-    rightArrow.on('click', function () {
+    rightArrow.on('click', function() {
         moveServo("right");
     });
 
-    upArrow.on('click', function () {
+    upArrow.on('click', function() {
         moveServo("up");
     });
 
-    downArrow.on('click', function () {
+    downArrow.on('click', function() {
         moveServo("down");
     });
 
+    startButton.on('click', function() {
+        startStream();
+    });
+
+    stopButton.on('click', function() {
+        killStream();
+    });
+
+    killServoButton.on('click', function() {
+        killServo();
+    });
+
+    function startStream() {
+        var beagleBone = require('bonescript');
+        var file = '/home/root/calls/msg/command.txt';
+        beagleBone.writeTextFile(file, "../connectedCameras/startStream.sh", readStatus);
+        location.reload();
+        function readStatus(x) {
+            console.log("Current Angle set to: " + currentAngle);
+        }
+    };
+
+    function killStream() {
+        var beagleBone = require('bonescript');
+        var file = '/home/root/calls/msg/command.txt';
+        beagleBone.writeTextFile(file, "../connectedCameras/stopStream.sh", readStatus);
+        location.reload();
+        function readStatus(x) {
+            console.log("Current Angle set to: " + currentAngle);
+        }
+    };
+
+    function killServo() {
+        var beagleBone = require('bonescript');
+        var file = '/home/root/calls/msg/command.txt';
+        beagleBone.writeTextFile(file, "python ../connectedCameras/stopServo.py \"P9_14\" \"P9_22\"", readStatus);
+        location.reload();
+        function readStatus(x) {
+            console.log("Current Angle set to: " + currentAngle);
+        }
+    };
 
     function moveServo(direction) {
         var servo = '';
